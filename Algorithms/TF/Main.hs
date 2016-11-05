@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -402,7 +402,7 @@ main = do
                        tt_shape ee_shape node_shape qubit
           A20 -> print_generic format (decompose_generic gatebase $ a20_GCQWStep spec)
                        tt_shape ee_shape node_shape gcqw_shape
-          O2 -> print_generic format (decompose_generic gatebase $ \u -> o2_ConvertNode l u (2^(n-1))) node_shape	
+          O2 -> print_generic format (decompose_generic gatebase $ \u -> o2_ConvertNode l u (2^(n-1))) node_shape       
           O3 -> print_generic format (decompose_generic gatebase $ o3_TestEqual) (qinttf_shape l) (qinttf_shape l)
           O4 -> print_generic format (decompose_generic gatebase $ o4_POW17) (qinttf_shape l)
           O5 -> print_generic format (decompose_generic gatebase $ o5_MOD3) (qinttf_shape l)

@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -10,7 +10,7 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE TypeFamilies #-}
-{-# LANGUAGE OverlappingInstances #-}
+
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE IncoherentInstances #-}
@@ -42,9 +42,9 @@ import Libraries.Auxiliary (mmap)
 -- by algorithms 'a8_FetchT', 'a9_StoreT' and 'a10_FetchStoreT'.
 
 data Qram = Qram {
-  qram_fetch :: (QData qa) => QDInt -> IntMap qa -> qa -> Circ (QDInt, IntMap qa, qa),
-  qram_store :: (QData qa) => QDInt -> IntMap qa -> qa -> Circ (QDInt, IntMap qa, qa),
-  qram_swap :: (QData qa) => QDInt -> IntMap qa -> qa -> Circ (QDInt, IntMap qa, qa)
+  qram_fetch :: forall qa.(QData qa) => QDInt -> IntMap qa -> qa -> Circ (QDInt, IntMap qa, qa),
+  qram_store :: forall qa.(QData qa) => QDInt -> IntMap qa -> qa -> Circ (QDInt, IntMap qa, qa),
+  qram_swap :: forall qa.(QData qa) => QDInt -> IntMap qa -> qa -> Circ (QDInt, IntMap qa, qa)
 }
 
 -- ======================================================================

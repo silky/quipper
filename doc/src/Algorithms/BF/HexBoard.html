@@ -80,9 +80,9 @@
 <a name="line-73"></a><font color=Blue>color_to_bash</font> Red <font color=Red>=</font> BashRed
 <a name="line-74"></a><font color=Blue>color_to_bash</font> Blue <font color=Red>=</font> BashBlue
 <a name="line-75"></a>
-<a name="line-76"></a><font color=Blue><i>-- | An instance of Show for BashColor, so the string for each color contains </i></font>
-<a name="line-77"></a><font color=Blue><i>-- the bash escape code for that color, and a single character.</i></font>
-<a name="line-78"></a><font color=Green><u>instance</u></font> Show BashColor <font color=Green><u>where</u></font>
+<a name="line-76"></a><a name="instance%20Show%20BashColor"></a><font color=Blue><i>-- | An instance of Show for BashColor, so the string for each color contains </i></font>
+<a name="line-77"></a><a name="instance%20Show%20BashColor"></a><font color=Blue><i>-- the bash escape code for that color, and a single character.</i></font>
+<a name="line-78"></a><a name="instance%20Show%20BashColor"></a><font color=Green><u>instance</u></font> Show BashColor <font color=Green><u>where</u></font>
 <a name="line-79"></a>  show BashEmpty <font color=Red>=</font> <font color=Magenta>" "</font>
 <a name="line-80"></a>  show BashRed <font color=Red>=</font>   <font color=Magenta>"\^[\ESC[1;31m\^]#\^[\ESC[0m\^]"</font>
 <a name="line-81"></a>  show BashBlue <font color=Red>=</font>  <font color=Magenta>"\^[\ESC[1;34m\^]*\^[\ESC[0m\^]"</font>

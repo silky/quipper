@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -210,7 +210,7 @@ a8_FetchT = box "a8" $ \i tt ttd -> do
 -- store /ttd/ into the /i/-th element from /tt/.
 -- Analogous to 'a8_FetchT'.
 a9_StoreT :: (QData qa) => QDInt -> IntMap qa -> qa -> Circ (QDInt, IntMap qa, qa)
-a9_StoreT = box "a9" $ \i tt ttd -> do	
+a9_StoreT = box "a9" $ \i tt ttd -> do  
   comment_with_label "ENTER: a9_StoreT" (i,tt,ttd) ("i","tt","ttd")
   let r = qdint_length i
   (i,tt,ttd) <- loop_with_indexM (2^r) (i,tt,ttd)

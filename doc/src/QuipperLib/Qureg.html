@@ -236,7 +236,7 @@
 <a name="line-229"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y Qureg <font color=Red>=</font> Register x
 <a name="line-230"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y Bitreg <font color=Red>=</font> Register y
 <a name="line-231"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB Boolreg <font color=Red>=</font> Qureg
-<a name="line-232"></a><font color=Green><u>instance</u></font> QCData Qureg <font color=Green><u>where</u></font>
+<a name="line-232"></a><a name="instance%20QCData%20Qureg"></a><font color=Green><u>instance</u></font> QCData Qureg <font color=Green><u>where</u></font>
 <a name="line-233"></a>  
 <a name="line-234"></a>  qcdata_mapM shape f g <font color=Cyan>(</font>Register xs<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-235"></a>    ys <font color=Red>&lt;-</font> intmap_mapM f xs
@@ -249,7 +249,7 @@
 <a name="line-242"></a>    <font color=Red>|</font> register_length <font color=Green><u>as</u></font> <font color=Cyan>==</font> register_length xs <font color=Red>=</font> <font color=Green><u>as</u></font>
 <a name="line-243"></a>    <font color=Red>|</font> otherwise <font color=Red>=</font> error <font color=Cyan>(</font>e <font color=Magenta>"register length mismatch"</font><font color=Cyan>)</font>
 <a name="line-244"></a>
-<a name="line-245"></a><font color=Green><u>instance</u></font> QCData Bitreg <font color=Green><u>where</u></font>
+<a name="line-245"></a><a name="instance%20QCData%20Bitreg"></a><font color=Green><u>instance</u></font> QCData Bitreg <font color=Green><u>where</u></font>
 <a name="line-246"></a>  
 <a name="line-247"></a>  qcdata_mapM shape f g <font color=Cyan>(</font>Register xs<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-248"></a>    ys <font color=Red>&lt;-</font> intmap_mapM g xs
@@ -262,11 +262,11 @@
 <a name="line-255"></a>    <font color=Red>|</font> register_length <font color=Green><u>as</u></font> <font color=Cyan>==</font> register_length xs <font color=Red>=</font> <font color=Green><u>as</u></font>
 <a name="line-256"></a>    <font color=Red>|</font> otherwise <font color=Red>=</font> error <font color=Cyan>(</font>e <font color=Magenta>"register length mismatch"</font><font color=Cyan>)</font>
 <a name="line-257"></a>
-<a name="line-258"></a><font color=Green><u>instance</u></font> Labelable Qureg String <font color=Green><u>where</u></font>
+<a name="line-258"></a><a name="instance%20Labelable%20Qureg%20String"></a><font color=Green><u>instance</u></font> Labelable Qureg String <font color=Green><u>where</u></font>
 <a name="line-259"></a>  label_rec <font color=Cyan>(</font>Register xs<font color=Cyan>)</font> s <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-260"></a>    sequence_ <font color=Red>[</font> label_rec x s <font color=Cyan>`indexed`</font> show i <font color=Red>|</font> <font color=Cyan>(</font>i<font color=Cyan>,</font>x<font color=Cyan>)</font> <font color=Red>&lt;-</font> IntMap<font color=Cyan>.</font>toList xs <font color=Red>]</font>
 <a name="line-261"></a>
-<a name="line-262"></a><font color=Green><u>instance</u></font> Labelable Bitreg String <font color=Green><u>where</u></font>
+<a name="line-262"></a><a name="instance%20Labelable%20Bitreg%20String"></a><font color=Green><u>instance</u></font> Labelable Bitreg String <font color=Green><u>where</u></font>
 <a name="line-263"></a>  label_rec <font color=Cyan>(</font>Register xs<font color=Cyan>)</font> s <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-264"></a>    sequence_ <font color=Red>[</font> label_rec x s <font color=Cyan>`indexed`</font> show i <font color=Red>|</font> <font color=Cyan>(</font>i<font color=Cyan>,</font>x<font color=Cyan>)</font> <font color=Red>&lt;-</font> IntMap<font color=Cyan>.</font>toList xs <font color=Red>]</font>
 </pre>

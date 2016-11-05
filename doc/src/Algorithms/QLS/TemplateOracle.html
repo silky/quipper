@@ -79,18 +79,18 @@
 <a name="line-72"></a><font color=Blue><i>-- The output is the matrix element /A/(/y1/, /y2/).</i></font>
 <a name="line-73"></a><font color=Blue>build_circuit</font>
 <a name="line-74"></a><a name="calcmatrixelement"></a><font color=Blue>calcmatrixelement</font> <font color=Red>::</font> <font color=Blue><i>--</i></font>
-<a name="line-75"></a>	<font color=Blue><i>-- Inputs</i></font>
-<a name="line-76"></a>	Int 	<font color=Blue><i>-- int y1 - Global edge index of row index of desired matrix element  </i></font>
-<a name="line-77"></a>	<font color=Red>-&gt;</font> Int 	<font color=Blue><i>-- int y2 - Global edge index of column index of desired matrix element</i></font>
-<a name="line-78"></a>	<font color=Red>-&gt;</font> Int 	<font color=Blue><i>-- int nx - Number of vertices left to right</i></font>
-<a name="line-79"></a>	<font color=Red>-&gt;</font> Int	<font color=Blue><i>-- int ny - Number of vertices top to bottom</i></font>
-<a name="line-80"></a>	<font color=Red>-&gt;</font> Double <font color=Blue><i>-- float lx - Length of horizontal edges (distance between vertices in x direction)</i></font>
-<a name="line-81"></a>	<font color=Red>-&gt;</font> Double <font color=Blue><i>-- float ly - Length of vertical edges (distance between vertices in y direction)</i></font>
-<a name="line-82"></a>	<font color=Red>-&gt;</font> Double <font color=Blue><i>-- float k - Plane wave wavenumber	</i></font>
-<a name="line-83"></a>	<font color=Blue><i>-- Outputs</i></font>
-<a name="line-84"></a>	<font color=Red>-&gt;</font> Complex Double <font color=Blue><i>-- float A - Matrix element A(y1,y2)</i></font>
+<a name="line-75"></a>        <font color=Blue><i>-- Inputs</i></font>
+<a name="line-76"></a>        Int     <font color=Blue><i>-- int y1 - Global edge index of row index of desired matrix element  </i></font>
+<a name="line-77"></a>        <font color=Red>-&gt;</font> Int  <font color=Blue><i>-- int y2 - Global edge index of column index of desired matrix element</i></font>
+<a name="line-78"></a>        <font color=Red>-&gt;</font> Int  <font color=Blue><i>-- int nx - Number of vertices left to right</i></font>
+<a name="line-79"></a>        <font color=Red>-&gt;</font> Int  <font color=Blue><i>-- int ny - Number of vertices top to bottom</i></font>
+<a name="line-80"></a>        <font color=Red>-&gt;</font> Double <font color=Blue><i>-- float lx - Length of horizontal edges (distance between vertices in x direction)</i></font>
+<a name="line-81"></a>        <font color=Red>-&gt;</font> Double <font color=Blue><i>-- float ly - Length of vertical edges (distance between vertices in y direction)</i></font>
+<a name="line-82"></a>        <font color=Red>-&gt;</font> Double <font color=Blue><i>-- float k - Plane wave wavenumber    </i></font>
+<a name="line-83"></a>        <font color=Blue><i>-- Outputs</i></font>
+<a name="line-84"></a>        <font color=Red>-&gt;</font> Complex Double <font color=Blue><i>-- float A - Matrix element A(y1,y2)</i></font>
 <a name="line-85"></a><font color=Blue>calcmatrixelement</font> y1 y2 nx ny lx ly k <font color=Red>=</font> 
-<a name="line-86"></a>	<font color=Green><u>let</u></font> <font color=Cyan>(</font>xg1<font color=Cyan>,</font> yg1<font color=Cyan>)</font> <font color=Red>=</font> itoxy y1 nx ny <font color=Green><u>in</u></font>
+<a name="line-86"></a>        <font color=Green><u>let</u></font> <font color=Cyan>(</font>xg1<font color=Cyan>,</font> yg1<font color=Cyan>)</font> <font color=Red>=</font> itoxy y1 nx ny <font color=Green><u>in</u></font>
 <a name="line-87"></a>        <font color=Green><u>let</u></font> <font color=Cyan>(</font>xg2<font color=Cyan>,</font> yg2<font color=Cyan>)</font> <font color=Red>=</font> itoxy y2 nx ny <font color=Green><u>in</u></font>
 <a name="line-88"></a>        <font color=Green><u>let</u></font> b <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font> <font color=Cyan>(</font>y1<font color=Cyan>==</font>y2<font color=Cyan>)</font> <font color=Cyan>&amp;&amp;</font> <font color=Cyan>(</font>xg1 <font color=Cyan>&gt;=</font> nx<font color=Cyan>)</font> <font color=Cyan>)</font> <font color=Green><u>then</u></font> ly<font color=Cyan>/</font>lx <font color=Blue><i>-</i></font> k<font color=Cyan>*</font>k<font color=Cyan>*</font>lx<font color=Cyan>*</font>ly<font color=Cyan>/</font><font color=Magenta>3.0</font>
 <a name="line-89"></a>                <font color=Blue><i>-- B11 and B22</i></font>
@@ -120,7 +120,7 @@
 <a name="line-113"></a>        <font color=Green><u>let</u></font> c <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font> <font color=Cyan>(</font>y1<font color=Cyan>==</font>y2<font color=Cyan>)</font> <font color=Cyan>&amp;&amp;</font> <font color=Cyan>(</font> <font color=Cyan>(</font>xg1<font color=Cyan>==</font>nx<font color=Cyan>)</font> <font color=Cyan>||</font> <font color=Cyan>(</font>xg1<font color=Cyan>==</font><font color=Cyan>(</font><font color=Magenta>2</font><font color=Cyan>*</font>nx<font color=Blue><i>-</i></font><font color=Magenta>1</font><font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>)</font> <font color=Cyan>)</font> <font color=Green><u>then</u></font> <font color=Magenta>0.0</font> <font color=Red><b>:+</b></font> <font color=Cyan>(</font>k<font color=Cyan>*</font>ly<font color=Cyan>)</font>
 <a name="line-114"></a>                <font color=Green><u>else</u></font> <font color=Green><u>if</u></font>  <font color=Cyan>(</font> <font color=Cyan>(</font>y1<font color=Cyan>==</font>y2<font color=Cyan>)</font> <font color=Cyan>&amp;&amp;</font> <font color=Cyan>(</font> <font color=Cyan>(</font><font color=Cyan>(</font>yg1<font color=Cyan>==</font><font color=Magenta>1</font><font color=Cyan>)</font> <font color=Cyan>&amp;&amp;</font> <font color=Cyan>(</font>xg1<font color=Cyan>&lt;</font>nx<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>||</font> <font color=Cyan>(</font><font color=Cyan>(</font>yg1<font color=Cyan>==</font>ny<font color=Cyan>)</font> <font color=Cyan>&amp;&amp;</font> <font color=Cyan>(</font>xg1<font color=Cyan>&lt;</font>nx<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>)</font> <font color=Cyan>)</font> <font color=Green><u>then</u></font> <font color=Magenta>0.0</font> <font color=Red><b>:+</b></font> <font color=Cyan>(</font>k<font color=Cyan>*</font>lx<font color=Cyan>)</font>
 <a name="line-115"></a>                <font color=Green><u>else</u></font> <font color=Magenta>0.0</font> <font color=Red><b>:+</b></font> <font color=Magenta>0.0</font>
-<a name="line-116"></a>	<font color=Green><u>in</u></font> <font color=Cyan>(</font>b <font color=Red><b>:+</b></font> <font color=Magenta>0.0</font><font color=Cyan>)</font> <font color=Cyan>+</font> c
+<a name="line-116"></a>        <font color=Green><u>in</u></font> <font color=Cyan>(</font>b <font color=Red><b>:+</b></font> <font color=Magenta>0.0</font><font color=Cyan>)</font> <font color=Cyan>+</font> c
 <a name="line-117"></a>
 <a name="line-118"></a>
 <a name="line-119"></a><font color=Blue><i>-- | Auxiliary function.</i></font>
@@ -323,18 +323,18 @@
 <a name="line-316"></a><font color=Blue><i>-- The output is the magnitude of the electric field on edge /y/.</i></font>
 <a name="line-317"></a><font color=Blue>build_circuit</font>
 <a name="line-318"></a><a name="calcincidentfield"></a><font color=Blue>calcincidentfield</font> <font color=Red>::</font> <font color=Blue><i>--</i></font>
-<a name="line-319"></a>	<font color=Blue><i>-- Inputs</i></font>
-<a name="line-320"></a>		Int <font color=Blue><i>-- int y - Global edge index.  Note this is the unmarked y coordinate, </i></font>
-<a name="line-321"></a>			<font color=Blue><i>-- i.e. the coordinate without scattering regions removed.</i></font>
-<a name="line-322"></a>	<font color=Red>-&gt;</font> Int <font color=Blue><i>-- int nx - Number of vertices left to right</i></font>
-<a name="line-323"></a>	<font color=Red>-&gt;</font> Int <font color=Blue><i>--  int ny - Number of vertices top to bottom</i></font>
-<a name="line-324"></a>	<font color=Red>-&gt;</font> Double <font color=Blue><i>-- float lx - Length of horizontal edges (distance between vertices in x direction)</i></font>
-<a name="line-325"></a>	<font color=Red>-&gt;</font> Double <font color=Blue><i>-- float ly - Length of vertical edges (distance between vertices in y direction)</i></font>
-<a name="line-326"></a>	<font color=Red>-&gt;</font> Double <font color=Blue><i>-- float k - Plane wave wavenumber</i></font>
-<a name="line-327"></a>	<font color=Red>-&gt;</font> Double <font color=Blue><i>-- float theta - Direction of wave propagation</i></font>
-<a name="line-328"></a>	<font color=Red>-&gt;</font> Double <font color=Blue><i>-- float E0 - Magnitude of incident plane wave</i></font>
-<a name="line-329"></a>	<font color=Blue><i>-- Outputs</i></font>
-<a name="line-330"></a>	<font color=Red>-&gt;</font> Complex Double <font color=Blue><i>-- complex float e - Magnitude of electric field on edge y</i></font>
+<a name="line-319"></a>        <font color=Blue><i>-- Inputs</i></font>
+<a name="line-320"></a>                Int <font color=Blue><i>-- int y - Global edge index.  Note this is the unmarked y coordinate, </i></font>
+<a name="line-321"></a>                        <font color=Blue><i>-- i.e. the coordinate without scattering regions removed.</i></font>
+<a name="line-322"></a>        <font color=Red>-&gt;</font> Int <font color=Blue><i>-- int nx - Number of vertices left to right</i></font>
+<a name="line-323"></a>        <font color=Red>-&gt;</font> Int <font color=Blue><i>--  int ny - Number of vertices top to bottom</i></font>
+<a name="line-324"></a>        <font color=Red>-&gt;</font> Double <font color=Blue><i>-- float lx - Length of horizontal edges (distance between vertices in x direction)</i></font>
+<a name="line-325"></a>        <font color=Red>-&gt;</font> Double <font color=Blue><i>-- float ly - Length of vertical edges (distance between vertices in y direction)</i></font>
+<a name="line-326"></a>        <font color=Red>-&gt;</font> Double <font color=Blue><i>-- float k - Plane wave wavenumber</i></font>
+<a name="line-327"></a>        <font color=Red>-&gt;</font> Double <font color=Blue><i>-- float theta - Direction of wave propagation</i></font>
+<a name="line-328"></a>        <font color=Red>-&gt;</font> Double <font color=Blue><i>-- float E0 - Magnitude of incident plane wave</i></font>
+<a name="line-329"></a>        <font color=Blue><i>-- Outputs</i></font>
+<a name="line-330"></a>        <font color=Red>-&gt;</font> Complex Double <font color=Blue><i>-- complex float e - Magnitude of electric field on edge y</i></font>
 <a name="line-331"></a><font color=Blue>calcincidentfield</font> y nx ny lx ly k theta e0 <font color=Red>=</font> 
 <a name="line-332"></a>        <font color=Green><u>let</u></font> <font color=Cyan>(</font>xg<font color=Cyan>,</font> yg<font color=Cyan>)</font> <font color=Red>=</font> itoxy y nx ny <font color=Green><u>in</u></font>
 <a name="line-333"></a>        <font color=Blue><i>--Determine whether edge is horizontal or vertical</i></font>

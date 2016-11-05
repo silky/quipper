@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -359,9 +359,9 @@ template_True = qinit_qubit True
 -- >   1 |--N------- output: not a.
 template_not ::  Circ (Qubit -> Circ Qubit)
 template_not  = return $ \b -> do
-	  r <- qinit_qubit True;
+          r <- qinit_qubit True;
           qnot_at r `controlled` b
-	  return r
+          return r
 
 
 ----------------------------------------------------------------------
@@ -400,7 +400,7 @@ template_symb_vbar_symb_vbar_ ::  Circ (Qubit -> Circ (Qubit -> Circ Qubit))
 template_symb_vbar_symb_vbar_ = return $ \b1 -> return $ \b2 -> do 
          r <- qinit_qubit True; 
          qnot_at r `controlled` b1 .==. 0 .&&. b2 .==. 0;
-	 return r
+         return r
 
 
 -- | Lifted version of 'bool_xor':
@@ -417,7 +417,7 @@ template_symb_vbar_symb_vbar_ = return $ \b1 -> return $ \b2 -> do
 template_bool_xor ::  Circ (Qubit -> Circ (Qubit -> Circ Qubit))
 template_bool_xor = return $ \b1 -> return $ \b2 -> do 
          r <- qinit_qubit False
-	 qnot_at r `controlled` b1
+         qnot_at r `controlled` b1
          qnot_at r `controlled` b2
          return r
 

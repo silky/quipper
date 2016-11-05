@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -361,7 +361,7 @@ qc_measure qc = qcdata_mapM_op qc measure_qubit do_bit qc
     do_bit :: Bit -> Circ Bit
     do_bit = return                                                         
 
--- | Heterogeneous version of 'measure'. Given a heterogeneous data
+-- | Heterogeneous version of 'prepare'. Given a heterogeneous data
 -- structure, prepare qubits from all classical bits, and leave any
 -- qubits unchanged.
 qc_prepare :: (QCData qc) => qc -> Circ (QCType Qubit Qubit qc)

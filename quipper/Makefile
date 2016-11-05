@@ -1,4 +1,4 @@
-# This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+# This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 # file COPYRIGHT for a list of authors, copyright holders, licensing,
 # and other details. All rights reserved.
 # 
@@ -19,7 +19,7 @@ BASEDIR = ..
 CLEAN_SUBDIRS = Quipper Quipper/Template
 
 SCRIPTS=acroread.bat convert_template.awk convert_template.bat	\
- convert_template.sh epstopdf.bat quipper quipperi quipperdoc	\
+ convert_template.sh quipper quipperi quipperdoc	\
  quipperdoc.bat quipper.bat quipperi.bat
 EXTRA_DIST=$(SCRIPTS:%=scripts/%)
 

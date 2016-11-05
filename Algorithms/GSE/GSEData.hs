@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -121,17 +121,17 @@ access_2e arr (i,k,l,j) =
     -- The indices are not in correct order on purpose.  We 
     -- need to express the fact that h_prsq = h[pq|rs] = h[p,q,r,s] = h[i,j,k,l]
     arr ! (swap_ijkl $ swap_kl $ swap_ij (i,j,k,l))
-	
+        
     -- Note that because of symmetries, we have
-	--   h2(i,j,k,l) = h2(j,i,k,l)
-	--   h2(i,j,k,l) = h2(i,j,l,k)
-	--   h2(i,j,k,l) = h2(k,l,i,j)
-	-- For this reason, and to save space, the file only contains one 
-	-- representative of each equivalence class.
-	where
-		swap_ij   (i,j,k,l) = if (i < j)                            then (j,i,k,l) else (i,j,k,l)
-		swap_kl   (i,j,k,l) = if (k < l)                            then (i,j,l,k) else (i,j,k,l)
-		swap_ijkl (i,j,k,l) = if ((i < k) || ((i == k) && (j < l))) then (k,l,i,j) else (i,j,k,l)
+        --   h2(i,j,k,l) = h2(j,i,k,l)
+        --   h2(i,j,k,l) = h2(i,j,l,k)
+        --   h2(i,j,k,l) = h2(k,l,i,j)
+        -- For this reason, and to save space, the file only contains one 
+        -- representative of each equivalence class.
+        where
+                swap_ij   (i,j,k,l) = if (i < j)                            then (j,i,k,l) else (i,j,k,l)
+                swap_kl   (i,j,k,l) = if (k < l)                            then (i,j,l,k) else (i,j,k,l)
+                swap_ijkl (i,j,k,l) = if ((i < k) || ((i == k) && (j < l))) then (k,l,i,j) else (i,j,k,l)
 
 -- ----------------------------------------------------------------------
 -- * Low-level parsing functions
@@ -255,22 +255,22 @@ spin2 h2 (p,q,r,s) =
 -- | Print the /h/[sub 1] data for 1-electron integrals.
 print_1e :: GSEData -> String
 print_1e gse_data = unlines $ [ inner_print i j | i <- list, j <- list]
-	where list = [0..m-1]
-	      inner_print i j = show (i,j) ++ " : " ++ show (h1 (i, j))
+        where list = [0..m-1]
+              inner_print i j = show (i,j) ++ " : " ++ show (h1 (i, j))
               m = gse_data_M gse_data
               h1 = gse_data_h1 gse_data
 
 -- | Print the /h/[sub 2] data for 2-electron integrals.
 print_2e :: GSEData -> String
 print_2e gse_data = unlines $ [ inner_print i j k l | i <- list, j <- list, k <- list, l <- list]
-	where list = [0..m-1]
-	      inner_print i j k l = show (i,j,k,l) ++" : " ++ show (h2 (i, j, k, l))
+        where list = [0..m-1]
+              inner_print i j k l = show (i,j,k,l) ++" : " ++ show (h2 (i, j, k, l))
               m = gse_data_M gse_data
               h2 = gse_data_h2 gse_data
 
 -- | A main function to test the GSEData module.
-gse_data_test :: Int -> IO ()		
+gse_data_test :: Int -> IO ()           
 gse_data_test n = do 
-	gse_data <- load_gse_data n "h_1e_ascii" "h_2e_ascii"
-	putStr $ print_1e gse_data
-	putStr $ print_2e gse_data
+        gse_data <- load_gse_data n "h_1e_ascii" "h_2e_ascii"
+        putStr $ print_1e gse_data
+        putStr $ print_2e gse_data

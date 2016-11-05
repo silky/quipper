@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -48,42 +48,42 @@ stabilizer_transformer (T_QGate "not" 1 0 _ ncf f) = f $
   -- X and controlled-X are already provided by CliffordCirc
   \[qt] [] c -> case control_info c of
    None -> do
-	C.gate_X qt
-	return ([qt], [], c)
+        C.gate_X qt
+        return ([qt], [], c)
    Classical b -> do
-	if b then C.gate_X qt else return ()
-	return ([qt], [], c)
+        if b then C.gate_X qt else return ()
+        return ([qt], [], c)
    OneQuantum (Signed qc negate) b -> do
-	if negate then C.gate_X qc else return ()
-	if b then C.controlled_X qc qt else return ()
-	if negate then C.gate_X qc else return ()
-	return ([qt], [], c)
+        if negate then C.gate_X qc else return ()
+        if b then C.controlled_X qc qt else return ()
+        if negate then C.gate_X qc else return ()
+        return ([qt], [], c)
    _ -> error "stabilizer_transformer: Toffoli gate not available"
 stabilizer_transformer (T_QGate "multinot" _ 0 _ ncf f) = f $
   -- X and controlled-X are already provided by CliffordCirc
   -- and can be mapped over a list of qubits 
   \ws [] c -> case control_info c of
    None -> do
-	mapM_ C.gate_X ws
-	return (ws, [], c)
+        mapM_ C.gate_X ws
+        return (ws, [], c)
    Classical b -> do
-	if b then mapM_ C.gate_X ws else return ()
-	return (ws, [], c)
+        if b then mapM_ C.gate_X ws else return ()
+        return (ws, [], c)
    OneQuantum (Signed qc negate) b -> do
-	if negate then C.gate_X qc else return ()
-	if b then mapM_ (C.controlled_X qc) ws else return ()
-	if negate then C.gate_X qc else return ()
-	return (ws, [], c)
+        if negate then C.gate_X qc else return ()
+        if b then mapM_ (C.controlled_X qc) ws else return ()
+        if negate then C.gate_X qc else return ()
+        return (ws, [], c)
    _ -> error "stabilizer_transformer: (Multi) Toffoli gate not available"
 stabilizer_transformer (T_QGate "H" 1 0 _ ncf f) = f $
   -- Hadamard is already provided by CliffordCirc 
   \[qt] [] c -> case control_info c of
    None -> do
-	C.gate_H qt
-	return ([qt], [], c)
+        C.gate_H qt
+        return ([qt], [], c)
    Classical b -> do
-	if b then C.gate_H qt else return ()
-	return ([qt], [], c)
+        if b then C.gate_H qt else return ()
+        return ([qt], [], c)
    -- TODO: ???
    _ -> error "stabilizer_transformer: controlled-Hadamard currently not supported"
 stabilizer_transformer (T_QGate "swap" 2 0 _ ncf f) = f $
@@ -107,20 +107,20 @@ stabilizer_transformer (T_QGate name _ _ inv ncf f) = f $
      [qt] -> case control_info c of
             None -> do
              C.gate_Unitary u1 qt
-	     return ([qt], vs, c)
+             return ([qt], vs, c)
             Classical b -> do
              if b then C.gate_Unitary u1 qt else return ()
-	     return ([qt], vs, c)
+             return ([qt], vs, c)
             OneQuantum (Signed qc negate) b -> do
              if b then C.gate_Unitary2 u2 qc qt else return ()
-	     return ([qt], vs, c)
+             return ([qt], vs, c)
             _ -> error "stabilizer_transformer: Multiple quantum controls not supported"
       where u1 = case name of
-		  "X" -> C.x
-		  "Y" -> C.y
+                  "X" -> C.x
+                  "Y" -> C.y
                   "Z" -> C.z
-	          "S" -> C.s
-	          "E" -> C.e
+                  "S" -> C.s
+                  "E" -> C.e
                   name -> C.from_matrix (gateQinv name inv)
             u2 = case name of
                   "X" -> C.cnot

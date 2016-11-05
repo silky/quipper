@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -26,7 +26,7 @@ data GatePlus = G Gate [(Wire,Wiretype)]
               | EmptyLine
               | CommentLine String
               | SubroutineName String
-	      | SubroutineShape String
+              | SubroutineShape String
               | Controllable ControllableFlag
  deriving Show
 

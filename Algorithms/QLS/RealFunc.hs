@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -117,6 +117,9 @@ local_mag x y = local_sqrt (x * x + y * y)
 build_circuit
 rotate :: FDouble -> FDouble -> FDouble -> FDouble -> FDouble -> FDouble -> (FDouble,FDouble)
 rotate a b c d x y = (a * x + b * y, c * x + d * y)
+  where
+    -- To help the GHC 8.0 typechecker
+    dummy = id_fdouble x
 
 
 -- | Auxiliary function for 'approx_atan2'.
@@ -127,6 +130,9 @@ approx_atan2_aux x y (angle, x', y') (r, cn, sn) =
     let (a,(b,c)) = if (y' > y) then (angle - r, rotate cn sn (-sn) cn x' y')
                     else (angle + r, rotate cn (-sn) sn cn x' y')
     in (a,b,c)
+  where
+    -- To help the GHC 8.0 typechecker
+    dummy_r = id_fdouble r
 
 -- | Definition of 'atan2' using a CORDIC method.  Assume (/x/,/y/) is
 -- in first quadrant and that /x/ > /y/.

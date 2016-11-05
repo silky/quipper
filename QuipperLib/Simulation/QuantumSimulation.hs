@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -49,6 +49,9 @@ import Data.Map (Map)
 import qualified Data.Map as Map
 
 import Data.List (partition)
+
+import Control.Applicative (Applicative(..))
+import Control.Monad (liftM, ap)
 
 import qualified Debug.Trace -- used in tracing the simulation of quipper computations
 
@@ -289,8 +292,15 @@ instance (Floating r, Random r, Ord r, RandomGen g) => PMonad r (State g) where
 
 -- | Any numeric indexed vector forms a 'Monad'.
 instance (Num n) => Monad (Vector n) where
-	return a = Vector [(a,1)]
-	(Vector ps) >>= f = Vector [(b,i*j) | (a,i) <- ps, (b,j) <- removeVector (f a)] where removeVector (Vector as) = as 
+        return a = Vector [(a,1)]
+        (Vector ps) >>= f = Vector [(b,i*j) | (a,i) <- ps, (b,j) <- removeVector (f a)] where removeVector (Vector as) = as 
+
+instance (Num n) => Applicative (Vector n) where
+  pure = return
+  (<*>) = ap
+
+instance (Num n) => Functor (Vector n) where
+  fmap = liftM
 
 -- | We can show certain vectors, ignoring any 0 probabilities, and
 -- combining equal terms.
@@ -350,7 +360,7 @@ performGateQ (m00,m01,m10,m11) q mqb = if (mqb Map.! q) then (Vector [(Map.inser
                                                     else (Vector [(mqb,m00),(Map.insert q True mqb,m10)])
 
 -- | The 'simulation_transformer' is the actual transformer that does the
--- simulation. The type of the 'simulation_transformer'shows that Qubits are 
+-- simulation. The type of the 'simulation_transformer' shows that Qubits are 
 -- kept as qubits, but Bits are turned into Boolean values, i.e., the results of 
 -- the computation. We use a StateT Monad, acting over the IO Monad, to store a 
 -- QuantumState throughout the simulation. This means we carry a state, but also 
@@ -502,12 +512,14 @@ simulation_transformer (T_QDiscard f) = f $
   return ()
 simulation_transformer (T_QTerm b ncf f) = f $
   \q -> do
-   -- with a real quantum computer, when we terminate a qubit with an assertion
-   -- we have no way of actually checking the assertion. The best we can do is
-   -- measure the qubit and then throw an error if the assertion is incorrect,
-   -- which may only occur with a small probability. Here, we are able to split
-   -- the quantum state and see if the qubit exists in the incorrect state with
-   -- any non-zero probability, and throw an error.
+   -- with a real quantum computer, when we terminate a qubit with an
+   -- assertion we have no way of actually checking the assertion. The
+   -- best we can do is measure the qubit and then throw an error if
+   -- the assertion is incorrect, which may only occur with a small
+   -- probability. Here, we could split the quantum state and see if
+   -- the qubit exists in the incorrect state with any non-zero
+   -- probability, and throw an error. However, we don't do this
+   -- because an error would sometimes be thrown due to rounding.
   state <- get
   let amps = quantum_state state
   let (p,ift,iff) = split amps q
@@ -530,10 +542,24 @@ simulation_transformer g@(T_QRot _ _ _ _ _ _ _) =
   error ("simulation_transformer: unimplemented gate: " ++ show g)
 simulation_transformer g@(T_CSwap _ _) =
   error ("simulation_transformer: unimplemented gate: " ++ show g)
-simulation_transformer g@(T_QPrep _ _) =
-  error ("simulation_transformer: unimplemented gate: " ++ show g)
-simulation_transformer g@(T_QUnprep _ _) =
-  error ("simulation_transformer: unimplemented gate: " ++ show g)
+simulation_transformer g@(T_QPrep ncf f) = f $
+  \val -> do
+    state <- get
+    let wire = next_wire state
+    let q = qubit_of_wire wire
+    let wire' = wire + 1
+    let amps = quantum_state state
+    let amps' = apply (vector (Map.insert q val)) amps 
+    put (state {quantum_state = amps', next_wire = wire'})
+    return q
+simulation_transformer g@(T_QUnprep ncf f) = f $
+  \q -> do
+    state <- get
+    let amps = quantum_state state
+    let (p,ift,iff) = split amps q
+    (val,amps') <- lift $ merge_with_result p ift iff
+    put (state {quantum_state = amps'})
+    return val
 simulation_transformer g@(T_Subroutine sub inv ncf scf ws_pat a1_pat vs_pat a2_pat rep f) = f $
  \ns in_values c -> do
     case Map.lookup sub ns of

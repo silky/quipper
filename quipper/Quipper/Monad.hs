@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -212,6 +212,9 @@ import qualified Data.IntMap as IntMap
 import Data.IntSet (IntSet)
 import qualified Data.IntSet as IntSet
 
+import Control.Applicative (Applicative(..))
+import Control.Monad (liftM, ap)
+
 -- ======================================================================
 -- * The Circ monad
 
@@ -282,9 +285,14 @@ instance Monad Circ where
         (a, s1) <- getCirc f s0
         getCirc (g a) s1
 
+-- every monad is applicative, and so is this one
+instance Applicative Circ where
+  pure = return
+  (<*>) = ap
+
 -- every monad is a functor, and so is this one
 instance Functor Circ where
-  fmap f xs = xs >>= return . f
+  fmap = liftM
 
 -- ======================================================================
 -- ** Monad access primitives

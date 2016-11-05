@@ -360,9 +360,9 @@
 <a name="line-353"></a><font color=Blue><i>-- &gt;   1 |--N------- output: not a.</i></font>
 <a name="line-354"></a><font color=Blue>template_not</font> <font color=Red>::</font>  Circ <font color=Cyan>(</font>Qubit <font color=Red>-&gt;</font> Circ Qubit<font color=Cyan>)</font>
 <a name="line-355"></a><font color=Blue>template_not</font>  <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>b <font color=Red>-&gt;</font> <font color=Green><u>do</u></font>
-<a name="line-356"></a>	  r <font color=Red>&lt;-</font> qinit_qubit True<font color=Cyan>;</font>
+<a name="line-356"></a>          r <font color=Red>&lt;-</font> qinit_qubit True<font color=Cyan>;</font>
 <a name="line-357"></a>          qnot_at r <font color=Cyan>`controlled`</font> b
-<a name="line-358"></a>	  return r
+<a name="line-358"></a>          return r
 <a name="line-359"></a>
 <a name="line-360"></a>
 <a name="line-361"></a><font color=Blue><i>----------------------------------------------------------------------</i></font>
@@ -401,7 +401,7 @@
 <a name="line-394"></a><font color=Blue>template_symb_vbar_symb_vbar_</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>b1 <font color=Red>-&gt;</font> return <font color=Cyan>$</font> <font color=Red>\</font>b2 <font color=Red>-&gt;</font> <font color=Green><u>do</u></font> 
 <a name="line-395"></a>         r <font color=Red>&lt;-</font> qinit_qubit True<font color=Cyan>;</font> 
 <a name="line-396"></a>         qnot_at r <font color=Cyan>`controlled`</font> b1 <font color=Cyan>.==.</font> <font color=Magenta>0</font> <font color=Cyan>.&amp;&amp;.</font> b2 <font color=Cyan>.==.</font> <font color=Magenta>0</font><font color=Cyan>;</font>
-<a name="line-397"></a>	 return r
+<a name="line-397"></a>         return r
 <a name="line-398"></a>
 <a name="line-399"></a>
 <a name="line-400"></a><a name="template_bool_xor"></a><font color=Blue><i>-- | Lifted version of 'bool_xor':</i></font>
@@ -418,7 +418,7 @@
 <a name="line-411"></a><font color=Blue>template_bool_xor</font> <font color=Red>::</font>  Circ <font color=Cyan>(</font>Qubit <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>Qubit <font color=Red>-&gt;</font> Circ Qubit<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-412"></a><font color=Blue>template_bool_xor</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>b1 <font color=Red>-&gt;</font> return <font color=Cyan>$</font> <font color=Red>\</font>b2 <font color=Red>-&gt;</font> <font color=Green><u>do</u></font> 
 <a name="line-413"></a>         r <font color=Red>&lt;-</font> qinit_qubit False
-<a name="line-414"></a>	 qnot_at r <font color=Cyan>`controlled`</font> b1
+<a name="line-414"></a>         qnot_at r <font color=Cyan>`controlled`</font> b1
 <a name="line-415"></a>         qnot_at r <font color=Cyan>`controlled`</font> b2
 <a name="line-416"></a>         return r
 <a name="line-417"></a>
@@ -523,43 +523,43 @@
 <a name="line-516"></a>  unpack <font color=Red>::</font> packed <font color=Red>-&gt;</font> unpacked
 <a name="line-517"></a>  pack <font color=Red>::</font> unpacked <font color=Red>-&gt;</font> packed
 <a name="line-518"></a>
-<a name="line-519"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>CircLiftingUnpack <font color=Cyan>(</font>Circ b<font color=Cyan>)</font> b'<font color=Cyan>)</font> <font color=Red>=&gt;</font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a <font color=Red>-&gt;</font> Circ b<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>a <font color=Red>-&gt;</font> b'<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-519"></a><a name="instance%20CircLiftingUnpack%20(Circ%20(a%20-%3e%20Circ%20b))%20(a%20-%3e%20b')"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>CircLiftingUnpack <font color=Cyan>(</font>Circ b<font color=Cyan>)</font> b'<font color=Cyan>)</font> <font color=Red>=&gt;</font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a <font color=Red>-&gt;</font> Circ b<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>a <font color=Red>-&gt;</font> b'<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-520"></a>  unpack cf x <font color=Red>=</font> unpack <font color=Cyan>$</font> <font color=Green><u>do</u></font> f <font color=Red>&lt;-</font> cf<font color=Cyan>;</font> f x
 <a name="line-521"></a>  pack f <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> pack <font color=Cyan>(</font>f x<font color=Cyan>)</font>
 <a name="line-522"></a>
-<a name="line-523"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ Qubit<font color=Cyan>)</font> <font color=Cyan>(</font>Circ Qubit<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-523"></a><a name="instance%20CircLiftingUnpack%20(Circ%20Qubit)%20(Circ%20Qubit)"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ Qubit<font color=Cyan>)</font> <font color=Cyan>(</font>Circ Qubit<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-524"></a>  pack x <font color=Red>=</font> x
 <a name="line-525"></a>  unpack x <font color=Red>=</font> x
 <a name="line-526"></a>
-<a name="line-527"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Red>[</font>a<font color=Red>]</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Red>[</font>a<font color=Red>]</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-527"></a><a name="instance%20CircLiftingUnpack%20(Circ%20%5ba%5d)%20(Circ%20%5ba%5d)"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Red>[</font>a<font color=Red>]</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Red>[</font>a<font color=Red>]</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-528"></a>  pack x <font color=Red>=</font> x
 <a name="line-529"></a>  unpack x <font color=Red>=</font> x
 <a name="line-530"></a>
-<a name="line-531"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ ()<font color=Cyan>)</font> <font color=Cyan>(</font>Circ ()<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-531"></a><a name="instance%20CircLiftingUnpack%20(Circ%20())%20(Circ%20())"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ ()<font color=Cyan>)</font> <font color=Cyan>(</font>Circ ()<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-532"></a>  pack x <font color=Red>=</font> x
 <a name="line-533"></a>  unpack x <font color=Red>=</font> x
 <a name="line-534"></a>
-<a name="line-535"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-535"></a><a name="instance%20CircLiftingUnpack%20(Circ%20(a,b))%20(Circ%20(a,b))"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-536"></a>  pack x <font color=Red>=</font> x
 <a name="line-537"></a>  unpack x <font color=Red>=</font> x
 <a name="line-538"></a>
-<a name="line-539"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-539"></a><a name="instance%20CircLiftingUnpack%20(Circ%20(a,b,c))%20(Circ%20(a,b,c))"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-540"></a>  pack x <font color=Red>=</font> x
 <a name="line-541"></a>  unpack x <font color=Red>=</font> x
 <a name="line-542"></a>
-<a name="line-543"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-543"></a><a name="instance%20CircLiftingUnpack%20(Circ%20(a,b,c,d))%20(Circ%20(a,b,c,d))"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-544"></a>  pack x <font color=Red>=</font> x
 <a name="line-545"></a>  unpack x <font color=Red>=</font> x
 <a name="line-546"></a>
-<a name="line-547"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-547"></a><a name="instance%20CircLiftingUnpack%20(Circ%20(a,b,c,d,e))%20(Circ%20(a,b,c,d,e))"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-548"></a>  pack x <font color=Red>=</font> x
 <a name="line-549"></a>  unpack x <font color=Red>=</font> x
 <a name="line-550"></a>
-<a name="line-551"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-551"></a><a name="instance%20CircLiftingUnpack%20(Circ%20(a,b,c,d,e,f))%20(Circ%20(a,b,c,d,e,f))"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-552"></a>  pack x <font color=Red>=</font> x
 <a name="line-553"></a>  unpack x <font color=Red>=</font> x
 <a name="line-554"></a>
-<a name="line-555"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-555"></a><a name="instance%20CircLiftingUnpack%20(Circ%20(a,b,c,d,e,f,g))%20(Circ%20(a,b,c,d,e,f,g))"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>(</font>Circ <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-556"></a>  pack x <font color=Red>=</font> x
 <a name="line-557"></a>  unpack x <font color=Red>=</font> x
 </pre>

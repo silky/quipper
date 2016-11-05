@@ -10,7 +10,7 @@
 <a name="line-3"></a><font color=Blue><i>{-# LANGUAGE UndecidableInstances #-}</i></font>
 <a name="line-4"></a><font color=Blue><i>{-# LANGUAGE TypeFamilies #-}</i></font>
 <a name="line-5"></a><font color=Blue><i>{-# LANGUAGE TypeSynonymInstances #-}</i></font>
-<a name="line-6"></a><font color=Blue><i>{-# LANGUAGE OverlappingInstances #-}</i></font>
+<a name="line-6"></a>
 <a name="line-7"></a><font color=Blue><i>{-# LANGUAGE IncoherentInstances #-}</i></font>
 <a name="line-8"></a><font color=Blue><i>{-# LANGUAGE DeriveDataTypeable  #-}</i></font>
 <a name="line-9"></a>
@@ -162,7 +162,7 @@
 <a name="line-155"></a><a name="QDInt"></a><font color=Blue><i>-- circuit execution time value.</i></font>
 <a name="line-156"></a><a name="QDInt"></a><font color=Green><u>type</u></font> QDInt <font color=Red>=</font> XInt Qubit
 <a name="line-157"></a>
-<a name="line-158"></a><font color=Green><u>instance</u></font> Show QDInt <font color=Green><u>where</u></font>
+<a name="line-158"></a><a name="instance%20Show%20QDInt"></a><font color=Green><u>instance</u></font> Show QDInt <font color=Green><u>where</u></font>
 <a name="line-159"></a>  show <font color=Cyan>(</font>XInt l<font color=Cyan>)</font> <font color=Red>=</font> <font color=Magenta>"#"</font> <font color=Cyan>++</font> show l
 <a name="line-160"></a>  show <font color=Cyan>(</font>XInt_indet n id<font color=Cyan>)</font> <font color=Red>=</font> error <font color=Magenta>"IntM: internal error"</font>
 <a name="line-161"></a>
@@ -197,7 +197,7 @@
 <a name="line-190"></a><a name="IntM"></a><font color=Blue><i>-- but not for initializing a 'QDInt'.</i></font>
 <a name="line-191"></a><a name="IntM"></a><font color=Green><u>type</u></font> IntM <font color=Red>=</font> XInt Bool
 <a name="line-192"></a>
-<a name="line-193"></a><font color=Green><u>instance</u></font> Show IntM <font color=Green><u>where</u></font>
+<a name="line-193"></a><a name="instance%20Show%20IntM"></a><font color=Green><u>instance</u></font> Show IntM <font color=Green><u>where</u></font>
 <a name="line-194"></a>  show <font color=Cyan>(</font>XInt l<font color=Cyan>)</font> <font color=Red>=</font> <font color=Magenta>"intm "</font> <font color=Cyan>++</font> show <font color=Cyan>(</font>length l<font color=Cyan>)</font> <font color=Cyan>++</font> <font color=Magenta>" "</font> <font color=Cyan>++</font> show <font color=Cyan>(</font>int_of_boollist_signed_bh l<font color=Cyan>)</font>
 <a name="line-195"></a>  show <font color=Cyan>(</font>XInt_indet n id<font color=Cyan>)</font> <font color=Red>=</font> show n
 <a name="line-196"></a>
@@ -211,10 +211,10 @@
 <a name="line-204"></a><font color=Blue><i>-- This is confusing but for the time being there is no better</i></font>
 <a name="line-205"></a><font color=Blue><i>-- alternative, unless we create distinct signed and unsigned types.</i></font>
 <a name="line-206"></a>
-<a name="line-207"></a><font color=Green><u>instance</u></font> Interval IntM <font color=Green><u>where</u></font>
+<a name="line-207"></a><a name="instance%20Interval%20IntM"></a><font color=Green><u>instance</u></font> Interval IntM <font color=Green><u>where</u></font>
 <a name="line-208"></a>  interval x y <font color=Red>=</font> intm_interval_unsigned x y
 <a name="line-209"></a>
-<a name="line-210"></a><font color=Green><u>instance</u></font> Zero IntM <font color=Green><u>where</u></font>
+<a name="line-210"></a><a name="instance%20Zero%20IntM"></a><font color=Green><u>instance</u></font> Zero IntM <font color=Green><u>where</u></font>
 <a name="line-211"></a>  zero x <font color=Red>=</font> intm_with_length <font color=Cyan>(</font>intm_length x<font color=Cyan>)</font> <font color=Magenta>0</font>
 <a name="line-212"></a>  
 <a name="line-213"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
@@ -589,19 +589,19 @@
 <a name="line-582"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y <font color=Cyan>(</font>XInt z<font color=Cyan>)</font> <font color=Red>=</font> XInt <font color=Cyan>(</font>QCType x y z<font color=Cyan>)</font>
 <a name="line-583"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB IntM <font color=Red>=</font> QDInt
 <a name="line-584"></a>
-<a name="line-585"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>XInt x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-585"></a><a name="instance%20QCData%20(XInt%20x)"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>XInt x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-586"></a>  qcdata_mapM shape f g xs <font color=Red>=</font> 
 <a name="line-587"></a>    mmap xint_of_list_bh <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>list_of_xint_bh shape<font color=Cyan>)</font> f g <font color=Cyan>(</font>list_of_xint_bh xs<font color=Cyan>)</font>
 <a name="line-588"></a>  qcdata_zip shape q c q' c' xs ys e <font color=Red>=</font> 
 <a name="line-589"></a>    xint_of_list_bh <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>list_of_xint_bh shape<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>list_of_xint_bh xs<font color=Cyan>)</font> <font color=Cyan>(</font>list_of_xint_bh ys<font color=Cyan>)</font> <font color=Cyan>(</font>const <font color=Cyan>$</font> e <font color=Magenta>"XInt length mismatch"</font><font color=Cyan>)</font>
 <a name="line-590"></a>  qcdata_promote b q e <font color=Red>=</font> intm_promote b q <font color=Cyan>(</font>e <font color=Magenta>"IntM length mismatch"</font><font color=Cyan>)</font>
 <a name="line-591"></a>
-<a name="line-592"></a><font color=Blue><i>-- Labeling of QDInt is s[m-1], ..., s[0], with the least significant</i></font>
-<a name="line-593"></a><font color=Blue><i>-- bit at index 0.</i></font>
-<a name="line-594"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>XInt x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
+<a name="line-592"></a><a name="instance%20Labelable%20(XInt%20x)%20String"></a><font color=Blue><i>-- Labeling of QDInt is s[m-1], ..., s[0], with the least significant</i></font>
+<a name="line-593"></a><a name="instance%20Labelable%20(XInt%20x)%20String"></a><font color=Blue><i>-- bit at index 0.</i></font>
+<a name="line-594"></a><a name="instance%20Labelable%20(XInt%20x)%20String"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>XInt x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
 <a name="line-595"></a>  label_rec qa <font color=Red>=</font> label_rec <font color=Cyan>(</font>list_of_xint_lh qa<font color=Cyan>)</font>
 <a name="line-596"></a>
-<a name="line-597"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ QDInt<font color=Cyan>)</font> <font color=Cyan>(</font>Circ QDInt<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-597"></a><a name="instance%20CircLiftingUnpack%20(Circ%20QDInt)%20(Circ%20QDInt)"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ QDInt<font color=Cyan>)</font> <font color=Cyan>(</font>Circ QDInt<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-598"></a>  pack x <font color=Red>=</font> x
 <a name="line-599"></a>  unpack x <font color=Red>=</font> x
 <a name="line-600"></a>
@@ -667,10 +667,10 @@
 <a name="line-660"></a><font color=Blue><i>-- length of the other; if both operands have indeterminate length, the</i></font>
 <a name="line-661"></a><font color=Blue><i>-- result will have indeterminate length.</i></font>
 <a name="line-662"></a>
-<a name="line-663"></a><font color=Green><u>instance</u></font> Eq x <font color=Red>=&gt;</font> Eq <font color=Cyan>(</font>XInt x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-663"></a><a name="instance%20Eq%20(XInt%20x)"></a><font color=Green><u>instance</u></font> Eq x <font color=Red>=&gt;</font> Eq <font color=Cyan>(</font>XInt x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-664"></a>  x <font color=Cyan>==</font> y <font color=Red>=</font> xint_equals x y
 <a name="line-665"></a>    
-<a name="line-666"></a><font color=Green><u>instance</u></font> Num IntM <font color=Green><u>where</u></font>
+<a name="line-666"></a><a name="instance%20Num%20IntM"></a><font color=Green><u>instance</u></font> Num IntM <font color=Green><u>where</u></font>
 <a name="line-667"></a>  <font color=Cyan>(</font><font color=Cyan>+</font><font color=Cyan>)</font> <font color=Red>=</font> intm_binop <font color=Cyan>(</font><font color=Cyan>+</font><font color=Cyan>)</font> <font color=Magenta>"+"</font>
 <a name="line-668"></a>  <font color=Cyan>(</font><font color=Cyan>*</font><font color=Cyan>)</font> <font color=Red>=</font> intm_binop <font color=Cyan>(</font><font color=Cyan>*</font><font color=Cyan>)</font> <font color=Magenta>"*"</font>
 <a name="line-669"></a>  <font color=Cyan>(</font><font color=Blue><i>-</i></font><font color=Cyan>)</font> <font color=Red>=</font> intm_binop <font color=Cyan>(</font><font color=Blue><i>-</i></font><font color=Cyan>)</font> <font color=Magenta>"-"</font>
@@ -678,13 +678,13 @@
 <a name="line-671"></a>  signum <font color=Red>=</font> intm_unop signum
 <a name="line-672"></a>  fromInteger <font color=Red>=</font> intm_of_integer
 <a name="line-673"></a>
-<a name="line-674"></a><font color=Green><u>instance</u></font> Ord IntM <font color=Green><u>where</u></font>
+<a name="line-674"></a><a name="instance%20Ord%20IntM"></a><font color=Green><u>instance</u></font> Ord IntM <font color=Green><u>where</u></font>
 <a name="line-675"></a>  compare x y <font color=Red>=</font> compare <font color=Cyan>(</font>toInteger x<font color=Cyan>)</font> <font color=Cyan>(</font>toInteger y<font color=Cyan>)</font>
 <a name="line-676"></a>
-<a name="line-677"></a><font color=Green><u>instance</u></font> Real IntM <font color=Green><u>where</u></font>
+<a name="line-677"></a><a name="instance%20Real%20IntM"></a><font color=Green><u>instance</u></font> Real IntM <font color=Green><u>where</u></font>
 <a name="line-678"></a>  toRational <font color=Red>=</font> toRational <font color=Cyan>.</font> integer_of_intm_signed
 <a name="line-679"></a>
-<a name="line-680"></a><font color=Green><u>instance</u></font> Enum IntM <font color=Green><u>where</u></font>
+<a name="line-680"></a><a name="instance%20Enum%20IntM"></a><font color=Green><u>instance</u></font> Enum IntM <font color=Green><u>where</u></font>
 <a name="line-681"></a>  succ <font color=Red>=</font> intm_unop succ
 <a name="line-682"></a>  pred <font color=Red>=</font> intm_unop pred
 <a name="line-683"></a>  toEnum <font color=Red>=</font> intm_of_integer <font color=Cyan>.</font> fromIntegral
@@ -709,7 +709,7 @@
 <a name="line-702"></a><font color=Blue>intm_interval_unsigned</font> x y <font color=Red>=</font> map <font color=Cyan>(</font>intm_with_length m<font color=Cyan>)</font> <font color=Red>[</font>x'<font color=Red>..</font>y'<font color=Red>]</font> <font color=Green><u>where</u></font>
 <a name="line-703"></a>  <font color=Cyan>(</font>m<font color=Cyan>,</font> <font color=Red>[</font>x'<font color=Cyan>,</font>y'<font color=Red>]</font><font color=Cyan>)</font> <font color=Red>=</font> integers_of_intms_unsigned <font color=Red>[</font>x<font color=Cyan>,</font>y<font color=Red>]</font> <font color=Magenta>"intm_interval: operands must be of equal length"</font>
 <a name="line-704"></a>
-<a name="line-705"></a><font color=Green><u>instance</u></font> Integral IntM <font color=Green><u>where</u></font>
+<a name="line-705"></a><a name="instance%20Integral%20IntM"></a><font color=Green><u>instance</u></font> Integral IntM <font color=Green><u>where</u></font>
 <a name="line-706"></a>  toInteger <font color=Red>=</font> integer_of_intm_signed
 <a name="line-707"></a>  quotRem x y <font color=Red>=</font> <font color=Cyan>(</font>intm_with_length m q'<font color=Cyan>,</font> intm_with_length m r'<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-708"></a>    <font color=Cyan>(</font>m<font color=Cyan>,</font> <font color=Red>[</font>x'<font color=Cyan>,</font>y'<font color=Red>]</font><font color=Cyan>)</font> <font color=Red>=</font> integers_of_intms_signed <font color=Red>[</font>x<font color=Cyan>,</font> y<font color=Red>]</font> <font color=Magenta>"Division on IntM: operands must be of equal length"</font>
@@ -1328,7 +1328,7 @@
 <a name="line-1321"></a>  <font color=Cyan>(</font>x_high<font color=Cyan>,</font>x_neg<font color=Cyan>)</font> <font color=Red>&lt;-</font> qc_copy_fun x_high
 <a name="line-1322"></a>  return <font color=Cyan>(</font>xint_of_list_bh <font color=Cyan>(</font>x_high<font color=Red><b>:</b></font>x_lower<font color=Cyan>)</font><font color=Cyan>,</font>x_neg<font color=Cyan>)</font>
 <a name="line-1323"></a>
-<a name="line-1324"></a><font color=Green><u>instance</u></font> QOrd QDInt <font color=Green><u>where</u></font>
+<a name="line-1324"></a><a name="instance%20QOrd%20QDInt"></a><font color=Green><u>instance</u></font> QOrd QDInt <font color=Green><u>where</u></font>
 <a name="line-1325"></a>  q_less qx qy <font color=Red>=</font> <font color=Green><u>do</u></font> <font color=Cyan>(</font>qx<font color=Cyan>,</font>qy<font color=Cyan>,</font>q<font color=Cyan>)</font> <font color=Red>&lt;-</font> q_lt_signed qx qy<font color=Cyan>;</font> return q
 <a name="line-1326"></a>  q_leq qx qy <font color=Red>=</font> <font color=Green><u>do</u></font> <font color=Cyan>(</font>qx<font color=Cyan>,</font>qy<font color=Cyan>,</font>q<font color=Cyan>)</font> <font color=Red>&lt;-</font> q_le_signed qx qy<font color=Cyan>;</font> return q
 <a name="line-1327"></a>
@@ -1655,7 +1655,7 @@
 <a name="line-1648"></a>  <font color=Blue><i>-- instance, this is just a copy operation.</i></font>
 <a name="line-1649"></a>  q_fromQDInt <font color=Red>::</font> QDInt <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>QDInt<font color=Cyan>,</font>qa<font color=Cyan>)</font>
 <a name="line-1650"></a>   
-<a name="line-1651"></a><font color=Green><u>instance</u></font> QNum QDInt <font color=Green><u>where</u></font>
+<a name="line-1651"></a><a name="instance%20QNum%20QDInt"></a><font color=Green><u>instance</u></font> QNum QDInt <font color=Green><u>where</u></font>
 <a name="line-1652"></a>  q_add <font color=Red>=</font> q_add_qdint
 <a name="line-1653"></a>  q_mult <font color=Red>=</font> q_mult_qdint
 <a name="line-1654"></a>  q_sub <font color=Red>=</font> q_sub_qdint

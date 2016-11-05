@@ -11,7 +11,7 @@
 <a name="line-4"></a><font color=Blue><i>{-# LANGUAGE TypeSynonymInstances #-}</i></font>
 <a name="line-5"></a><font color=Blue><i>{-# LANGUAGE FlexibleInstances #-}</i></font>
 <a name="line-6"></a><font color=Blue><i>{-# LANGUAGE TypeFamilies #-}</i></font>
-<a name="line-7"></a><font color=Blue><i>{-# LANGUAGE OverlappingInstances #-}</i></font>
+<a name="line-7"></a>
 <a name="line-8"></a><font color=Blue><i>{-# LANGUAGE FlexibleContexts #-}</i></font>
 <a name="line-9"></a><font color=Blue><i>{-# LANGUAGE DeriveDataTypeable #-}</i></font>
 <a name="line-10"></a><font color=Blue><i>{-# LANGUAGE IncoherentInstances #-}</i></font>
@@ -43,9 +43,9 @@
 <a name="line-36"></a><font color=Blue><i>-- by algorithms 'a8_FetchT', 'a9_StoreT' and 'a10_FetchStoreT'.</i></font>
 <a name="line-37"></a>
 <a name="line-38"></a><a name="Qram"></a><font color=Green><u>data</u></font> Qram <font color=Red>=</font> Qram <font color=Cyan>{</font>
-<a name="line-39"></a>  qram_fetch <font color=Red>::</font> <font color=Cyan>(</font>QData qa<font color=Cyan>)</font> <font color=Red>=&gt;</font> QDInt <font color=Red>-&gt;</font> IntMap qa <font color=Red>-&gt;</font> qa <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>QDInt<font color=Cyan>,</font> IntMap qa<font color=Cyan>,</font> qa<font color=Cyan>)</font><font color=Cyan>,</font>
-<a name="line-40"></a>  qram_store <font color=Red>::</font> <font color=Cyan>(</font>QData qa<font color=Cyan>)</font> <font color=Red>=&gt;</font> QDInt <font color=Red>-&gt;</font> IntMap qa <font color=Red>-&gt;</font> qa <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>QDInt<font color=Cyan>,</font> IntMap qa<font color=Cyan>,</font> qa<font color=Cyan>)</font><font color=Cyan>,</font>
-<a name="line-41"></a>  qram_swap <font color=Red>::</font> <font color=Cyan>(</font>QData qa<font color=Cyan>)</font> <font color=Red>=&gt;</font> QDInt <font color=Red>-&gt;</font> IntMap qa <font color=Red>-&gt;</font> qa <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>QDInt<font color=Cyan>,</font> IntMap qa<font color=Cyan>,</font> qa<font color=Cyan>)</font>
+<a name="line-39"></a>  qram_fetch <font color=Red>::</font> <font color=Green><u>forall</u></font> qa<font color=Cyan>.</font><font color=Cyan>(</font>QData qa<font color=Cyan>)</font> <font color=Red>=&gt;</font> QDInt <font color=Red>-&gt;</font> IntMap qa <font color=Red>-&gt;</font> qa <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>QDInt<font color=Cyan>,</font> IntMap qa<font color=Cyan>,</font> qa<font color=Cyan>)</font><font color=Cyan>,</font>
+<a name="line-40"></a>  qram_store <font color=Red>::</font> <font color=Green><u>forall</u></font> qa<font color=Cyan>.</font><font color=Cyan>(</font>QData qa<font color=Cyan>)</font> <font color=Red>=&gt;</font> QDInt <font color=Red>-&gt;</font> IntMap qa <font color=Red>-&gt;</font> qa <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>QDInt<font color=Cyan>,</font> IntMap qa<font color=Cyan>,</font> qa<font color=Cyan>)</font><font color=Cyan>,</font>
+<a name="line-41"></a>  qram_swap <font color=Red>::</font> <font color=Green><u>forall</u></font> qa<font color=Cyan>.</font><font color=Cyan>(</font>QData qa<font color=Cyan>)</font> <font color=Red>=&gt;</font> QDInt <font color=Red>-&gt;</font> IntMap qa <font color=Red>-&gt;</font> qa <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>QDInt<font color=Cyan>,</font> IntMap qa<font color=Cyan>,</font> qa<font color=Cyan>)</font>
 <a name="line-42"></a><font color=Cyan>}</font>
 <a name="line-43"></a>
 <a name="line-44"></a><font color=Blue><i>-- ======================================================================</i></font>
@@ -137,7 +137,7 @@
 <a name="line-130"></a><font color=Blue>inttf_length</font> <font color=Red>::</font> IntTF <font color=Red>-&gt;</font> Maybe Int
 <a name="line-131"></a><font color=Blue>inttf_length</font> <font color=Red>=</font> intm_length <font color=Cyan>.</font> xint_of_xinttf
 <a name="line-132"></a>
-<a name="line-133"></a><font color=Green><u>instance</u></font> Eq IntTF <font color=Green><u>where</u></font>
+<a name="line-133"></a><a name="instance%20Eq%20IntTF"></a><font color=Green><u>instance</u></font> Eq IntTF <font color=Green><u>where</u></font>
 <a name="line-134"></a>  x <font color=Cyan>==</font> y <font color=Red>=</font>
 <a name="line-135"></a>    <font color=Green><u>case</u></font> inttf_length x' <font color=Green><u>of</u></font> 
 <a name="line-136"></a>      Just m <font color=Red>-&gt;</font> <font color=Cyan>(</font>integer_of_inttf x'<font color=Cyan>)</font> <font color=Cyan>`mod`</font> <font color=Cyan>(</font><font color=Magenta>2</font><font color=Cyan>^</font>m <font color=Blue><i>-</i></font> <font color=Magenta>1</font><font color=Cyan>)</font> <font color=Cyan>==</font> <font color=Cyan>(</font>integer_of_inttf y'<font color=Cyan>)</font> <font color=Cyan>`mod`</font> <font color=Cyan>(</font><font color=Magenta>2</font><font color=Cyan>^</font>m <font color=Blue><i>-</i></font> <font color=Magenta>1</font><font color=Cyan>)</font>
@@ -189,8 +189,8 @@
 <a name="line-182"></a>    Nothing <font color=Red>-&gt;</font> <font color=Magenta>"IntTF -- "</font> <font color=Cyan>++</font> show <font color=Cyan>(</font>integer_of_inttf x<font color=Cyan>)</font>
 <a name="line-183"></a>    Just m <font color=Red>-&gt;</font> <font color=Magenta>"IntTF "</font> <font color=Cyan>++</font> show m <font color=Cyan>++</font> <font color=Magenta>" "</font> <font color=Cyan>++</font> show <font color=Cyan>(</font>integer_of_intm_unsigned <font color=Cyan>(</font>xint_of_xinttf x<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-184"></a>
-<a name="line-185"></a><font color=Blue><i>-- make 'IntTF' an (overlapping) instance of 'Show':</i></font>
-<a name="line-186"></a><font color=Green><u>instance</u></font> Show IntTF <font color=Green><u>where</u></font>
+<a name="line-185"></a><a name="instance%20Show%20IntTF"></a><font color=Blue><i>-- make 'IntTF' an (overlapping) instance of 'Show':</i></font>
+<a name="line-186"></a><a name="instance%20Show%20IntTF"></a><font color=Green><u>instance</u></font> Show IntTF <font color=Green><u>where</u></font>
 <a name="line-187"></a>  show <font color=Red>=</font> show_inttf
 <a name="line-188"></a>
 <a name="line-189"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
@@ -241,7 +241,7 @@
 <a name="line-234"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y <font color=Cyan>(</font>XIntTF z<font color=Cyan>)</font> <font color=Red>=</font> XIntTF <font color=Cyan>(</font>QCType x y z<font color=Cyan>)</font>
 <a name="line-235"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB IntTF <font color=Red>=</font> QIntTF
 <a name="line-236"></a>
-<a name="line-237"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font>  QCData <font color=Cyan>(</font>XIntTF x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-237"></a><a name="instance%20QCData%20(XIntTF%20x)"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font>  QCData <font color=Cyan>(</font>XIntTF x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-238"></a>  qcdata_mapM shape f g xs <font color=Red>=</font> 
 <a name="line-239"></a>    mmap xinttf_of_xint <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>xint_of_xinttf shape<font color=Cyan>)</font> f g <font color=Cyan>(</font>xint_of_xinttf xs<font color=Cyan>)</font>
 <a name="line-240"></a>  qcdata_zip shape q c q' c' xs ys e <font color=Red>=</font> 
@@ -252,9 +252,9 @@
 <a name="line-245"></a>    <font color=Green><u>where</u></font>
 <a name="line-246"></a>      errmsg <font color=Red>=</font> e <font color=Magenta>"IntM length mismatch"</font>
 <a name="line-247"></a>    
-<a name="line-248"></a><font color=Blue><i>-- Labeling of QIntTF is s[m-1], ..., s[0], with the least significant</i></font>
-<a name="line-249"></a><font color=Blue><i>-- bit at index 0.</i></font>
-<a name="line-250"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>XIntTF x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
+<a name="line-248"></a><a name="instance%20Labelable%20(XIntTF%20x)%20String"></a><font color=Blue><i>-- Labeling of QIntTF is s[m-1], ..., s[0], with the least significant</i></font>
+<a name="line-249"></a><a name="instance%20Labelable%20(XIntTF%20x)%20String"></a><font color=Blue><i>-- bit at index 0.</i></font>
+<a name="line-250"></a><a name="instance%20Labelable%20(XIntTF%20x)%20String"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>XIntTF x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
 <a name="line-251"></a>  label_rec qa <font color=Red>=</font> label_rec <font color=Cyan>(</font>xint_of_xinttf qa<font color=Cyan>)</font>
 <a name="line-252"></a>
 <a name="line-253"></a><font color=Blue><i>-- ======================================================================</i></font>
@@ -368,7 +368,7 @@
 <a name="line-361"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y <font color=Cyan>(</font>IntMap a<font color=Cyan>)</font> <font color=Red>=</font> IntMap <font color=Cyan>(</font>QCType x y a<font color=Cyan>)</font>
 <a name="line-362"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB <font color=Cyan>(</font>IntMap a<font color=Cyan>)</font> <font color=Red>=</font> IntMap <font color=Cyan>(</font>QTypeB a<font color=Cyan>)</font>
 <a name="line-363"></a>
-<a name="line-364"></a><font color=Green><u>instance</u></font> QCData a <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>IntMap a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-364"></a><a name="instance%20QCData%20(IntMap%20a)"></a><font color=Green><u>instance</u></font> QCData a <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>IntMap a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-365"></a>  qcdata_mapM a f g xs <font color=Red>=</font>
 <a name="line-366"></a>    intmap_mapM <font color=Cyan>(</font>qcdata_mapM a' f g<font color=Cyan>)</font> xs
 <a name="line-367"></a>      <font color=Green><u>where</u></font> a' <font color=Red>=</font> shape <font color=Cyan>$</font> a IntMap<font color=Cyan>.!</font> <font color=Magenta>0</font>
@@ -386,11 +386,11 @@
 <a name="line-379"></a>    <font color=Green><u>where</u></font>
 <a name="line-380"></a>      errmsg <font color=Red>=</font> e <font color=Magenta>"IntMap domains do not agree"</font>
 <a name="line-381"></a>                
-<a name="line-382"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Labelable a String<font color=Cyan>)</font> <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IntMap a<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
+<a name="line-382"></a><a name="instance%20Labelable%20(IntMap%20a)%20String"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Labelable a String<font color=Cyan>)</font> <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IntMap a<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
 <a name="line-383"></a>  label_rec xs s <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-384"></a>    sequence_ <font color=Red>[</font> label_rec x s <font color=Cyan>`indexed`</font> show i <font color=Red>|</font> <font color=Cyan>(</font>i<font color=Cyan>,</font>x<font color=Cyan>)</font> <font color=Red>&lt;-</font> IntMap<font color=Cyan>.</font>toList xs <font color=Red>]</font>
 <a name="line-385"></a>    
-<a name="line-386"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Labelable a s<font color=Cyan>)</font> <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IntMap a<font color=Cyan>)</font> <font color=Cyan>(</font>IntMap s<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-386"></a><a name="instance%20Labelable%20(IntMap%20a)%20(IntMap%20s)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Labelable a s<font color=Cyan>)</font> <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IntMap a<font color=Cyan>)</font> <font color=Cyan>(</font>IntMap s<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-387"></a>  label_rec xs ss <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-388"></a>    sequence_ <font color=Red>[</font> label_rec x s <font color=Red>|</font> <font color=Cyan>(</font>i<font color=Cyan>,</font>x<font color=Cyan>)</font> <font color=Red>&lt;-</font> IntMap<font color=Cyan>.</font>toList xs<font color=Cyan>,</font> IntMap<font color=Cyan>.</font>member i ss<font color=Cyan>,</font> <font color=Green><u>let</u></font> s <font color=Red>=</font> ss IntMap<font color=Cyan>.!</font> i <font color=Red>]</font>
 </pre>

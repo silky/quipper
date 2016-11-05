@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -111,7 +111,15 @@ local_pi =  fdouble pi
 template_local_pi :: Circ QDouble
 template_local_pi = qinit (fdouble pi)
 
+-- | The identity function of type 'FDouble'. This is used to help the
+-- type checker work around a problem in GHC 8.0, where types of
+-- overloaded operations sometimes require disambiguation.
+id_fdouble :: FDouble -> FDouble
+id_fdouble x = x
 
+-- | Template version of 'id_fdouble'.
+template_id_fdouble :: Circ (QDouble -> Circ QDouble)
+template_id_fdouble = return $ \x -> return x
 
 -- * Relation between 'QDouble' and 'QSignedInt'.
 

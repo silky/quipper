@@ -42,15 +42,15 @@
 <a name="line-35"></a><a name="BooleanFormulaOracle"></a><font color=Blue><i>-- represent a given size of hex board, and a given size for the phase</i></font>
 <a name="line-36"></a><a name="BooleanFormulaOracle"></a><font color=Blue><i>-- estimation register.</i></font>
 <a name="line-37"></a><a name="BooleanFormulaOracle"></a><font color=Green><u>data</u></font> BooleanFormulaOracle <font color=Red>=</font> BFO <font color=Cyan>{</font>
-<a name="line-38"></a>  oracle_x_max <font color=Red>::</font> Int<font color=Cyan>,</font>	 <font color=Blue><i>-- ^ The /x/-dimension of hex board.</i></font>
-<a name="line-39"></a>  oracle_y_max <font color=Red>::</font> Int<font color=Cyan>,</font>	 <font color=Blue><i>-- ^ The /y/-dimension of hex board.</i></font>
-<a name="line-40"></a>  oracle_t <font color=Red>::</font> Int<font color=Cyan>,</font> 	 <font color=Blue><i>-- ^ Size of phase estimation register.</i></font>
+<a name="line-38"></a>  oracle_x_max <font color=Red>::</font> Int<font color=Cyan>,</font>   <font color=Blue><i>-- ^ The /x/-dimension of hex board.</i></font>
+<a name="line-39"></a>  oracle_y_max <font color=Red>::</font> Int<font color=Cyan>,</font>   <font color=Blue><i>-- ^ The /y/-dimension of hex board.</i></font>
+<a name="line-40"></a>  oracle_t <font color=Red>::</font> Int<font color=Cyan>,</font>       <font color=Blue><i>-- ^ Size of phase estimation register.</i></font>
 <a name="line-41"></a>        
 <a name="line-42"></a>  <font color=Blue><i>-- The number of moves remaining can</i></font>
 <a name="line-43"></a>  <font color=Blue><i>-- depend on the starting state of the HexBoard</i></font>
-<a name="line-44"></a>  oracle_s <font color=Red>::</font> Int<font color=Cyan>,</font>	 <font color=Blue><i>-- ^ Number of moves remaining.</i></font>
+<a name="line-44"></a>  oracle_s <font color=Red>::</font> Int<font color=Cyan>,</font>       <font color=Blue><i>-- ^ Number of moves remaining.</i></font>
 <a name="line-45"></a>                         <font color=Blue><i>-- This should start as /x/&#8901;/y/, if no moves have been made.</i></font>
-<a name="line-46"></a>  oracle_m <font color=Red>::</font> Int<font color=Cyan>,</font>	 <font color=Blue><i>-- ^ Size of the direction register,</i></font>
+<a name="line-46"></a>  oracle_m <font color=Red>::</font> Int<font color=Cyan>,</font>       <font color=Blue><i>-- ^ Size of the direction register,</i></font>
 <a name="line-47"></a>                         <font color=Blue><i>-- i.e., size of labels on the BF tree.</i></font>
 <a name="line-48"></a>                         <font color=Blue><i>-- This should be the ceiling of log(/x/&#8901;/y/).</i></font>
 <a name="line-49"></a>
@@ -73,11 +73,11 @@
 <a name="line-66"></a><font color=Blue><i>-- and /m/ is calculated as the number of bits required to represent /s/+1.</i></font>
 <a name="line-67"></a><font color=Blue>createOracle</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Int <font color=Red>-&gt;</font> Int <font color=Red>-&gt;</font> BooleanFormulaOracle
 <a name="line-68"></a><font color=Blue>createOracle</font> x y t <font color=Red>=</font> BFO <font color=Cyan>{</font>
-<a name="line-69"></a>	oracle_x_max <font color=Red>=</font> x<font color=Cyan>,</font>
-<a name="line-70"></a>	oracle_y_max <font color=Red>=</font> y<font color=Cyan>,</font>
-<a name="line-71"></a> 	oracle_t <font color=Red>=</font> t<font color=Cyan>,</font>
-<a name="line-72"></a>	oracle_s <font color=Red>=</font> s<font color=Cyan>,</font>
-<a name="line-73"></a>	oracle_m <font color=Red>=</font> m<font color=Cyan>,</font>
+<a name="line-69"></a>        oracle_x_max <font color=Red>=</font> x<font color=Cyan>,</font>
+<a name="line-70"></a>        oracle_y_max <font color=Red>=</font> y<font color=Cyan>,</font>
+<a name="line-71"></a>        oracle_t <font color=Red>=</font> t<font color=Cyan>,</font>
+<a name="line-72"></a>        oracle_s <font color=Red>=</font> s<font color=Cyan>,</font>
+<a name="line-73"></a>        oracle_m <font color=Red>=</font> m<font color=Cyan>,</font>
 <a name="line-74"></a>        start_board <font color=Red>=</font> <font color=Cyan>(</font>empty<font color=Cyan>,</font>empty<font color=Cyan>)</font><font color=Cyan>,</font>
 <a name="line-75"></a>        oracle_hex <font color=Red>=</font> Hex
 <a name="line-76"></a><font color=Cyan>}</font> <font color=Green><u>where</u></font> s <font color=Red>=</font> x <font color=Cyan>*</font> y
@@ -220,11 +220,11 @@
 <a name="line-213"></a>
 <a name="line-214"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y <font color=Cyan>(</font>GenericBooleanFormulaRegister a<font color=Cyan>)</font> <font color=Red>=</font> GenericBooleanFormulaRegister <font color=Cyan>(</font>QCType x y a<font color=Cyan>)</font>
 <a name="line-215"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB <font color=Cyan>(</font>GenericBooleanFormulaRegister a<font color=Cyan>)</font> <font color=Red>=</font> GenericBooleanFormulaRegister <font color=Cyan>(</font>QTypeB a<font color=Cyan>)</font> 
-<a name="line-216"></a><font color=Green><u>instance</u></font> QCData a <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>GenericBooleanFormulaRegister a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-216"></a><a name="instance%20QCData%20(GenericBooleanFormulaRegister%20a)"></a><font color=Green><u>instance</u></font> QCData a <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>GenericBooleanFormulaRegister a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-217"></a>  qcdata_mapM s f g xs <font color=Red>=</font> mmap fromTuple <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>toTuple s<font color=Cyan>)</font> f g <font color=Cyan>(</font>toTuple xs<font color=Cyan>)</font>
 <a name="line-218"></a>  qcdata_zip s q c q' c' xs ys e <font color=Red>=</font> fromTuple <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>toTuple s<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>toTuple xs<font color=Cyan>)</font> <font color=Cyan>(</font>toTuple ys<font color=Cyan>)</font> e
 <a name="line-219"></a>  qcdata_promote a x s <font color=Red>=</font> fromTuple <font color=Cyan>$</font> qcdata_promote <font color=Cyan>(</font>toTuple a<font color=Cyan>)</font> <font color=Cyan>(</font>toTuple x<font color=Cyan>)</font> s
-<a name="line-220"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Labelable a String<font color=Cyan>)</font> <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>GenericBooleanFormulaRegister a<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
+<a name="line-220"></a><a name="instance%20Labelable%20(GenericBooleanFormulaRegister%20a)%20String"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Labelable a String<font color=Cyan>)</font> <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>GenericBooleanFormulaRegister a<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
 <a name="line-221"></a>  label_rec r s <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-222"></a>    label_rec <font color=Cyan>(</font>position_flags r<font color=Cyan>)</font> s <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"posflag"</font>
 <a name="line-223"></a>    label_rec <font color=Cyan>(</font>position r<font color=Cyan>)</font> s       <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"pos"</font>
@@ -877,18 +877,18 @@
 <a name="line-870"></a><font color=Blue><i>-- be all False only in the instance that the Blue player wins the game.</i></font>
 <a name="line-871"></a><font color=Blue>main_bf</font> <font color=Red>::</font> BooleanFormulaOracle <font color=Red>-&gt;</font> IO Bool
 <a name="line-872"></a><font color=Blue>main_bf</font> oracle <font color=Red>=</font> <font color=Green><u>do</u></font>
-<a name="line-873"></a>	output <font color=Red>&lt;-</font> run_generic_io <font color=Cyan>(</font>undefined <font color=Red>::</font> Double<font color=Cyan>)</font> <font color=Cyan>(</font>qw_bf oracle<font color=Cyan>)</font>
-<a name="line-874"></a>	<font color=Green><u>let</u></font> result <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font>or output<font color=Cyan>)</font> <font color=Green><u>then</u></font> True  <font color=Blue><i>-- a /= 0 (Red Wins) </i></font>
+<a name="line-873"></a>        output <font color=Red>&lt;-</font> run_generic_io <font color=Cyan>(</font>undefined <font color=Red>::</font> Double<font color=Cyan>)</font> <font color=Cyan>(</font>qw_bf oracle<font color=Cyan>)</font>
+<a name="line-874"></a>        <font color=Green><u>let</u></font> result <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font>or output<font color=Cyan>)</font> <font color=Green><u>then</u></font> True  <font color=Blue><i>-- a /= 0 (Red Wins) </i></font>
 <a name="line-875"></a>                                    <font color=Green><u>else</u></font> False <font color=Blue><i>-- a == 0 (Blue Wins)</i></font>
-<a name="line-876"></a>	return result
+<a name="line-876"></a>        return result
 <a name="line-877"></a>
 <a name="line-878"></a><a name="whoWins"></a><font color=Blue><i>-- | Display the result of 'main_bf',</i></font>
 <a name="line-879"></a><font color=Blue><i>--   i.e., either \"Red Wins\", or \"Blue Wins\" is the output.</i></font>
 <a name="line-880"></a><font color=Blue>whoWins</font> <font color=Red>::</font> BooleanFormulaOracle <font color=Red>-&gt;</font> IO ()
 <a name="line-881"></a><font color=Blue>whoWins</font> oracle <font color=Red>=</font> <font color=Green><u>do</u></font>
-<a name="line-882"></a>	result <font color=Red>&lt;-</font> main_bf oracle
-<a name="line-883"></a>	<font color=Green><u>if</u></font> result <font color=Green><u>then</u></font> putStrLn <font color=Magenta>"Red Wins"</font>
-<a name="line-884"></a>		  <font color=Green><u>else</u></font> putStrLn <font color=Magenta>"Blue Wins"</font>
+<a name="line-882"></a>        result <font color=Red>&lt;-</font> main_bf oracle
+<a name="line-883"></a>        <font color=Green><u>if</u></font> result <font color=Green><u>then</u></font> putStrLn <font color=Magenta>"Red Wins"</font>
+<a name="line-884"></a>                  <font color=Green><u>else</u></font> putStrLn <font color=Magenta>"Blue Wins"</font>
 <a name="line-885"></a>
 <a name="line-886"></a><a name="main_whoWins"></a><font color=Blue><i>-- | Run 'whoWins' for the given oracle, and its \"initial\" board.</i></font>
 <a name="line-887"></a><font color=Blue>main_whoWins</font> <font color=Red>::</font> BooleanFormulaOracle <font color=Red>-&gt;</font> IO ()

@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -41,15 +41,15 @@ import Data.Typeable
 -- represent a given size of hex board, and a given size for the phase
 -- estimation register.
 data BooleanFormulaOracle = BFO {
-  oracle_x_max :: Int,	 -- ^ The /x/-dimension of hex board.
-  oracle_y_max :: Int,	 -- ^ The /y/-dimension of hex board.
-  oracle_t :: Int, 	 -- ^ Size of phase estimation register.
+  oracle_x_max :: Int,   -- ^ The /x/-dimension of hex board.
+  oracle_y_max :: Int,   -- ^ The /y/-dimension of hex board.
+  oracle_t :: Int,       -- ^ Size of phase estimation register.
         
   -- The number of moves remaining can
   -- depend on the starting state of the HexBoard
-  oracle_s :: Int,	 -- ^ Number of moves remaining.
+  oracle_s :: Int,       -- ^ Number of moves remaining.
                          -- This should start as /x/⋅/y/, if no moves have been made.
-  oracle_m :: Int,	 -- ^ Size of the direction register,
+  oracle_m :: Int,       -- ^ Size of the direction register,
                          -- i.e., size of labels on the BF tree.
                          -- This should be the ceiling of log(/x/⋅/y/).
 
@@ -72,11 +72,11 @@ data HexCircuit = Hex      -- ^ The actual Hex circuit.
 -- and /m/ is calculated as the number of bits required to represent /s/+1.
 createOracle :: Int -> Int -> Int -> BooleanFormulaOracle
 createOracle x y t = BFO {
-	oracle_x_max = x,
-	oracle_y_max = y,
- 	oracle_t = t,
-	oracle_s = s,
-	oracle_m = m,
+        oracle_x_max = x,
+        oracle_y_max = y,
+        oracle_t = t,
+        oracle_s = s,
+        oracle_m = m,
         start_board = (empty,empty),
         oracle_hex = Hex
 } where s = x * y
@@ -876,18 +876,18 @@ main_checkwin_red f g o = print_generic f (decompose_generic g (checkwin_red_cir
 -- be all False only in the instance that the Blue player wins the game.
 main_bf :: BooleanFormulaOracle -> IO Bool
 main_bf oracle = do
-	output <- run_generic_io (undefined :: Double) (qw_bf oracle)
-	let result = if (or output) then True  -- a /= 0 (Red Wins) 
+        output <- run_generic_io (undefined :: Double) (qw_bf oracle)
+        let result = if (or output) then True  -- a /= 0 (Red Wins) 
                                     else False -- a == 0 (Blue Wins)
-	return result
+        return result
 
 -- | Display the result of 'main_bf',
 --   i.e., either \"Red Wins\", or \"Blue Wins\" is the output.
 whoWins :: BooleanFormulaOracle -> IO ()
 whoWins oracle = do
-	result <- main_bf oracle
-	if result then putStrLn "Red Wins"
-		  else putStrLn "Blue Wins"
+        result <- main_bf oracle
+        if result then putStrLn "Red Wins"
+                  else putStrLn "Blue Wins"
 
 -- | Run 'whoWins' for the given oracle, and its \"initial\" board.
 main_whoWins :: BooleanFormulaOracle -> IO ()

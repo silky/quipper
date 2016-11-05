@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -593,7 +593,7 @@ data DynamicTransformer m a b = DT {
      transformer :: Transformer m a b,
      define_subroutine :: BoxId -> TypedSubroutine -> m (),     
      lifting_function :: b -> m Bool
-  }	
+  }     
 
 -- | Like 'transform_bcircuit_rec', but for dynamic-boxed circuits.
 --

@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -323,7 +323,7 @@ algorithm_R bb_bar l m i0 p randomgen = do
   -----------------------------------------------------------------
   -- Collapse the space onto one such cube to create a 'TwoPoint'.
   ----------------------------------------------------------------- 
-  r_measured <- measure r 	
+  r_measured <- measure r       
   cdiscard r_measured
 
   comment "EXIT: algorithm_R"
@@ -332,7 +332,7 @@ algorithm_R bb_bar l m i0 p randomgen = do
 
 -- ==============================================================
 -- * Algorithm 4: \"TPP\"
-	
+        
 -- | Perform Regev's reduction of the /TPP/ to the /DCP/ and then
 -- call 'dCP'. The arguments are: 
 -- 
@@ -425,7 +425,7 @@ sieving n m l = do
     combined_states <- mapM (\((q,k),(q',l)) -> do 
       comment "ENTER: Combining"
       q <- qnot q `controlled` q'
-      q <- measure q	
+      q <- measure q    
       sign <- dynamic_lift q
       comment "EXIT: Combining"
       return (sign, (q', (k-l)))) pairs

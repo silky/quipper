@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -23,7 +23,7 @@ oracleCircuit oracle color i = do
   q <- qinit False
   oraclefun oracle color (input,output,q)
   return (q, output)
- 			     
+                             
 -- | Run the simple oracle with a given decomposition, and given inputs.
 run_simple' :: GateBase -> Int -> Int -> IO (Bool,Int)
 run_simple' gb color i = do (b,bs) <- run_generic_io (undefined :: Double) (decompose_generic gb (oracleCircuit oracle_simple color i))
@@ -32,9 +32,9 @@ run_simple' gb color i = do (b,bs) <- run_generic_io (undefined :: Double) (deco
 -- | Run the simple oracle  with a given decomposition, and given inputs, and print the result in a more readable manner.
 run_simple :: GateBase -> Int -> Int -> IO ()
 run_simple gb color i = do (b,bs) <- run_simple' gb color i
-			   if not b 
-			   then putStrLn (show i ++ " --( " ++ show color ++ " )--> " ++ show bs)
-			   else return ()
+                           if not b 
+                           then putStrLn (show i ++ " --( " ++ show color ++ " )--> " ++ show bs)
+                           else return ()
 
 -- | Run the simple oracle with a given decomposition, mapped over all possible inputs.
 main_run' :: GateBase -> IO ()
@@ -43,11 +43,11 @@ main_run' gb = mapM_ (\(x,y) -> run_simple gb x y) [(x,y) | y <- [0..31], x <- [
 -- | Run each decomposition of the oracle circuit and print out the resulting edges.
 main_run :: IO ()
 main_run = do putStrLn "Logical"
-	      main_run' Logical
-	      putStrLn "Toffoli"
-	      main_run' Toffoli
-	      putStrLn "Binary"
-	      main_run' Binary	
+              main_run' Logical
+              putStrLn "Toffoli"
+              main_run' Toffoli
+              putStrLn "Binary"
+              main_run' Binary  
 
 -- | Simumlate the simple oracle with a given decomposition, and given inputs.
 sim_simple' :: GateBase -> Int -> Int -> ProbabilityDistribution Double (Bool,Int)
@@ -58,9 +58,9 @@ sim_simple' gb color i = do (b,bs) <- sim_generic undefined (decompose_generic g
 -- and given inputs, and print the result in a more readable manner.
 sim_simple :: GateBase -> Int -> Int -> ProbabilityDistribution Double (IO ())
 sim_simple gb color i = do (b,bs) <- sim_simple' gb color i
-			   if not b 
-			   then return $ putStr (show i ++ " --( " ++ show color ++ " )--> " ++ show bs)
-			   else Vector [(return (),0.0)]
+                           if not b 
+                           then return $ putStr (show i ++ " --( " ++ show color ++ " )--> " ++ show bs)
+                           else Vector [(return (),0.0)]
 
 sequenceP :: ProbabilityDistribution Double (IO ()) -> IO ()
 sequenceP (Vector []) = return ()
@@ -79,13 +79,13 @@ main_sim'' gb x y = sequenceP (sim_simple gb x y)
 -- | Simulate each decomposition of the oracle circuit and print out the resulting edges.
 main_sim :: IO ()
 main_sim = do putStrLn "Logical"
-	      main_sim' Logical
-	      putStrLn "Toffoli"
-	      main_sim' Toffoli
-	      putStrLn "Binary"
-	      main_sim' Binary	
+              main_sim' Logical
+              putStrLn "Toffoli"
+              main_sim' Toffoli
+              putStrLn "Binary"
+              main_sim' Binary  
 
 main :: IO ()
 main = do main_run
-	  main_sim
+          main_sim
 

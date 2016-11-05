@@ -10,7 +10,7 @@
 <a name="line-3"></a><font color=Blue><i>{-# LANGUAGE FlexibleContexts #-}</i></font>
 <a name="line-4"></a><font color=Blue><i>{-# LANGUAGE UndecidableInstances #-}</i></font>
 <a name="line-5"></a><font color=Blue><i>{-# LANGUAGE TypeFamilies #-}</i></font>
-<a name="line-6"></a><font color=Blue><i>{-# LANGUAGE OverlappingInstances #-}</i></font>
+<a name="line-6"></a>
 <a name="line-7"></a><font color=Blue><i>{-# LANGUAGE IncoherentInstances #-}</i></font> 
 <a name="line-8"></a><font color=Blue><i>{-# LANGUAGE DeriveDataTypeable  #-}</i></font>
 <a name="line-9"></a>
@@ -132,7 +132,7 @@
 <a name="line-125"></a><font color=Blue>snd_AlgNum</font> <font color=Cyan>(</font>AlgNum <font color=Green><u>_</u></font> v <font color=Green><u>_</u></font><font color=Cyan>)</font> <font color=Red>=</font> v
 <a name="line-126"></a><font color=Blue>snd_AlgNum</font> <font color=Cyan>(</font>AlgNum_indet <font color=Green><u>_</u></font><font color=Cyan>)</font> <font color=Red>=</font> <font color=Magenta>0</font>
 <a name="line-127"></a>
-<a name="line-128"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Eq a<font color=Cyan>,</font> Num a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Eq <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-128"></a><a name="instance%20Eq%20(AlgNumGen%20a)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Eq a<font color=Cyan>,</font> Num a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Eq <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-129"></a>  <font color=Cyan>(</font>AlgNum a b bigD<font color=Cyan>)</font> <font color=Cyan>==</font> <font color=Cyan>(</font>AlgNum a' b' bigD'<font color=Cyan>)</font> <font color=Red>=</font> 
 <a name="line-130"></a>    <font color=Green><u>if</u></font> bigD <font color=Cyan>==</font> bigD' <font color=Green><u>then</u></font> a <font color=Cyan>==</font> a' <font color=Cyan>&amp;&amp;</font> b <font color=Cyan>==</font> b'
 <a name="line-131"></a>    <font color=Green><u>else</u></font> error <font color=Magenta>"Operation = on AlgNum: operands must have same &#916;."</font>
@@ -158,7 +158,7 @@
 <a name="line-151"></a><font color=Blue>number_promote</font> <font color=Cyan>(</font>AlgNum_indet a<font color=Cyan>)</font> <font color=Cyan>(</font>AlgNum <font color=Green><u>_</u></font> <font color=Green><u>_</u></font> bigD'<font color=Cyan>)</font> <font color=Green><u>_</u></font> <font color=Red>=</font> AlgNum a <font color=Magenta>0</font> bigD'
 <a name="line-152"></a><font color=Blue>number_promote</font> n <font color=Cyan>(</font>AlgNum_indet <font color=Green><u>_</u></font><font color=Cyan>)</font> <font color=Green><u>_</u></font> <font color=Red>=</font> n
 <a name="line-153"></a>
-<a name="line-154"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Ord a<font color=Cyan>,</font> Num a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Ord <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-154"></a><a name="instance%20Ord%20(AlgNumGen%20a)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Ord a<font color=Cyan>,</font> Num a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Ord <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-155"></a>  compare <font color=Cyan>(</font>AlgNum a b bigD<font color=Cyan>)</font> <font color=Cyan>(</font>AlgNum a' b' bigD'<font color=Cyan>)</font> <font color=Red>=</font> 
 <a name="line-156"></a>    <font color=Green><u>if</u></font> bigD <font color=Cyan>==</font> bigD' <font color=Green><u>then</u></font>
 <a name="line-157"></a>      <font color=Green><u>case</u></font> <font color=Cyan>(</font>compare a a'<font color=Cyan>,</font> compare b b'<font color=Cyan>)</font> <font color=Green><u>of</u></font> 
@@ -174,7 +174,7 @@
 <a name="line-167"></a>  compare <font color=Cyan>(</font>AlgNum_indet a<font color=Cyan>)</font> <font color=Cyan>(</font>AlgNum a' b' bigD'<font color=Cyan>)</font> <font color=Red>=</font> compare <font color=Cyan>(</font>AlgNum a <font color=Magenta>0</font> bigD'<font color=Cyan>)</font> <font color=Cyan>(</font>AlgNum a' b' bigD'<font color=Cyan>)</font>
 <a name="line-168"></a>  compare <font color=Cyan>(</font>AlgNum_indet a<font color=Cyan>)</font> <font color=Cyan>(</font>AlgNum_indet a'<font color=Cyan>)</font> <font color=Red>=</font> compare a a'
 <a name="line-169"></a>
-<a name="line-170"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Ord a<font color=Cyan>,</font> Num a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Num <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-170"></a><a name="instance%20Num%20(AlgNumGen%20a)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Ord a<font color=Cyan>,</font> Num a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Num <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-171"></a>  <font color=Cyan>(</font>AlgNum a b bigD<font color=Cyan>)</font> <font color=Cyan>+</font> <font color=Cyan>(</font>AlgNum a' b' bigD'<font color=Cyan>)</font> <font color=Red>=</font> 
 <a name="line-172"></a>    <font color=Green><u>if</u></font> bigD <font color=Cyan>==</font> bigD' <font color=Green><u>then</u></font> AlgNum <font color=Cyan>(</font>a<font color=Cyan>+</font>a'<font color=Cyan>)</font> <font color=Cyan>(</font>b<font color=Cyan>+</font>b'<font color=Cyan>)</font> bigD
 <a name="line-173"></a>    <font color=Green><u>else</u></font> error <font color=Magenta>"Operation + on AlgNum: operands must have same &#916;."</font>
@@ -201,10 +201,10 @@
 <a name="line-194"></a>               <font color=Cyan>(</font>const <font color=Magenta>"CL.Types: internal error (signum // AlgNum)"</font><font color=Cyan>)</font>
 <a name="line-195"></a>  fromInteger <font color=Red>=</font> AlgNum_indet <font color=Cyan>.</font> fromInteger
 <a name="line-196"></a>
-<a name="line-197"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Real a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Real <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-197"></a><a name="instance%20Real%20(AlgNumGen%20a)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Real a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Real <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-198"></a>  toRational <font color=Red>=</font> toRational <font color=Cyan>.</font> floating_of_AlgNum
 <a name="line-199"></a>
-<a name="line-200"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Ord a<font color=Cyan>,</font> Fractional a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Fractional <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-200"></a><a name="instance%20Fractional%20(AlgNumGen%20a)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Ord a<font color=Cyan>,</font> Fractional a<font color=Cyan>)</font> <font color=Red>=&gt;</font> Fractional <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-201"></a>  fromRational <font color=Red>=</font> AlgNum_indet <font color=Cyan>.</font> fromRational
 <a name="line-202"></a>
 <a name="line-203"></a>  recip <font color=Cyan>(</font>AlgNum a b bigD<font color=Cyan>)</font> <font color=Red>=</font> 
@@ -215,7 +215,7 @@
 <a name="line-208"></a>       <font color=Cyan>(</font>AlgNum <font color=Cyan>(</font>a<font color=Cyan>/</font>c<font color=Cyan>)</font> <font color=Cyan>(</font><font color=Blue><i>-</i></font>b<font color=Cyan>/</font>c<font color=Cyan>)</font> bigD<font color=Cyan>)</font>
 <a name="line-209"></a>  recip <font color=Cyan>(</font>AlgNum_indet a<font color=Cyan>)</font> <font color=Red>=</font> AlgNum_indet <font color=Cyan>$</font> recip a
 <a name="line-210"></a>
-<a name="line-211"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>RealFrac a<font color=Cyan>)</font> <font color=Red>=&gt;</font> RealFrac <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-211"></a><a name="instance%20RealFrac%20(AlgNumGen%20a)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>RealFrac a<font color=Cyan>)</font> <font color=Red>=&gt;</font> RealFrac <font color=Cyan>(</font>AlgNumGen a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-212"></a>  properFraction x <font color=Red>=</font> <font color=Cyan>(</font>x'<font color=Cyan>,</font>x <font color=Blue><i>-</i></font> fromIntegral x'<font color=Cyan>)</font>
 <a name="line-213"></a>    <font color=Green><u>where</u></font> x' <font color=Red>=</font> truncate <font color=Cyan>$</font> floating_of_AlgNum x
 <a name="line-214"></a>
@@ -282,7 +282,7 @@
 <a name="line-275"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y <font color=Cyan>(</font>IdealX z<font color=Cyan>)</font> <font color=Red>=</font> IdealX <font color=Cyan>(</font>QCType x y z<font color=Cyan>)</font>
 <a name="line-276"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB Ideal <font color=Red>=</font> IdealQ
 <a name="line-277"></a>
-<a name="line-278"></a><font color=Green><u>instance</u></font> Show Ideal <font color=Green><u>where</u></font>
+<a name="line-278"></a><a name="instance%20Show%20Ideal"></a><font color=Green><u>instance</u></font> Show Ideal <font color=Green><u>where</u></font>
 <a name="line-279"></a>  show <font color=Cyan>(</font>Ideal bigD m l a b<font color=Cyan>)</font> <font color=Red>=</font> 
 <a name="line-280"></a>    <font color=Magenta>"Ideal "</font>
 <a name="line-281"></a>    <font color=Cyan>++</font> show bigD <font color=Cyan>++</font> <font color=Magenta>" "</font>
@@ -291,7 +291,7 @@
 <a name="line-284"></a>    <font color=Cyan>++</font> show a <font color=Cyan>++</font> <font color=Magenta>" "</font>
 <a name="line-285"></a>    <font color=Cyan>++</font> show b
 <a name="line-286"></a>
-<a name="line-287"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>IdealX x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-287"></a><a name="instance%20QCData%20(IdealX%20x)"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>IdealX x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-288"></a>    
 <a name="line-289"></a>  qcdata_mapM <font color=Red>~</font><font color=Cyan>(</font>Ideal <font color=Green><u>_</u></font> msh lsh ash bsh<font color=Cyan>)</font> f g <font color=Cyan>(</font>Ideal bigD m l a b<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-290"></a>    m' <font color=Red>&lt;-</font> qcdata_mapM msh f g m
@@ -324,25 +324,25 @@
 <a name="line-317"></a>      b'' <font color=Red>=</font> qcdata_promote b b' errmsg
 <a name="line-318"></a>      errmsg x <font color=Red>=</font> e <font color=Cyan>(</font><font color=Magenta>"in Ideal: "</font> <font color=Cyan>++</font> x<font color=Cyan>)</font>
 <a name="line-319"></a>
-<a name="line-320"></a><font color=Blue><i>-- Labeling of IdealQ is (m,l,a,b).</i></font>
-<a name="line-321"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IdealX x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
+<a name="line-320"></a><a name="instance%20Labelable%20(IdealX%20x)%20String"></a><font color=Blue><i>-- Labeling of IdealQ is (m,l,a,b).</i></font>
+<a name="line-321"></a><a name="instance%20Labelable%20(IdealX%20x)%20String"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IdealX x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
 <a name="line-322"></a>  label_rec <font color=Cyan>(</font>Ideal <font color=Green><u>_</u></font> qm ql qa qb<font color=Cyan>)</font> s <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-323"></a>    label_rec qm s <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"m"</font>
 <a name="line-324"></a>    label_rec ql s <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"l"</font>
 <a name="line-325"></a>    label_rec qa s <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"a"</font>
 <a name="line-326"></a>    label_rec qb s <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"b"</font>
 <a name="line-327"></a>
-<a name="line-328"></a><font color=Blue><i>-- We also provide an alternate labeling by a 4-tuple of strings, in</i></font>
-<a name="line-329"></a><font color=Blue><i>-- case this is ever useful (maybe for an ideal where the components</i></font>
-<a name="line-330"></a><font color=Blue><i>-- are called something other than /m/, /l/, /a/, and /b/).</i></font>
-<a name="line-331"></a><font color=Green><u>instance</u></font> Labelable IdealQ <font color=Cyan>(</font>String<font color=Cyan>,</font> String<font color=Cyan>,</font> String<font color=Cyan>,</font> String<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-328"></a><a name="instance%20Labelable%20IdealQ%20(String,%20String,%20String,%20String)"></a><font color=Blue><i>-- We also provide an alternate labeling by a 4-tuple of strings, in</i></font>
+<a name="line-329"></a><a name="instance%20Labelable%20IdealQ%20(String,%20String,%20String,%20String)"></a><font color=Blue><i>-- case this is ever useful (maybe for an ideal where the components</i></font>
+<a name="line-330"></a><a name="instance%20Labelable%20IdealQ%20(String,%20String,%20String,%20String)"></a><font color=Blue><i>-- are called something other than /m/, /l/, /a/, and /b/).</i></font>
+<a name="line-331"></a><a name="instance%20Labelable%20IdealQ%20(String,%20String,%20String,%20String)"></a><font color=Green><u>instance</u></font> Labelable IdealQ <font color=Cyan>(</font>String<font color=Cyan>,</font> String<font color=Cyan>,</font> String<font color=Cyan>,</font> String<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-332"></a>  label_rec <font color=Cyan>(</font>Ideal <font color=Green><u>_</u></font> qm ql qa qb<font color=Cyan>)</font> <font color=Cyan>(</font>sm<font color=Cyan>,</font> sl<font color=Cyan>,</font> sa<font color=Cyan>,</font> sb<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-333"></a>    label_rec qm sm
 <a name="line-334"></a>    label_rec ql sl
 <a name="line-335"></a>    label_rec qa sa
 <a name="line-336"></a>    label_rec qb sb
 <a name="line-337"></a>
-<a name="line-338"></a><font color=Green><u>instance</u></font> Eq Ideal <font color=Green><u>where</u></font>
+<a name="line-338"></a><a name="instance%20Eq%20Ideal"></a><font color=Green><u>instance</u></font> Eq Ideal <font color=Green><u>where</u></font>
 <a name="line-339"></a>  i1<font color=Red>@</font><font color=Cyan>(</font>Ideal bigD m l a b<font color=Cyan>)</font> <font color=Cyan>==</font> i2<font color=Red>@</font><font color=Cyan>(</font>Ideal bigD' m' l' a' b'<font color=Cyan>)</font>
 <a name="line-340"></a>    <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font>bigD <font color=Cyan>/=</font> bigD'<font color=Cyan>)</font> 
 <a name="line-341"></a>      <font color=Green><u>then</u></font> error error_string
@@ -364,14 +364,14 @@
 <a name="line-357"></a><a name="IdealRedC"></a><font color=Blue><i>-- | Classical circuit-type counterpart of 'IdealRed'.</i></font>
 <a name="line-358"></a><a name="IdealRedC"></a><font color=Green><u>type</u></font> IdealRedC <font color=Red>=</font> IdealRedX Bit
 <a name="line-359"></a>
-<a name="line-360"></a><font color=Green><u>instance</u></font> Show IdealRed <font color=Green><u>where</u></font>
+<a name="line-360"></a><a name="instance%20Show%20IdealRed"></a><font color=Green><u>instance</u></font> Show IdealRed <font color=Green><u>where</u></font>
 <a name="line-361"></a>  show <font color=Cyan>(</font>IdealRed bigD a b<font color=Cyan>)</font> <font color=Red>=</font> 
 <a name="line-362"></a>    <font color=Magenta>"IdealRed "</font>
 <a name="line-363"></a>    <font color=Cyan>++</font> show bigD <font color=Cyan>++</font> <font color=Magenta>" "</font>
 <a name="line-364"></a>    <font color=Cyan>++</font> show a <font color=Cyan>++</font> <font color=Magenta>" "</font>
 <a name="line-365"></a>    <font color=Cyan>++</font> show b
 <a name="line-366"></a>
-<a name="line-367"></a><font color=Green><u>instance</u></font> Eq IdealRed <font color=Green><u>where</u></font>
+<a name="line-367"></a><a name="instance%20Eq%20IdealRed"></a><font color=Green><u>instance</u></font> Eq IdealRed <font color=Green><u>where</u></font>
 <a name="line-368"></a>  i1<font color=Red>@</font><font color=Cyan>(</font>IdealRed bigD a b<font color=Cyan>)</font> <font color=Cyan>==</font> i2<font color=Red>@</font><font color=Cyan>(</font>IdealRed bigD' a' b'<font color=Cyan>)</font>
 <a name="line-369"></a>    <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font>bigD <font color=Cyan>/=</font> bigD'<font color=Cyan>)</font> 
 <a name="line-370"></a>      <font color=Green><u>then</u></font> error error_string
@@ -382,7 +382,7 @@
 <a name="line-375"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y <font color=Cyan>(</font>IdealRedX z<font color=Cyan>)</font> <font color=Red>=</font> IdealRedX <font color=Cyan>(</font>QCType x y z<font color=Cyan>)</font>
 <a name="line-376"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB IdealRed <font color=Red>=</font> IdealRedQ
 <a name="line-377"></a>
-<a name="line-378"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>IdealRedX x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-378"></a><a name="instance%20QCData%20(IdealRedX%20x)"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>IdealRedX x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-379"></a>
 <a name="line-380"></a>  qcdata_mapM <font color=Red>~</font><font color=Cyan>(</font>IdealRed <font color=Green><u>_</u></font> ash bsh<font color=Cyan>)</font> f g <font color=Cyan>(</font>IdealRed bigD a b<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-381"></a>    a' <font color=Red>&lt;-</font> qcdata_mapM ash f g a
@@ -409,16 +409,16 @@
 <a name="line-402"></a>        b'' <font color=Red>=</font> qcdata_promote b b' errmsg
 <a name="line-403"></a>        errmsg x <font color=Red>=</font> e <font color=Cyan>(</font><font color=Magenta>"in IdealRed: "</font> <font color=Cyan>++</font> x<font color=Cyan>)</font>
 <a name="line-404"></a>
-<a name="line-405"></a><font color=Blue><i>-- Labeling of IdealRedQ is (a,b).</i></font>
-<a name="line-406"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IdealRedX x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
+<a name="line-405"></a><a name="instance%20Labelable%20(IdealRedX%20x)%20String"></a><font color=Blue><i>-- Labeling of IdealRedQ is (a,b).</i></font>
+<a name="line-406"></a><a name="instance%20Labelable%20(IdealRedX%20x)%20String"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IdealRedX x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
 <a name="line-407"></a>  label_rec <font color=Cyan>(</font>IdealRed <font color=Green><u>_</u></font> qa qb<font color=Cyan>)</font> s <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-408"></a>    label_rec qa s <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"a"</font>
 <a name="line-409"></a>    label_rec qb s <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"b"</font>
 <a name="line-410"></a>
-<a name="line-411"></a><font color=Blue><i>-- We also provide an alternate labeling by a pair of strings, in case</i></font>
-<a name="line-412"></a><font color=Blue><i>-- this is ever useful (maybe for an ideal where the two components</i></font>
-<a name="line-413"></a><font color=Blue><i>-- are called something other than /a/ and /b/).</i></font>
-<a name="line-414"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IdealRedX x<font color=Cyan>)</font> <font color=Cyan>(</font>String<font color=Cyan>,</font> String<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-411"></a><a name="instance%20Labelable%20(IdealRedX%20x)%20(String,%20String)"></a><font color=Blue><i>-- We also provide an alternate labeling by a pair of strings, in case</i></font>
+<a name="line-412"></a><a name="instance%20Labelable%20(IdealRedX%20x)%20(String,%20String)"></a><font color=Blue><i>-- this is ever useful (maybe for an ideal where the two components</i></font>
+<a name="line-413"></a><a name="instance%20Labelable%20(IdealRedX%20x)%20(String,%20String)"></a><font color=Blue><i>-- are called something other than /a/ and /b/).</i></font>
+<a name="line-414"></a><a name="instance%20Labelable%20(IdealRedX%20x)%20(String,%20String)"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>IdealRedX x<font color=Cyan>)</font> <font color=Cyan>(</font>String<font color=Cyan>,</font> String<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-415"></a>  label_rec <font color=Cyan>(</font>IdealRed <font color=Green><u>_</u></font> qa qb<font color=Cyan>)</font> <font color=Cyan>(</font>sa<font color=Cyan>,</font> sb<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-416"></a>    label_rec qa sa
 <a name="line-417"></a>    label_rec qb sb

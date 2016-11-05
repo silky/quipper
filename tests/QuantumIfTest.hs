@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -56,7 +56,7 @@ ifTest = do
         qnot_at q6
       )
      )
-    return (q4,q5,q6)	
+    return (q4,q5,q6)   
 
 -- | Another test of the 'if_then_elseQ' function.
 ifTest2 :: (Qubit,Qubit,Qubit) -> Circ (Qubit,Qubit)

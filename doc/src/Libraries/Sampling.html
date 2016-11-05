@@ -62,40 +62,40 @@
 <a name="line-55"></a>  <font color=Blue><i>-- lower bound /min/ and upper bound /max/.</i></font>
 <a name="line-56"></a>  interval <font color=Red>::</font> a <font color=Red>-&gt;</font> a <font color=Red>-&gt;</font> <font color=Red>[</font>a<font color=Red>]</font>
 <a name="line-57"></a>
-<a name="line-58"></a><font color=Green><u>instance</u></font> Interval Int <font color=Green><u>where</u></font>
+<a name="line-58"></a><a name="instance%20Interval%20Int"></a><font color=Green><u>instance</u></font> Interval Int <font color=Green><u>where</u></font>
 <a name="line-59"></a>  interval x y <font color=Red>=</font> <font color=Red>[</font>x<font color=Red>..</font>y<font color=Red>]</font>
 <a name="line-60"></a>  
-<a name="line-61"></a><font color=Green><u>instance</u></font> Interval Integer <font color=Green><u>where</u></font>
+<a name="line-61"></a><a name="instance%20Interval%20Integer"></a><font color=Green><u>instance</u></font> Interval Integer <font color=Green><u>where</u></font>
 <a name="line-62"></a>  interval x y <font color=Red>=</font> <font color=Red>[</font>x<font color=Red>..</font>y<font color=Red>]</font>
 <a name="line-63"></a>
-<a name="line-64"></a><font color=Green><u>instance</u></font> Interval Double <font color=Green><u>where</u></font>
+<a name="line-64"></a><a name="instance%20Interval%20Double"></a><font color=Green><u>instance</u></font> Interval Double <font color=Green><u>where</u></font>
 <a name="line-65"></a>  interval x y <font color=Red>=</font> <font color=Red>[</font>x<font color=Red>..</font>y<font color=Red>]</font>
 <a name="line-66"></a>  
-<a name="line-67"></a><font color=Green><u>instance</u></font> Interval Bool <font color=Green><u>where</u></font>
+<a name="line-67"></a><a name="instance%20Interval%20Bool"></a><font color=Green><u>instance</u></font> Interval Bool <font color=Green><u>where</u></font>
 <a name="line-68"></a>  interval x y <font color=Red>=</font> <font color=Red>[</font>x<font color=Red>..</font>y<font color=Red>]</font>
 <a name="line-69"></a>
-<a name="line-70"></a><font color=Green><u>instance</u></font> Interval () <font color=Green><u>where</u></font>
+<a name="line-70"></a><a name="instance%20Interval%20()"></a><font color=Green><u>instance</u></font> Interval () <font color=Green><u>where</u></font>
 <a name="line-71"></a>  interval () () <font color=Red>=</font> <font color=Red>[</font>()<font color=Red>]</font>
 <a name="line-72"></a>  
-<a name="line-73"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-73"></a><a name="instance%20Interval%20(a,b)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-74"></a>  interval <font color=Cyan>(</font>x0<font color=Cyan>,</font>y0<font color=Cyan>)</font> <font color=Cyan>(</font>x1<font color=Cyan>,</font>y1<font color=Cyan>)</font> <font color=Red>=</font> <font color=Red>[</font> <font color=Cyan>(</font>x<font color=Cyan>,</font>y<font color=Cyan>)</font> <font color=Red>|</font> x <font color=Red>&lt;-</font> interval x0 x1<font color=Cyan>,</font> y <font color=Red>&lt;-</font> interval y0 y1 <font color=Red>]</font>
 <a name="line-75"></a>
-<a name="line-76"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-76"></a><a name="instance%20Interval%20(a,b,c)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-77"></a>  interval x y <font color=Red>=</font> map tuple <font color=Cyan>(</font>interval <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> <font color=Cyan>(</font>untuple y<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-78"></a>  
-<a name="line-79"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>,</font> Interval d<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-79"></a><a name="instance%20Interval%20(a,b,c,d)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>,</font> Interval d<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-80"></a>  interval x y <font color=Red>=</font> map tuple <font color=Cyan>(</font>interval <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> <font color=Cyan>(</font>untuple y<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-81"></a>  
-<a name="line-82"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>,</font> Interval d<font color=Cyan>,</font> Interval e<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-82"></a><a name="instance%20Interval%20(a,b,c,d,e)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>,</font> Interval d<font color=Cyan>,</font> Interval e<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-83"></a>  interval x y <font color=Red>=</font> map tuple <font color=Cyan>(</font>interval <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> <font color=Cyan>(</font>untuple y<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-84"></a>  
-<a name="line-85"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>,</font> Interval d<font color=Cyan>,</font> Interval e<font color=Cyan>,</font> Interval f<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-85"></a><a name="instance%20Interval%20(a,b,c,d,e,f)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>,</font> Interval d<font color=Cyan>,</font> Interval e<font color=Cyan>,</font> Interval f<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-86"></a>  interval x y <font color=Red>=</font> map tuple <font color=Cyan>(</font>interval <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> <font color=Cyan>(</font>untuple y<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-87"></a>  
-<a name="line-88"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>,</font> Interval d<font color=Cyan>,</font> Interval e<font color=Cyan>,</font> Interval f<font color=Cyan>,</font> Interval g<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-88"></a><a name="instance%20Interval%20(a,b,c,d,e,f,g)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Interval a<font color=Cyan>,</font> Interval b<font color=Cyan>,</font> Interval c<font color=Cyan>,</font> Interval d<font color=Cyan>,</font> Interval e<font color=Cyan>,</font> Interval f<font color=Cyan>,</font> Interval g<font color=Cyan>)</font> <font color=Red>=&gt;</font> Interval <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-89"></a>  interval x y <font color=Red>=</font> map tuple <font color=Cyan>(</font>interval <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> <font color=Cyan>(</font>untuple y<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-90"></a>  
-<a name="line-91"></a><font color=Green><u>instance</u></font> Interval a <font color=Red>=&gt;</font> Interval <font color=Red>[</font>a<font color=Red>]</font> <font color=Green><u>where</u></font>
+<a name="line-91"></a><a name="instance%20Interval%20%5ba%5d"></a><font color=Green><u>instance</u></font> Interval a <font color=Red>=&gt;</font> Interval <font color=Red>[</font>a<font color=Red>]</font> <font color=Green><u>where</u></font>
 <a name="line-92"></a>  interval x y <font color=Red>=</font> l <font color=Green><u>where</u></font>
 <a name="line-93"></a>    xy <font color=Red>=</font> safe_zip x y <font color=Magenta>"interval: upper and lower bound contain lists of non-matching lengths"</font>
 <a name="line-94"></a>    l <font color=Red>=</font> aux xy
@@ -113,53 +113,53 @@
 <a name="line-106"></a>  <font color=Blue><i>-- &gt; zero ([1,2],3,True) = ([0,0],0,False)</i></font>
 <a name="line-107"></a>  zero <font color=Red>::</font> a <font color=Red>-&gt;</font> a
 <a name="line-108"></a>  
-<a name="line-109"></a><font color=Green><u>instance</u></font> Zero Int <font color=Green><u>where</u></font>
+<a name="line-109"></a><a name="instance%20Zero%20Int"></a><font color=Green><u>instance</u></font> Zero Int <font color=Green><u>where</u></font>
 <a name="line-110"></a>  zero <font color=Green><u>_</u></font> <font color=Red>=</font> <font color=Magenta>0</font>
 <a name="line-111"></a>  
-<a name="line-112"></a><font color=Green><u>instance</u></font> Zero Integer <font color=Green><u>where</u></font>
+<a name="line-112"></a><a name="instance%20Zero%20Integer"></a><font color=Green><u>instance</u></font> Zero Integer <font color=Green><u>where</u></font>
 <a name="line-113"></a>  zero <font color=Green><u>_</u></font> <font color=Red>=</font> <font color=Magenta>0</font>
 <a name="line-114"></a>
-<a name="line-115"></a><font color=Green><u>instance</u></font> Zero Double <font color=Green><u>where</u></font>
+<a name="line-115"></a><a name="instance%20Zero%20Double"></a><font color=Green><u>instance</u></font> Zero Double <font color=Green><u>where</u></font>
 <a name="line-116"></a>  zero <font color=Green><u>_</u></font> <font color=Red>=</font> <font color=Magenta>0</font>
 <a name="line-117"></a>
-<a name="line-118"></a><font color=Green><u>instance</u></font> Zero Bool <font color=Green><u>where</u></font>
+<a name="line-118"></a><a name="instance%20Zero%20Bool"></a><font color=Green><u>instance</u></font> Zero Bool <font color=Green><u>where</u></font>
 <a name="line-119"></a>  zero <font color=Green><u>_</u></font> <font color=Red>=</font> False
 <a name="line-120"></a>
-<a name="line-121"></a><font color=Green><u>instance</u></font> Zero () <font color=Green><u>where</u></font>
+<a name="line-121"></a><a name="instance%20Zero%20()"></a><font color=Green><u>instance</u></font> Zero () <font color=Green><u>where</u></font>
 <a name="line-122"></a>  zero () <font color=Red>=</font> ()
 <a name="line-123"></a>
-<a name="line-124"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-124"></a><a name="instance%20Zero%20(a,b)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-125"></a>  zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Red>=</font> <font color=Cyan>(</font>zero a<font color=Cyan>,</font> zero b<font color=Cyan>)</font>
 <a name="line-126"></a>  
-<a name="line-127"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-127"></a><a name="instance%20Zero%20(a,b,c)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-128"></a>  zero x <font color=Red>=</font> tuple <font color=Cyan>(</font>zero <font color=Cyan>(</font>untuple x<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-129"></a>  
-<a name="line-130"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>,</font> Zero d<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-130"></a><a name="instance%20Zero%20(a,b,c,d)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>,</font> Zero d<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-131"></a>  zero x <font color=Red>=</font> tuple <font color=Cyan>(</font>zero <font color=Cyan>(</font>untuple x<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-132"></a>  
-<a name="line-133"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>,</font> Zero d<font color=Cyan>,</font> Zero e<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-133"></a><a name="instance%20Zero%20(a,b,c,d,e)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>,</font> Zero d<font color=Cyan>,</font> Zero e<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-134"></a>  zero x <font color=Red>=</font> tuple <font color=Cyan>(</font>zero <font color=Cyan>(</font>untuple x<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-135"></a>  
-<a name="line-136"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>,</font> Zero d<font color=Cyan>,</font> Zero e<font color=Cyan>,</font> Zero f<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-136"></a><a name="instance%20Zero%20(a,b,c,d,e,f)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>,</font> Zero d<font color=Cyan>,</font> Zero e<font color=Cyan>,</font> Zero f<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-137"></a>  zero x <font color=Red>=</font> tuple <font color=Cyan>(</font>zero <font color=Cyan>(</font>untuple x<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-138"></a>  
-<a name="line-139"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>,</font> Zero d<font color=Cyan>,</font> Zero e<font color=Cyan>,</font> Zero f<font color=Cyan>,</font> Zero g<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-139"></a><a name="instance%20Zero%20(a,b,c,d,e,f,g)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Zero a<font color=Cyan>,</font> Zero b<font color=Cyan>,</font> Zero c<font color=Cyan>,</font> Zero d<font color=Cyan>,</font> Zero e<font color=Cyan>,</font> Zero f<font color=Cyan>,</font> Zero g<font color=Cyan>)</font> <font color=Red>=&gt;</font> Zero <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-140"></a>  zero x <font color=Red>=</font> tuple <font color=Cyan>(</font>zero <font color=Cyan>(</font>untuple x<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-141"></a>  
-<a name="line-142"></a><font color=Green><u>instance</u></font> Zero a <font color=Red>=&gt;</font> Zero <font color=Red>[</font>a<font color=Red>]</font> <font color=Green><u>where</u></font>
+<a name="line-142"></a><a name="instance%20Zero%20%5ba%5d"></a><font color=Green><u>instance</u></font> Zero a <font color=Red>=&gt;</font> Zero <font color=Red>[</font>a<font color=Red>]</font> <font color=Green><u>where</u></font>
 <a name="line-143"></a>  zero l <font color=Red>=</font> map zero l
 <a name="line-144"></a>  
 <a name="line-145"></a><font color=Blue><i>-- --------------------------------------------------------------------</i></font>
 <a name="line-146"></a><font color=Blue><i>-- $Random </i></font>
 <a name="line-147"></a><font color=Blue><i>-- We extend the class 'System.Random' with tuples and lists.</i></font>
 <a name="line-148"></a>
-<a name="line-149"></a><font color=Blue><i>-- | 0-tuples</i></font>
-<a name="line-150"></a><font color=Green><u>instance</u></font> Random () <font color=Green><u>where</u></font>
+<a name="line-149"></a><a name="instance%20Random%20()"></a><font color=Blue><i>-- | 0-tuples</i></font>
+<a name="line-150"></a><a name="instance%20Random%20()"></a><font color=Green><u>instance</u></font> Random () <font color=Green><u>where</u></font>
 <a name="line-151"></a>  randomR <font color=Cyan>(</font>()<font color=Cyan>,</font>()<font color=Cyan>)</font> g <font color=Red>=</font> <font color=Cyan>(</font>()<font color=Cyan>,</font> g<font color=Cyan>)</font>
 <a name="line-152"></a>  random g <font color=Red>=</font> <font color=Cyan>(</font>()<font color=Cyan>,</font> g<font color=Cyan>)</font>
 <a name="line-153"></a>
-<a name="line-154"></a><font color=Blue><i>-- | Pairs</i></font>
-<a name="line-155"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-154"></a><a name="instance%20Random%20(a,b)"></a><font color=Blue><i>-- | Pairs</i></font>
+<a name="line-155"></a><a name="instance%20Random%20(a,b)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-156"></a>  randomR <font color=Cyan>(</font><font color=Cyan>(</font>a0<font color=Cyan>,</font>b0<font color=Cyan>)</font><font color=Cyan>,</font><font color=Cyan>(</font>a1<font color=Cyan>,</font>b1<font color=Cyan>)</font><font color=Cyan>)</font> g <font color=Red>=</font> <font color=Cyan>(</font><font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font><font color=Cyan>,</font> g''<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-157"></a>    <font color=Cyan>(</font>a<font color=Cyan>,</font>g'<font color=Cyan>)</font> <font color=Red>=</font> randomR <font color=Cyan>(</font>a0<font color=Cyan>,</font>a1<font color=Cyan>)</font> g
 <a name="line-158"></a>    <font color=Cyan>(</font>b<font color=Cyan>,</font>g''<font color=Cyan>)</font> <font color=Red>=</font> randomR <font color=Cyan>(</font>b0<font color=Cyan>,</font>b1<font color=Cyan>)</font> g'
@@ -167,8 +167,8 @@
 <a name="line-160"></a>    <font color=Cyan>(</font>a<font color=Cyan>,</font>g'<font color=Cyan>)</font> <font color=Red>=</font> random g
 <a name="line-161"></a>    <font color=Cyan>(</font>b<font color=Cyan>,</font>g''<font color=Cyan>)</font> <font color=Red>=</font> random g'
 <a name="line-162"></a>
-<a name="line-163"></a><font color=Blue><i>-- | Triples</i></font>
-<a name="line-164"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-163"></a><a name="instance%20Random%20(a,b,c)"></a><font color=Blue><i>-- | Triples</i></font>
+<a name="line-164"></a><a name="instance%20Random%20(a,b,c)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-165"></a>  randomR <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> g <font color=Red>=</font> <font color=Cyan>(</font>t<font color=Cyan>,</font> g'<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-166"></a>    a1 <font color=Red>=</font> untuple a
 <a name="line-167"></a>    b1 <font color=Red>=</font> untuple b
@@ -178,8 +178,8 @@
 <a name="line-171"></a>    <font color=Cyan>(</font>t1<font color=Cyan>,</font>g'<font color=Cyan>)</font> <font color=Red>=</font> random g
 <a name="line-172"></a>    t <font color=Red>=</font> tuple t1
 <a name="line-173"></a>
-<a name="line-174"></a><font color=Blue><i>-- | 4-Tuples</i></font>
-<a name="line-175"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>,</font> Random d<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-174"></a><a name="instance%20Random%20(a,b,c,d)"></a><font color=Blue><i>-- | 4-Tuples</i></font>
+<a name="line-175"></a><a name="instance%20Random%20(a,b,c,d)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>,</font> Random d<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-176"></a>  randomR <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> g <font color=Red>=</font> <font color=Cyan>(</font>t<font color=Cyan>,</font> g'<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-177"></a>    a1 <font color=Red>=</font> untuple a
 <a name="line-178"></a>    b1 <font color=Red>=</font> untuple b
@@ -189,8 +189,8 @@
 <a name="line-182"></a>    <font color=Cyan>(</font>t1<font color=Cyan>,</font>g'<font color=Cyan>)</font> <font color=Red>=</font> random g
 <a name="line-183"></a>    t <font color=Red>=</font> tuple t1
 <a name="line-184"></a>
-<a name="line-185"></a><font color=Blue><i>-- | 5-Tuples</i></font>
-<a name="line-186"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>,</font> Random d<font color=Cyan>,</font> Random e<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-185"></a><a name="instance%20Random%20(a,b,c,d,e)"></a><font color=Blue><i>-- | 5-Tuples</i></font>
+<a name="line-186"></a><a name="instance%20Random%20(a,b,c,d,e)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>,</font> Random d<font color=Cyan>,</font> Random e<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-187"></a>  randomR <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> g <font color=Red>=</font> <font color=Cyan>(</font>t<font color=Cyan>,</font> g'<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-188"></a>    a1 <font color=Red>=</font> untuple a
 <a name="line-189"></a>    b1 <font color=Red>=</font> untuple b
@@ -200,8 +200,8 @@
 <a name="line-193"></a>    <font color=Cyan>(</font>t1<font color=Cyan>,</font>g'<font color=Cyan>)</font> <font color=Red>=</font> random g
 <a name="line-194"></a>    t <font color=Red>=</font> tuple t1
 <a name="line-195"></a>
-<a name="line-196"></a><font color=Blue><i>-- | 6-Tuples</i></font>
-<a name="line-197"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>,</font> Random d<font color=Cyan>,</font> Random e<font color=Cyan>,</font> Random f<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-196"></a><a name="instance%20Random%20(a,b,c,d,e,f)"></a><font color=Blue><i>-- | 6-Tuples</i></font>
+<a name="line-197"></a><a name="instance%20Random%20(a,b,c,d,e,f)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>,</font> Random d<font color=Cyan>,</font> Random e<font color=Cyan>,</font> Random f<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-198"></a>  randomR <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> g <font color=Red>=</font> <font color=Cyan>(</font>t<font color=Cyan>,</font> g'<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-199"></a>    a1 <font color=Red>=</font> untuple a
 <a name="line-200"></a>    b1 <font color=Red>=</font> untuple b
@@ -211,8 +211,8 @@
 <a name="line-204"></a>    <font color=Cyan>(</font>t1<font color=Cyan>,</font>g'<font color=Cyan>)</font> <font color=Red>=</font> random g
 <a name="line-205"></a>    t <font color=Red>=</font> tuple t1
 <a name="line-206"></a>
-<a name="line-207"></a><font color=Blue><i>-- | 7-Tuples</i></font>
-<a name="line-208"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>,</font> Random d<font color=Cyan>,</font> Random e<font color=Cyan>,</font> Random f<font color=Cyan>,</font> Random g<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-207"></a><a name="instance%20Random%20(a,b,c,d,e,f,g)"></a><font color=Blue><i>-- | 7-Tuples</i></font>
+<a name="line-208"></a><a name="instance%20Random%20(a,b,c,d,e,f,g)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>Random a<font color=Cyan>,</font> Random b<font color=Cyan>,</font> Random c<font color=Cyan>,</font> Random d<font color=Cyan>,</font> Random e<font color=Cyan>,</font> Random f<font color=Cyan>,</font> Random g<font color=Cyan>)</font> <font color=Red>=&gt;</font> Random <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-209"></a>  randomR <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> g <font color=Red>=</font> <font color=Cyan>(</font>t<font color=Cyan>,</font> g'<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-210"></a>    a1 <font color=Red>=</font> untuple a
 <a name="line-211"></a>    b1 <font color=Red>=</font> untuple b
@@ -222,8 +222,8 @@
 <a name="line-215"></a>    <font color=Cyan>(</font>t1<font color=Cyan>,</font>g'<font color=Cyan>)</font> <font color=Red>=</font> random g
 <a name="line-216"></a>    t <font color=Red>=</font> tuple t1
 <a name="line-217"></a>
-<a name="line-218"></a><font color=Blue><i>-- | Lists</i></font>
-<a name="line-219"></a><font color=Green><u>instance</u></font> Random a <font color=Red>=&gt;</font> Random <font color=Red>[</font>a<font color=Red>]</font> <font color=Green><u>where</u></font>
+<a name="line-218"></a><a name="instance%20Random%20%5ba%5d"></a><font color=Blue><i>-- | Lists</i></font>
+<a name="line-219"></a><a name="instance%20Random%20%5ba%5d"></a><font color=Green><u>instance</u></font> Random a <font color=Red>=&gt;</font> Random <font color=Red>[</font>a<font color=Red>]</font> <font color=Green><u>where</u></font>
 <a name="line-220"></a>  randomR <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> g <font color=Red>=</font> <font color=Cyan>(</font>l<font color=Cyan>,</font> g'<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-221"></a>    ab <font color=Red>=</font> safe_zip a b <font color=Magenta>"randomR: upper and lower bound contain lists of non-matching lengths"</font>
 <a name="line-222"></a>    <font color=Cyan>(</font>g'<font color=Cyan>,</font> l<font color=Cyan>)</font> <font color=Red>=</font> mapAccumL <font color=Cyan>(</font><font color=Red>\</font>g r <font color=Red>-&gt;</font> swap <font color=Cyan>$</font> randomR r g<font color=Cyan>)</font> g ab

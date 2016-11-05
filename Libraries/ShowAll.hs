@@ -1,11 +1,11 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
 -- ======================================================================
 
 {-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE OverlappingInstances #-}
+
 
 -- | This module extends the 'show' function to be able to convert any
 -- term to a string, even if its type is not an instance of the 'Show'

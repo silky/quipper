@@ -284,20 +284,20 @@
 <a name="line-277"></a>  <font color=Red>|</font> h <font color=Cyan>&lt;=</font> k     <font color=Red>=</font> <font color=Cyan>(</font>k<font color=Cyan>,</font> fsint_shift <font color=Cyan>(</font>k<font color=Blue><i>-</i></font>h<font color=Cyan>)</font> m<font color=Cyan>,</font> n<font color=Cyan>)</font>
 <a name="line-278"></a>  <font color=Red>|</font> otherwise  <font color=Red>=</font> <font color=Cyan>(</font>h<font color=Cyan>,</font> m<font color=Cyan>,</font> fsint_shift <font color=Cyan>(</font>h<font color=Blue><i>-</i></font>k<font color=Cyan>)</font> n<font color=Cyan>)</font>
 <a name="line-279"></a>
-<a name="line-280"></a><font color=Green><u>instance</u></font> Eq FDouble <font color=Green><u>where</u></font>
+<a name="line-280"></a><a name="instance%20Eq%20FDouble"></a><font color=Green><u>instance</u></font> Eq FDouble <font color=Green><u>where</u></font>
 <a name="line-281"></a>  x <font color=Cyan>==</font> y  <font color=Red>=</font>  m <font color=Cyan>==</font> n  <font color=Green><u>where</u></font>  <font color=Cyan>(</font>k<font color=Cyan>,</font>m<font color=Cyan>,</font>n<font color=Cyan>)</font> <font color=Red>=</font> fdouble_align x y
 <a name="line-282"></a>
-<a name="line-283"></a><font color=Green><u>instance</u></font> Ord FDouble <font color=Green><u>where</u></font>
+<a name="line-283"></a><a name="instance%20Ord%20FDouble"></a><font color=Green><u>instance</u></font> Ord FDouble <font color=Green><u>where</u></font>
 <a name="line-284"></a>  compare x y  <font color=Red>=</font>  compare m n  <font color=Green><u>where</u></font>  <font color=Cyan>(</font>k<font color=Cyan>,</font>m<font color=Cyan>,</font>n<font color=Cyan>)</font> <font color=Red>=</font> fdouble_align x y
 <a name="line-285"></a>
-<a name="line-286"></a><font color=Green><u>instance</u></font> Real FDouble <font color=Green><u>where</u></font>
+<a name="line-286"></a><a name="instance%20Real%20FDouble"></a><font color=Green><u>instance</u></font> Real FDouble <font color=Green><u>where</u></font>
 <a name="line-287"></a>  toRational <font color=Cyan>(</font>XDouble h n<font color=Cyan>)</font> 
 <a name="line-288"></a>    <font color=Red>|</font> h <font color=Cyan>&gt;=</font> <font color=Magenta>0</font>    <font color=Red>=</font> <font color=Cyan>(</font>Ratio<font color=Cyan>.%</font><font color=Cyan>)</font> nx <font color=Cyan>(</font>integer_power <font color=Magenta>2</font> h<font color=Cyan>)</font>
 <a name="line-289"></a>    <font color=Red>|</font> otherwise <font color=Red>=</font> fromInteger <font color=Cyan>(</font>nx <font color=Cyan>*</font> integer_power <font color=Magenta>2</font> <font color=Cyan>(</font><font color=Blue><i>-</i></font>h<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-290"></a>    <font color=Green><u>where</u></font>
 <a name="line-291"></a>      nx <font color=Red>=</font> integer_of_fsint n
 <a name="line-292"></a>
-<a name="line-293"></a><font color=Green><u>instance</u></font> Num FDouble <font color=Green><u>where</u></font>
+<a name="line-293"></a><a name="instance%20Num%20FDouble"></a><font color=Green><u>instance</u></font> Num FDouble <font color=Green><u>where</u></font>
 <a name="line-294"></a>  <font color=Blue><i>-- Additive operations set the exponent to the maximum of the two</i></font>
 <a name="line-295"></a>  <font color=Blue><i>-- exponents, and extend the length if necessary. Signum keeps the</i></font>
 <a name="line-296"></a>  <font color=Blue><i>-- length but resets the exponent to 0.</i></font>
@@ -318,7 +318,7 @@
 <a name="line-311"></a>      b <font color=Red>=</font> integer_of_fsint n
 <a name="line-312"></a>      len <font color=Red>=</font> max <font color=Cyan>(</font>sint_length m<font color=Cyan>)</font> <font color=Cyan>(</font>sint_length n<font color=Cyan>)</font>
 <a name="line-313"></a>
-<a name="line-314"></a><font color=Green><u>instance</u></font> Fractional FDouble <font color=Green><u>where</u></font>
+<a name="line-314"></a><a name="instance%20Fractional%20FDouble"></a><font color=Green><u>instance</u></font> Fractional FDouble <font color=Green><u>where</u></font>
 <a name="line-315"></a>  <font color=Blue><i>-- Division sets the extent to the maximum of the two extents.</i></font>
 <a name="line-316"></a>  x <font color=Cyan>/</font> y  <font color=Red>|</font> k <font color=Cyan>&gt;=</font> <font color=Magenta>0</font>    <font color=Red>=</font> fdouble_of_integer k len <font color=Cyan>(</font><font color=Cyan>(</font>a <font color=Cyan>*</font> integer_power <font color=Magenta>2</font> k<font color=Cyan>)</font> <font color=Cyan>`div_round`</font> b<font color=Cyan>)</font>
 <a name="line-317"></a>         <font color=Red>|</font> otherwise <font color=Red>=</font> fdouble_of_integer k len <font color=Cyan>(</font>a <font color=Cyan>`div_round`</font> <font color=Cyan>(</font>b <font color=Cyan>*</font> integer_power <font color=Magenta>2</font> <font color=Cyan>(</font><font color=Blue><i>-</i></font>k<font color=Cyan>)</font><font color=Cyan>)</font><font color=Cyan>)</font>
@@ -330,7 +330,7 @@
 <a name="line-323"></a>
 <a name="line-324"></a>  fromRational x <font color=Red>=</font> fdouble_of_double before_radix_length <font color=Cyan>(</font>before_radix_length<font color=Cyan>+</font>after_radix_length<font color=Cyan>)</font> <font color=Cyan>(</font><font color=Cyan>(</font>fromInteger <font color=Cyan>$</font> Ratio<font color=Cyan>.</font>numerator x<font color=Cyan>)</font> <font color=Cyan>/</font> <font color=Cyan>(</font>fromInteger <font color=Cyan>$</font> Ratio<font color=Cyan>.</font>denominator x<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-325"></a>
-<a name="line-326"></a><font color=Green><u>instance</u></font> RealFrac FDouble <font color=Green><u>where</u></font>
+<a name="line-326"></a><a name="instance%20RealFrac%20FDouble"></a><font color=Green><u>instance</u></font> RealFrac FDouble <font color=Green><u>where</u></font>
 <a name="line-327"></a>  properFraction x 
 <a name="line-328"></a>    <font color=Red>|</font> k <font color=Cyan>&lt;=</font> <font color=Magenta>0</font>    <font color=Red>=</font> <font color=Cyan>(</font><font color=Magenta>0</font><font color=Cyan>,</font> x<font color=Cyan>)</font>
 <a name="line-329"></a>    <font color=Red>|</font> otherwise <font color=Red>=</font> <font color=Cyan>(</font>fromInteger q<font color=Cyan>,</font> fdouble_of_integer k len r<font color=Cyan>)</font>
@@ -349,7 +349,7 @@
 <a name="line-342"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y <font color=Cyan>(</font>XDouble z<font color=Cyan>)</font> <font color=Red>=</font> XDouble <font color=Cyan>(</font>QCType x y z<font color=Cyan>)</font>
 <a name="line-343"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB FDouble <font color=Red>=</font> QDouble
 <a name="line-344"></a>
-<a name="line-345"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>XDouble x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-345"></a><a name="instance%20QCData%20(XDouble%20x)"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>XDouble x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-346"></a>  qcdata_mapM <font color=Red>~</font><font color=Cyan>(</font>XDouble <font color=Green><u>_</u></font> shape<font color=Cyan>)</font> f g <font color=Cyan>(</font>XDouble n xs<font color=Cyan>)</font> <font color=Red>=</font>
 <a name="line-347"></a>    mmap <font color=Cyan>(</font>XDouble n<font color=Cyan>)</font> <font color=Cyan>$</font> qcdata_mapM shape f g xs
 <a name="line-348"></a>  qcdata_zip <font color=Red>~</font><font color=Cyan>(</font>XDouble <font color=Green><u>_</u></font> shape<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>XDouble n xs<font color=Cyan>)</font> <font color=Cyan>(</font>XDouble m ys<font color=Cyan>)</font> e
@@ -363,15 +363,15 @@
 <a name="line-356"></a>    <font color=Red>|</font> otherwise 
 <a name="line-357"></a>      <font color=Red>=</font> error <font color=Cyan>(</font>e <font color=Magenta>"XDouble exponent mismatch"</font><font color=Cyan>)</font>
 <a name="line-358"></a>
-<a name="line-359"></a><font color=Blue><i>-- Labeling of QDouble is s.sign, s[hi-1], ..., s[lo], where lo = -k.</i></font>
-<a name="line-360"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>XDouble x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
+<a name="line-359"></a><a name="instance%20Labelable%20(XDouble%20x)%20String"></a><font color=Blue><i>-- Labeling of QDouble is s.sign, s[hi-1], ..., s[lo], where lo = -k.</i></font>
+<a name="line-360"></a><a name="instance%20Labelable%20(XDouble%20x)%20String"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>XDouble x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
 <a name="line-361"></a>  label_rec <font color=Cyan>(</font>XDouble k <font color=Cyan>(</font>SInt digits sign<font color=Cyan>)</font><font color=Cyan>)</font> s <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-362"></a>    label_rec sign s <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"sign"</font>
 <a name="line-363"></a>    sequence_ <font color=Red>[</font> label_rec d s <font color=Cyan>`indexed`</font> show i <font color=Red>|</font> <font color=Cyan>(</font>d<font color=Cyan>,</font>i<font color=Cyan>)</font> <font color=Red>&lt;-</font> zip rdigits <font color=Red>[</font><font color=Blue><i>-</i></font>k<font color=Cyan>,</font><font color=Blue><i>-</i></font>k<font color=Cyan>+</font><font color=Magenta>1</font><font color=Red>..</font><font color=Red>]</font> <font color=Red>]</font>
 <a name="line-364"></a>    <font color=Green><u>where</u></font>
 <a name="line-365"></a>      rdigits <font color=Red>=</font> reverse digits
 <a name="line-366"></a>  
-<a name="line-367"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ QDouble<font color=Cyan>)</font> <font color=Cyan>(</font>Circ QDouble<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-367"></a><a name="instance%20CircLiftingUnpack%20(Circ%20QDouble)%20(Circ%20QDouble)"></a><font color=Green><u>instance</u></font> CircLiftingUnpack <font color=Cyan>(</font>Circ QDouble<font color=Cyan>)</font> <font color=Cyan>(</font>Circ QDouble<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-368"></a>  pack x <font color=Red>=</font> x
 <a name="line-369"></a>  unpack x <font color=Red>=</font> x
 <a name="line-370"></a>
@@ -391,7 +391,7 @@
 <a name="line-384"></a>
 <a name="line-385"></a><font color=Blue><i>-- $ We make 'QDouble' an instance of 'QOrd'.</i></font>
 <a name="line-386"></a>
-<a name="line-387"></a><font color=Green><u>instance</u></font> QOrd QDouble <font color=Green><u>where</u></font>
+<a name="line-387"></a><a name="instance%20QOrd%20QDouble"></a><font color=Green><u>instance</u></font> QOrd QDouble <font color=Green><u>where</u></font>
 <a name="line-388"></a>  q_less x y <font color=Red>|</font> kx <font color=Cyan>&lt;</font> ky   <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-389"></a>                           x <font color=Red>&lt;-</font> qdouble_pad_right <font color=Cyan>(</font>ky<font color=Blue><i>-</i></font>kx<font color=Cyan>)</font> x
 <a name="line-390"></a>                           compare_right x y
@@ -420,7 +420,7 @@
 <a name="line-413"></a>                  return <font color=Cyan>(</font>k<font color=Cyan>,</font> m<font color=Cyan>,</font> n<font color=Cyan>)</font>
 <a name="line-414"></a>
 <a name="line-415"></a>
-<a name="line-416"></a><font color=Green><u>instance</u></font> QNum QDouble <font color=Green><u>where</u></font>
+<a name="line-416"></a><a name="instance%20QNum%20QDouble"></a><font color=Green><u>instance</u></font> QNum QDouble <font color=Green><u>where</u></font>
 <a name="line-417"></a>  <font color=Blue><i>-- Additive operations set the exponent to the maximum of the two</i></font>
 <a name="line-418"></a>  <font color=Blue><i>-- exponents, and extend the length if necessary. Signum keeps the</i></font>
 <a name="line-419"></a>  <font color=Blue><i>-- length but resets the exponent to 0.</i></font>
@@ -474,12 +474,12 @@
 <a name="line-467"></a><font color=Blue><i>-- used. The instances are defined as follows, and are considered a</i></font>
 <a name="line-468"></a><font color=Blue><i>-- temporary hack.</i></font>
 <a name="line-469"></a>
-<a name="line-470"></a><font color=Blue><i>-- Textual equality for 'QDouble'.</i></font>
-<a name="line-471"></a><font color=Green><u>instance</u></font> Eq QDouble <font color=Green><u>where</u></font>
+<a name="line-470"></a><a name="instance%20Eq%20QDouble"></a><font color=Blue><i>-- Textual equality for 'QDouble'.</i></font>
+<a name="line-471"></a><a name="instance%20Eq%20QDouble"></a><font color=Green><u>instance</u></font> Eq QDouble <font color=Green><u>where</u></font>
 <a name="line-472"></a>  XDouble a b <font color=Cyan>==</font> XDouble a' b' <font color=Red>=</font>  <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Cyan>==</font> <font color=Cyan>(</font>a'<font color=Cyan>,</font>b'<font color=Cyan>)</font>
 <a name="line-473"></a>
-<a name="line-474"></a><font color=Blue><i>-- Textual equality for 'QSignedInt'.</i></font>
-<a name="line-475"></a><font color=Green><u>instance</u></font> Eq QSignedInt <font color=Green><u>where</u></font>
+<a name="line-474"></a><a name="instance%20Eq%20QSignedInt"></a><font color=Blue><i>-- Textual equality for 'QSignedInt'.</i></font>
+<a name="line-475"></a><a name="instance%20Eq%20QSignedInt"></a><font color=Green><u>instance</u></font> Eq QSignedInt <font color=Green><u>where</u></font>
 <a name="line-476"></a>  <font color=Cyan>(</font>SInt b c<font color=Cyan>)</font> <font color=Cyan>==</font> <font color=Cyan>(</font>SInt b' c'<font color=Cyan>)</font>  <font color=Red>=</font>  <font color=Cyan>(</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Cyan>==</font> <font color=Cyan>(</font>b'<font color=Cyan>,</font>c'<font color=Cyan>)</font>
 <a name="line-477"></a>
 <a name="line-478"></a>
@@ -530,7 +530,7 @@
 <a name="line-523"></a>
 <a name="line-524"></a>
 <a name="line-525"></a>
-<a name="line-526"></a><font color=Green><u>instance</u></font> Num <font color=Cyan>(</font>FDouble<font color=Cyan>,</font>FDouble<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-526"></a><a name="instance%20Num%20(FDouble,FDouble)"></a><font color=Green><u>instance</u></font> Num <font color=Cyan>(</font>FDouble<font color=Cyan>,</font>FDouble<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-527"></a>  x <font color=Cyan>+</font> y <font color=Red>=</font> undefined 
 <a name="line-528"></a>  x <font color=Cyan>*</font> y <font color=Red>=</font> undefined 
 <a name="line-529"></a>  x <font color=Blue><i>-</i></font> y <font color=Red>=</font> undefined 
@@ -539,7 +539,7 @@
 <a name="line-532"></a>  signum x <font color=Red>=</font> undefined 
 <a name="line-533"></a>
 <a name="line-534"></a>
-<a name="line-535"></a><font color=Green><u>instance</u></font> QNum <font color=Cyan>(</font>QDouble<font color=Cyan>,</font>QDouble<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-535"></a><a name="instance%20QNum%20(QDouble,QDouble)"></a><font color=Green><u>instance</u></font> QNum <font color=Cyan>(</font>QDouble<font color=Cyan>,</font>QDouble<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-536"></a>  q_add <font color=Cyan>(</font>x1<font color=Cyan>,</font>x2<font color=Cyan>)</font> <font color=Cyan>(</font>y1<font color=Cyan>,</font>y2<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font> 
 <a name="line-537"></a>      <font color=Cyan>(</font><font color=Green><u>_</u></font><font color=Cyan>,</font><font color=Green><u>_</u></font><font color=Cyan>,</font>z1<font color=Cyan>)</font> <font color=Red>&lt;-</font> q_add x1 y1
 <a name="line-538"></a>      <font color=Cyan>(</font><font color=Green><u>_</u></font><font color=Cyan>,</font><font color=Green><u>_</u></font><font color=Cyan>,</font>z2<font color=Cyan>)</font> <font color=Red>&lt;-</font> q_add x2 y2

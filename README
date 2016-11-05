@@ -1,4 +1,4 @@
-This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 file COPYRIGHT for a list of authors, copyright holders, licensing,
 and other details. All rights reserved.
 
@@ -26,17 +26,17 @@ Configuring the software environment
 Before you can compile Quipper, you have to install some Haskell
 libraries:
 
- * random v.1.0.1.1
- * mtl v.2.1.2
- * primes v.0.2.1.0
- * Lattices v.0.0.1 (note: "Lattices" must be capitalized)
- * zlib v.0.5.4.1
- * easyrender v.0.1.0.0
- * fixedprec v.0.2.1.0
- * newsynth v.0.1.0.0
- * containers v.0.5.2.1
- * set-monad v.0.1.0.0
- * QuickCheck v.2.6
+ * random >= 1.0.1.1
+ * mtl >= 2.1.2
+ * primes >= 0.2.1.0
+ * Lattices >= 0.0.1 (note: "Lattices" must be capitalized)
+ * zlib >= 0.5.4.1
+ * easyrender >= 0.1.0.0
+ * fixedprec >= 0.2.1.0
+ * newsynth >= 0.3.0.1
+ * containers >= 0.5.2.1
+ * set-monad >= 0.1.0.0
+ * QuickCheck >= 2.6
 
 This can be done using Cabal. On the command line, use the
 following commands:
@@ -85,6 +85,12 @@ ghc-pkg unregister --force template-haskell-2.8.0.0
 # also install template-haskell-2.7.0.0:
 
 cabal install QuickCheck
+
+Special note for GHC 7.10.*:
+============================
+
+Quipper will not work with ghc 7.10. Please use ghc 7.8 or earlier, or
+ghc 8.0 or later.
 
 Browsing the documentation and source code
 ==========================================

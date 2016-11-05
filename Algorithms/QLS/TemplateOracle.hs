@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -78,18 +78,18 @@ edgetoxy e nx ny =
 -- The output is the matrix element /A/(/y1/, /y2/).
 build_circuit
 calcmatrixelement :: --
-	-- Inputs
-	Int 	-- int y1 - Global edge index of row index of desired matrix element  
-	-> Int 	-- int y2 - Global edge index of column index of desired matrix element
-	-> Int 	-- int nx - Number of vertices left to right
-	-> Int	-- int ny - Number of vertices top to bottom
-	-> Double -- float lx - Length of horizontal edges (distance between vertices in x direction)
-	-> Double -- float ly - Length of vertical edges (distance between vertices in y direction)
-	-> Double -- float k - Plane wave wavenumber	
-	-- Outputs
-	-> Complex Double -- float A - Matrix element A(y1,y2)
+        -- Inputs
+        Int     -- int y1 - Global edge index of row index of desired matrix element  
+        -> Int  -- int y2 - Global edge index of column index of desired matrix element
+        -> Int  -- int nx - Number of vertices left to right
+        -> Int  -- int ny - Number of vertices top to bottom
+        -> Double -- float lx - Length of horizontal edges (distance between vertices in x direction)
+        -> Double -- float ly - Length of vertical edges (distance between vertices in y direction)
+        -> Double -- float k - Plane wave wavenumber    
+        -- Outputs
+        -> Complex Double -- float A - Matrix element A(y1,y2)
 calcmatrixelement y1 y2 nx ny lx ly k = 
-	let (xg1, yg1) = itoxy y1 nx ny in
+        let (xg1, yg1) = itoxy y1 nx ny in
         let (xg2, yg2) = itoxy y2 nx ny in
         let b = if ( (y1==y2) && (xg1 >= nx) ) then ly/lx - k*k*lx*ly/3.0
                 -- B11 and B22
@@ -119,7 +119,7 @@ calcmatrixelement y1 y2 nx ny lx ly k =
         let c = if ( (y1==y2) && ( (xg1==nx) || (xg1==(2*nx-1)) ) ) then 0.0 :+ (k*ly)
                 else if  ( (y1==y2) && ( ((yg1==1) && (xg1<nx)) || ((yg1==ny) && (xg1<nx)) ) ) then 0.0 :+ (k*lx)
                 else 0.0 :+ 0.0
-	in (b :+ 0.0) + c
+        in (b :+ 0.0) + c
 
 
 -- | Auxiliary function.
@@ -322,18 +322,18 @@ getNodeValuesMoreOutputs v' b' nx ny scatteringnodes lx ly k argflag maxConnecti
 -- The output is the magnitude of the electric field on edge /y/.
 build_circuit
 calcincidentfield :: --
-	-- Inputs
-		Int -- int y - Global edge index.  Note this is the unmarked y coordinate, 
-			-- i.e. the coordinate without scattering regions removed.
-	-> Int -- int nx - Number of vertices left to right
-	-> Int --  int ny - Number of vertices top to bottom
-	-> Double -- float lx - Length of horizontal edges (distance between vertices in x direction)
-	-> Double -- float ly - Length of vertical edges (distance between vertices in y direction)
-	-> Double -- float k - Plane wave wavenumber
-	-> Double -- float theta - Direction of wave propagation
-	-> Double -- float E0 - Magnitude of incident plane wave
-	-- Outputs
-	-> Complex Double -- complex float e - Magnitude of electric field on edge y
+        -- Inputs
+                Int -- int y - Global edge index.  Note this is the unmarked y coordinate, 
+                        -- i.e. the coordinate without scattering regions removed.
+        -> Int -- int nx - Number of vertices left to right
+        -> Int --  int ny - Number of vertices top to bottom
+        -> Double -- float lx - Length of horizontal edges (distance between vertices in x direction)
+        -> Double -- float ly - Length of vertical edges (distance between vertices in y direction)
+        -> Double -- float k - Plane wave wavenumber
+        -> Double -- float theta - Direction of wave propagation
+        -> Double -- float E0 - Magnitude of incident plane wave
+        -- Outputs
+        -> Complex Double -- complex float e - Magnitude of electric field on edge y
 calcincidentfield y nx ny lx ly k theta e0 = 
         let (xg, yg) = itoxy y nx ny in
         --Determine whether edge is horizontal or vertical

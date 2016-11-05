@@ -6,7 +6,7 @@
 </head>
 <body>
 <pre><a name="line-1"></a><font color=Blue><i>{-# LANGUAGE FlexibleInstances #-}</i></font>
-<a name="line-2"></a><font color=Blue><i>{-# LANGUAGE OverlappingInstances #-}</i></font>
+<a name="line-2"></a>
 <a name="line-3"></a>
 <a name="line-4"></a><font color=Blue><i>-- | This module extends the 'show' function to be able to convert any</i></font>
 <a name="line-5"></a><font color=Blue><i>-- term to a string, even if its type is not an instance of the 'Show'</i></font>
@@ -26,10 +26,10 @@
 <a name="line-19"></a><font color=Blue><i>-- generate any exported symbols, the documentation is empty. Please</i></font>
 <a name="line-20"></a><font color=Blue><i>-- see the source code.</i></font>
 <a name="line-21"></a>
-<a name="line-22"></a><font color=Green><u>instance</u></font> Show <font color=Cyan>(</font>a <font color=Red>-&gt;</font> b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-22"></a><a name="instance%20Show%20(a%20-%3e%20b)"></a><font color=Green><u>instance</u></font> Show <font color=Cyan>(</font>a <font color=Red>-&gt;</font> b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-23"></a>  show x <font color=Red>=</font> <font color=Magenta>"fun"</font>
 <a name="line-24"></a>
-<a name="line-25"></a><font color=Green><u>instance</u></font> Show s <font color=Green><u>where</u></font>
+<a name="line-25"></a><a name="instance%20Show%20s"></a><font color=Green><u>instance</u></font> Show s <font color=Green><u>where</u></font>
 <a name="line-26"></a>  show x <font color=Red>=</font> <font color=Magenta>"term"</font>
 </pre>
 </body>

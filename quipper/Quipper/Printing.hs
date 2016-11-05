@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -52,7 +52,7 @@ import Data.Maybe
 import Control.Monad(when)
 import Graphics.EasyRender
 import System.IO
-import System.Cmd
+import System.Process
 import System.Directory
 import System.Environment
 import System.Info
@@ -499,25 +499,25 @@ string_of_boxid (BoxId name shape) = name ++ ", shape " ++ shape
 assign_x_coordinates :: FormatStyle -> [Gate] -> X -> (X, [(Gate, X)])
 assign_x_coordinates fs gs x0 =
   let ((x,ws), xgs) = mapAccumL (\ (x, ws) g ->
-	-- count the wires attached to the gate. If there is precisely
-	-- one (unary gate), merge it with adjacent unary gates. Do
-	-- not merge comments.
+        -- count the wires attached to the gate. If there is precisely
+        -- one (unary gate), merge it with adjacent unary gates. Do
+        -- not merge comments.
         let merge = case (g, wirelist_of_gate g) of
               (Comment _ _ _, _) -> Nothing
               (_, [w]) -> Just w
               (_, _) -> Nothing
         in
-	case merge of
+        case merge of
           Just w ->
             if not (w `elem` ws) then
-	      ((x, w:ws), (g, x))
-	    else
-	      ((x + (xoff fs), [w]), (g, x + (xoff fs)))
+              ((x, w:ws), (g, x))
+            else
+              ((x + (xoff fs), [w]), (g, x + (xoff fs)))
           _ ->
-	    if ws == [] then
-	      ((x + (xoff fs), []), (g, x))
-	    else
-	      ((x + 2.0 * (xoff fs), []), (g, x + (xoff fs)))
+            if ws == [] then
+              ((x + (xoff fs), []), (g, x))
+            else
+              ((x + 2.0 * (xoff fs), []), (g, x + (xoff fs)))
         ) (x0, []) gs
   in
    if ws == [] then

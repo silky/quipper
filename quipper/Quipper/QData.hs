@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -1012,7 +1012,7 @@ instance (QData (QTypeB ba), BType (QTypeB ba) ~ ba) => BData ba
 -- initialized from a 'Bool'; a 'Qubit' can be measured, resulting in
 -- a 'Bit', etc. For this reason, the type class 'QShape' establishes a
 -- relation between three types:
--- 	
+--      
 -- [@qa@] A data structure having 'Qubit' at the leaves.
 -- 
 -- [@ca@] A data structure of the same shape as @qa@, having 'Bit' at

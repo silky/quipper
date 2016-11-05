@@ -18,7 +18,7 @@
 <a name="line-11"></a><font color=Green><u>import</u></font> Quipper
 <a name="line-12"></a><font color=Green><u>import</u></font> Quipper<font color=Cyan>.</font>CircLifting
 <a name="line-13"></a><font color=Green><u>import</u></font> QuipperLib<font color=Cyan>.</font>Qram
-<a name="line-14"></a><font color=Green><u>import</u></font> QuipperLib<font color=Cyan>.</font>Arith
+<a name="line-14"></a><font color=Green><u>import</u></font> QuipperLib<font color=Cyan>.</font>Arith hiding <font color=Cyan>(</font>template_symb_plus_<font color=Cyan>)</font>
 <a name="line-15"></a>
 <a name="line-16"></a><font color=Green><u>import</u></font> Prelude hiding <font color=Cyan>(</font>lookup<font color=Cyan>)</font>
 <a name="line-17"></a>
@@ -233,8 +233,8 @@
 <a name="line-226"></a><a name="testpos"></a><font color=Blue>testpos</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> <font color=Red>[</font>Bool<font color=Red>]</font> <font color=Red>-&gt;</font> <font color=Red>[</font>Bool<font color=Red>]</font> <font color=Red>-&gt;</font> <font color=Red>[</font>Bool<font color=Red>]</font> <font color=Red>-&gt;</font> Int <font color=Red>-&gt;</font> <font color=Red>[</font>Bool<font color=Red>]</font>
 <a name="line-227"></a><font color=Blue>testpos</font> pos maskmap bitmap newmap xy_max <font color=Red>=</font> <font color=Green><u>case</u></font> <font color=Cyan>(</font><font color=Magenta>0</font> <font color=Cyan>&lt;=</font> pos<font color=Cyan>)</font> <font color=Cyan>`cand`</font> <font color=Cyan>(</font>pos <font color=Cyan>&lt;</font> xy_max<font color=Cyan>)</font> <font color=Green><u>of</u></font>
 <a name="line-228"></a> True <font color=Red>-&gt;</font> <font color=Green><u>if</u></font> not <font color=Cyan>(</font>maskmap <font color=Cyan>!!</font> pos<font color=Cyan>)</font> <font color=Cyan>&amp;&amp;</font> not <font color=Cyan>(</font>bitmap <font color=Cyan>!!</font> pos<font color=Cyan>)</font> <font color=Cyan>&amp;&amp;</font> not <font color=Cyan>(</font>newmap <font color=Cyan>!!</font> pos<font color=Cyan>)</font>
-<a name="line-229"></a>	 <font color=Green><u>then</u></font> update_pos pos newmap True
-<a name="line-230"></a>	 <font color=Green><u>else</u></font> newmap
+<a name="line-229"></a>         <font color=Green><u>then</u></font> update_pos pos newmap True
+<a name="line-230"></a>         <font color=Green><u>else</u></font> newmap
 <a name="line-231"></a> False <font color=Red>-&gt;</font> newmap
 <a name="line-232"></a>
 <a name="line-233"></a><font color=Blue><i>-- | Given a board position, this function will call </i></font>
@@ -246,20 +246,20 @@
 <a name="line-239"></a> <font color=Green><u>let</u></font> newmap' <font color=Red>=</font> testpos <font color=Cyan>(</font>ii <font color=Cyan>+</font> x_max<font color=Cyan>)</font> maskmap bitmap' newmap xy_max <font color=Green><u>in</u></font>
 <a name="line-240"></a> <font color=Green><u>let</u></font> newmap'' <font color=Red>=</font> testpos <font color=Cyan>(</font>ii <font color=Blue><i>-</i></font> x_max<font color=Cyan>)</font> maskmap bitmap' newmap' xy_max <font color=Green><u>in</u></font>
 <a name="line-241"></a> <font color=Green><u>let</u></font> newmap''' <font color=Red>=</font> <font color=Green><u>case</u></font> <font color=Cyan>(</font>ii <font color=Cyan>`mod`</font> x_max <font color=Cyan>&gt;</font> <font color=Magenta>0</font><font color=Cyan>)</font> <font color=Green><u>of</u></font>
-<a name="line-242"></a>		  True <font color=Red>-&gt;</font> testpos <font color=Cyan>(</font>ii <font color=Blue><i>-</i></font> <font color=Magenta>1</font><font color=Cyan>)</font> maskmap bitmap' newmap'' xy_max
-<a name="line-243"></a>		  False <font color=Red>-&gt;</font> newmap''
+<a name="line-242"></a>                  True <font color=Red>-&gt;</font> testpos <font color=Cyan>(</font>ii <font color=Blue><i>-</i></font> <font color=Magenta>1</font><font color=Cyan>)</font> maskmap bitmap' newmap'' xy_max
+<a name="line-243"></a>                  False <font color=Red>-&gt;</font> newmap''
 <a name="line-244"></a>                 <font color=Green><u>in</u></font>
 <a name="line-245"></a> <font color=Green><u>let</u></font> newmap'''' <font color=Red>=</font> <font color=Green><u>case</u></font> <font color=Cyan>(</font>ii <font color=Cyan>`mod`</font> x_max <font color=Cyan>&gt;</font> <font color=Magenta>0</font><font color=Cyan>)</font> <font color=Green><u>of</u></font>
-<a name="line-246"></a>		   True <font color=Red>-&gt;</font> testpos <font color=Cyan>(</font>ii <font color=Cyan>+</font> x_max <font color=Blue><i>-</i></font> <font color=Magenta>1</font><font color=Cyan>)</font> maskmap bitmap' newmap''' xy_max
-<a name="line-247"></a>		   False <font color=Red>-&gt;</font> newmap'''
+<a name="line-246"></a>                   True <font color=Red>-&gt;</font> testpos <font color=Cyan>(</font>ii <font color=Cyan>+</font> x_max <font color=Blue><i>-</i></font> <font color=Magenta>1</font><font color=Cyan>)</font> maskmap bitmap' newmap''' xy_max
+<a name="line-247"></a>                   False <font color=Red>-&gt;</font> newmap'''
 <a name="line-248"></a>                  <font color=Green><u>in</u></font>
 <a name="line-249"></a> <font color=Green><u>let</u></font> newmap''''' <font color=Red>=</font> <font color=Green><u>case</u></font> <font color=Cyan>(</font>ii <font color=Cyan>`mod`</font> x_max <font color=Cyan>&lt;</font> x_max <font color=Blue><i>-</i></font> <font color=Magenta>1</font><font color=Cyan>)</font> <font color=Green><u>of</u></font>
-<a name="line-250"></a>		    True <font color=Red>-&gt;</font> testpos <font color=Cyan>(</font>ii <font color=Cyan>+</font> <font color=Magenta>1</font><font color=Cyan>)</font> maskmap bitmap' newmap'''' xy_max
-<a name="line-251"></a>		    False <font color=Red>-&gt;</font> newmap''''
+<a name="line-250"></a>                    True <font color=Red>-&gt;</font> testpos <font color=Cyan>(</font>ii <font color=Cyan>+</font> <font color=Magenta>1</font><font color=Cyan>)</font> maskmap bitmap' newmap'''' xy_max
+<a name="line-251"></a>                    False <font color=Red>-&gt;</font> newmap''''
 <a name="line-252"></a>                   <font color=Green><u>in</u></font>
 <a name="line-253"></a> <font color=Green><u>let</u></font> newmap'''''' <font color=Red>=</font> <font color=Green><u>case</u></font> <font color=Cyan>(</font>ii <font color=Cyan>`mod`</font> x_max <font color=Cyan>&lt;</font> x_max <font color=Blue><i>-</i></font> <font color=Magenta>1</font><font color=Cyan>)</font> <font color=Green><u>of</u></font>
-<a name="line-254"></a>		     True <font color=Red>-&gt;</font> testpos <font color=Cyan>(</font>ii <font color=Blue><i>-</i></font> x_max <font color=Cyan>+</font> <font color=Magenta>1</font><font color=Cyan>)</font> maskmap bitmap' newmap''''' xy_max
-<a name="line-255"></a>		     False <font color=Red>-&gt;</font> newmap'''''
+<a name="line-254"></a>                     True <font color=Red>-&gt;</font> testpos <font color=Cyan>(</font>ii <font color=Blue><i>-</i></font> x_max <font color=Cyan>+</font> <font color=Magenta>1</font><font color=Cyan>)</font> maskmap bitmap' newmap''''' xy_max
+<a name="line-255"></a>                     False <font color=Red>-&gt;</font> newmap'''''
 <a name="line-256"></a>                    <font color=Green><u>in</u></font>
 <a name="line-257"></a> <font color=Green><u>let</u></font> newmap''''''' <font color=Red>=</font> update_pos ii newmap'''''' False <font color=Green><u>in</u></font>
 <a name="line-258"></a> <font color=Cyan>(</font>newmap'''''''<font color=Cyan>,</font>bitmap'<font color=Cyan>)</font>

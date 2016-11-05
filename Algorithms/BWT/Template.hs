@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -15,9 +15,9 @@ module Algorithms.BWT.Template where
 import Quipper
 
 import Control.Monad (sequence)
-import Algorithms.BWT.Alternative
+import Algorithms.BWT.Alternative (Oracle(..), Node, QNode)
 
-import Libraries.Auxiliary
+import Libraries.Auxiliary hiding (boollist_xor)
 import QuipperLib.ClassicalOptim
 
 -- ----------------------------------------------------------------------
@@ -244,14 +244,14 @@ oracle_template f g =
     entrance = boollist_of_int_bh m 1,
     oraclefun = \c (as,bs,r) -> do qf <- qinit f
                                    qg <- qinit g
-				   let (a:aa) = as
-				   let (b:bb) = bs
+                                   let (a:aa) = as
+                                   let (b:bb) = bs
                                    reversible_BWT_oracle c ((qf, qg, (a,aa)), (r, (b,bb)))
-				   qterm g qg
-				   qterm f qf
+                                   qterm g qg
+                                   qterm f qf
   }
   where n = length f
-	m = n+2
+        m = n+2
 
 
 -- | The template oracle, optimized.
@@ -264,12 +264,12 @@ oracle_template_optim f g =
     entrance = boollist_of_int_bh m 1,
     oraclefun = \c (as,bs,r) -> do qf <- qinit f
                                    qg <- qinit g
-				   let (a:aa) = as
-				   let (b:bb) = bs
+                                   let (a:aa) = as
+                                   let (b:bb) = bs
                                    reversible_BWT_oracle_optim c ((qf, qg, (a,aa)), (r, (b,bb)))
-				   qterm g qg
-				   qterm f qf
+                                   qterm g qg
+                                   qterm f qf
   }
   where n = length f
-	m = n+2
+        m = n+2
 

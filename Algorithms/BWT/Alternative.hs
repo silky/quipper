@@ -1,8 +1,10 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
 -- ======================================================================
+
+{-# LANGUAGE FlexibleContexts #-}
 
 -- | Alternative implementations for the binary welded tree algorithm.
 -- The purpose of these is to experiment with and potentially
@@ -218,8 +220,8 @@ oracle_simple =
       oracle_O c (a,v) = do
         let e = edges c
         foreach e $ \(n1, n2) -> do
-	  multi_controlled_multi_not m (a,v) (n1, invalid `xor` n2)
-	  multi_controlled_multi_not m (a,v) (n2, invalid `xor` n1)
+          multi_controlled_multi_not m (a,v) (n1, invalid `xor` n2)
+          multi_controlled_multi_not m (a,v) (n2, invalid `xor` n1)
 
       -- the B_c circuit
       oracle_B :: (Qulist, Qulist) -> Circ ()

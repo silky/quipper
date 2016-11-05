@@ -1,9 +1,10 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
 -- ======================================================================
 
+{-# LANGUAGE Unsafe #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE FlexibleInstances #-}
@@ -38,6 +39,9 @@ import Quipper.Transformer
 
 import qualified Data.Map as Map
 import Data.Map (Map)
+
+import Control.Applicative (Applicative(..))
+import Control.Monad (liftM, ap)
 
 -- ----------------------------------------------------------------------
 -- * Helper functions
@@ -89,6 +93,13 @@ instance Monad LabelMonad where
     h idxl = (Map.union m1 m2, z) where
       (m1, y) = getLabelMonad f idxl
       (m2, z) = getLabelMonad (g y) idxl
+
+instance Applicative LabelMonad where
+  pure = return
+  (<*>) = ap
+
+instance Functor LabelMonad where
+  fmap = liftM
 
 -- | Get the current string and index.
 labelmonad_get_indexlist :: LabelMonad IndexList

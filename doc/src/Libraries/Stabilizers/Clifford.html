@@ -62,8 +62,8 @@
 <a name="line-55"></a>  Just b <font color=Red>-&gt;</font> b
 <a name="line-56"></a>  Nothing <font color=Red>-&gt;</font> error <font color=Cyan>(</font><font color=Magenta>"key: "</font> <font color=Cyan>++</font> show k <font color=Cyan>++</font> <font color=Magenta>" not in map: "</font> <font color=Cyan>++</font> show m<font color=Cyan>)</font>
 <a name="line-57"></a>
-<a name="line-58"></a><font color=Blue><i>-- | A tableau can be shown, by enumerating over the qubits in scope.</i></font>
-<a name="line-59"></a><font color=Green><u>instance</u></font> Show Tableau <font color=Green><u>where</u></font>
+<a name="line-58"></a><a name="instance%20Show%20Tableau"></a><font color=Blue><i>-- | A tableau can be shown, by enumerating over the qubits in scope.</i></font>
+<a name="line-59"></a><a name="instance%20Show%20Tableau"></a><font color=Green><u>instance</u></font> Show Tableau <font color=Green><u>where</u></font>
 <a name="line-60"></a> show tab <font color=Red>=</font> unlines <font color=Cyan>$</font> <font color=Cyan>(</font><font color=Magenta>"Stabilizer:"</font><font color=Red><b>:</b></font>map show_row qs<font color=Cyan>)</font> <font color=Cyan>++</font> <font color=Cyan>(</font><font color=Magenta>"Destabilizer:"</font><font color=Red><b>:</b></font>map show_de_row qs<font color=Cyan>)</font>
 <a name="line-61"></a>  <font color=Green><u>where</u></font> 
 <a name="line-62"></a>   qs <font color=Red>::</font> <font color=Red>[</font>Qubit<font color=Red>]</font>
@@ -102,7 +102,7 @@
 <a name="line-95"></a><a name="Unitary"></a><font color=Blue><i>-- | A (Clifford) unitary can be defined as a function acting on Pauli operators.</i></font>
 <a name="line-96"></a><a name="Unitary"></a><font color=Green><u>type</u></font> Unitary <font color=Red>=</font> Pauli <font color=Red>-&gt;</font> <font color=Cyan>(</font>Sign<font color=Cyan>,</font>Pauli<font color=Cyan>)</font>
 <a name="line-97"></a>
-<a name="line-98"></a><font color=Green><u>instance</u></font> Eq Unitary <font color=Green><u>where</u></font>
+<a name="line-98"></a><a name="instance%20Eq%20Unitary"></a><font color=Green><u>instance</u></font> Eq Unitary <font color=Green><u>where</u></font>
 <a name="line-99"></a>  u1 <font color=Cyan>==</font> u2 <font color=Red>=</font> and <font color=Red>[</font> u1 x <font color=Cyan>==</font> u2 x <font color=Red>|</font> x <font color=Red>&lt;-</font> ixyz<font color=Red>]</font>
 <a name="line-100"></a>    <font color=Green><u>where</u></font> ixyz <font color=Red>=</font> <font color=Red>[</font>I<font color=Cyan>,</font>X<font color=Cyan>,</font>Y<font color=Cyan>,</font>Z<font color=Red>]</font> 
 <a name="line-101"></a>
@@ -172,7 +172,7 @@
 <a name="line-165"></a><a name="Unitary2"></a><font color=Blue><i>-- on a pair of Pauli operators.</i></font>
 <a name="line-166"></a><a name="Unitary2"></a><font color=Green><u>type</u></font> Unitary2 <font color=Red>=</font> <font color=Cyan>(</font>Pauli<font color=Cyan>,</font>Pauli<font color=Cyan>)</font> <font color=Red>-&gt;</font> <font color=Cyan>(</font>Sign<font color=Cyan>,</font>Pauli<font color=Cyan>,</font>Pauli<font color=Cyan>)</font>
 <a name="line-167"></a>
-<a name="line-168"></a><font color=Green><u>instance</u></font> Eq Unitary2 <font color=Green><u>where</u></font>
+<a name="line-168"></a><a name="instance%20Eq%20Unitary2"></a><font color=Green><u>instance</u></font> Eq Unitary2 <font color=Green><u>where</u></font>
 <a name="line-169"></a>  u1 <font color=Cyan>==</font> u2 <font color=Red>=</font> and <font color=Red>[</font> u1 <font color=Cyan>(</font>x<font color=Cyan>,</font>y<font color=Cyan>)</font> <font color=Cyan>==</font> u2 <font color=Cyan>(</font>x<font color=Cyan>,</font>y<font color=Cyan>)</font> <font color=Red>|</font> x <font color=Red>&lt;-</font> ixyz<font color=Cyan>,</font> y <font color=Red>&lt;-</font> ixyz<font color=Red>]</font>
 <a name="line-170"></a>    <font color=Green><u>where</u></font> ixyz <font color=Red>=</font> <font color=Red>[</font>I<font color=Cyan>,</font>X<font color=Cyan>,</font>Y<font color=Cyan>,</font>Z<font color=Red>]</font> 
 <a name="line-171"></a>

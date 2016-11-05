@@ -362,7 +362,7 @@
 <a name="line-355"></a>    do_bit <font color=Red>::</font> Bit <font color=Red>-&gt;</font> Circ Bit
 <a name="line-356"></a>    do_bit <font color=Red>=</font> return                                                         
 <a name="line-357"></a>
-<a name="line-358"></a><a name="qc_prepare"></a><font color=Blue><i>-- | Heterogeneous version of 'measure'. Given a heterogeneous data</i></font>
+<a name="line-358"></a><a name="qc_prepare"></a><font color=Blue><i>-- | Heterogeneous version of 'prepare'. Given a heterogeneous data</i></font>
 <a name="line-359"></a><font color=Blue><i>-- structure, prepare qubits from all classical bits, and leave any</i></font>
 <a name="line-360"></a><font color=Blue><i>-- qubits unchanged.</i></font>
 <a name="line-361"></a><font color=Blue>qc_prepare</font> <font color=Red>::</font> <font color=Cyan>(</font>QCData qc<font color=Cyan>)</font> <font color=Red>=&gt;</font> qc <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>QCType Qubit Qubit qc<font color=Cyan>)</font>
@@ -967,9 +967,9 @@
 <a name="line-960"></a><font color=Green><u>infix</u></font> <font color=Magenta>4</font> <font color=Cyan>.==.</font> <font color=Blue><i>-- same precedence as (==)</i></font>
 <a name="line-961"></a><font color=Green><u>infix</u></font> <font color=Magenta>4</font> <font color=Cyan>./=.</font> <font color=Blue><i>-- same precedence as (/=)</i></font>
 <a name="line-962"></a>
-<a name="line-963"></a><font color=Blue><i>-- The following allows us to write 0 and 1 instead of 'False' and</i></font>
-<a name="line-964"></a><font color=Blue><i>-- 'True' everywhere.</i></font>
-<a name="line-965"></a><font color=Green><u>instance</u></font> Num Bool <font color=Green><u>where</u></font>
+<a name="line-963"></a><a name="instance%20Num%20Bool"></a><font color=Blue><i>-- The following allows us to write 0 and 1 instead of 'False' and</i></font>
+<a name="line-964"></a><a name="instance%20Num%20Bool"></a><font color=Blue><i>-- 'True' everywhere.</i></font>
+<a name="line-965"></a><a name="instance%20Num%20Bool"></a><font color=Green><u>instance</u></font> Num Bool <font color=Green><u>where</u></font>
 <a name="line-966"></a>  <font color=Cyan>(</font><font color=Cyan>+</font><font color=Cyan>)</font> <font color=Red>=</font> <font color=Cyan>(</font><font color=Cyan>/=</font><font color=Cyan>)</font> 
 <a name="line-967"></a>  <font color=Cyan>(</font><font color=Cyan>*</font><font color=Cyan>)</font> <font color=Red>=</font> <font color=Cyan>(</font><font color=Cyan>&amp;&amp;</font><font color=Cyan>)</font>
 <a name="line-968"></a>  <font color=Cyan>(</font><font color=Blue><i>-</i></font><font color=Cyan>)</font> <font color=Red>=</font> <font color=Cyan>(</font><font color=Cyan>/=</font><font color=Cyan>)</font>
@@ -1216,11 +1216,11 @@
 <a name="line-1209"></a>  qcurry <font color=Red>::</font> <font color=Cyan>(</font>args <font color=Red>-&gt;</font> Circ res<font color=Cyan>)</font> <font color=Red>-&gt;</font> fun
 <a name="line-1210"></a>  quncurry <font color=Red>::</font> fun <font color=Red>-&gt;</font> <font color=Cyan>(</font>args <font color=Red>-&gt;</font> Circ res<font color=Cyan>)</font>
 <a name="line-1211"></a>  
-<a name="line-1212"></a><font color=Green><u>instance</u></font> QCurry <font color=Cyan>(</font>Circ b<font color=Cyan>)</font> () b <font color=Green><u>where</u></font>
+<a name="line-1212"></a><a name="instance%20QCurry%20(Circ%20b)%20()%20b"></a><font color=Green><u>instance</u></font> QCurry <font color=Cyan>(</font>Circ b<font color=Cyan>)</font> () b <font color=Green><u>where</u></font>
 <a name="line-1213"></a>  qcurry g <font color=Red>=</font> g ()
 <a name="line-1214"></a>  quncurry x <font color=Red>=</font> const x
 <a name="line-1215"></a>
-<a name="line-1216"></a><font color=Green><u>instance</u></font> QCurry fun args res <font color=Red>=&gt;</font> QCurry <font color=Cyan>(</font>a <font color=Red>-&gt;</font> fun<font color=Cyan>)</font> <font color=Cyan>(</font>a<font color=Cyan>,</font>args<font color=Cyan>)</font> res <font color=Green><u>where</u></font>
+<a name="line-1216"></a><a name="instance%20QCurry%20(a%20-%3e%20fun)%20(a,args)%20res"></a><font color=Green><u>instance</u></font> QCurry fun args res <font color=Red>=&gt;</font> QCurry <font color=Cyan>(</font>a <font color=Red>-&gt;</font> fun<font color=Cyan>)</font> <font color=Cyan>(</font>a<font color=Cyan>,</font>args<font color=Cyan>)</font> res <font color=Green><u>where</u></font>
 <a name="line-1217"></a>  qcurry g x <font color=Red>=</font> qcurry <font color=Cyan>(</font><font color=Red>\</font>xs <font color=Red>-&gt;</font> g <font color=Cyan>(</font>x<font color=Cyan>,</font>xs<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-1218"></a>  quncurry f <font color=Cyan>(</font>x<font color=Cyan>,</font>xs<font color=Cyan>)</font> <font color=Red>=</font> quncurry <font color=Cyan>(</font>f x<font color=Cyan>)</font> xs
 <a name="line-1219"></a>

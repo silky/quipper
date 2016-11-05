@@ -323,9 +323,9 @@
 <a name="line-316"></a>  <font color=Red>|</font> T_Subroutine BoxId InverseFlag NoControlFlag ControllableFlag <font color=Red>[</font>Wire<font color=Red>]</font> Arity <font color=Red>[</font>Wire<font color=Red>]</font> Arity RepeatFlag <font color=Cyan>(</font><font color=Cyan>(</font>Namespace <font color=Red>-&gt;</font> <font color=Red>[</font>B_Endpoint a b<font color=Red>]</font> <font color=Red>-&gt;</font> Ctrls a b <font color=Red>-&gt;</font> m <font color=Cyan>(</font><font color=Red>[</font>B_Endpoint a b<font color=Red>]</font><font color=Cyan>,</font> Ctrls a b<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Red>-&gt;</font> x<font color=Cyan>)</font>
 <a name="line-317"></a>  <font color=Red>|</font> T_Comment String InverseFlag <font color=Cyan>(</font><font color=Cyan>(</font><font color=Red>[</font><font color=Cyan>(</font>B_Endpoint a b<font color=Cyan>,</font> String<font color=Cyan>)</font><font color=Red>]</font> <font color=Red>-&gt;</font> m ()<font color=Cyan>)</font> <font color=Red>-&gt;</font> x<font color=Cyan>)</font>
 <a name="line-318"></a>
-<a name="line-319"></a><font color=Blue><i>-- Make 'T_Gate' an instance of 'Show', to enable transformers to</i></font>
-<a name="line-320"></a><font color=Blue><i>-- produce better error messages about unimplemented gates etc.</i></font>
-<a name="line-321"></a><font color=Green><u>instance</u></font> Show <font color=Cyan>(</font>T_Gate m a b x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-319"></a><a name="instance%20Show%20(T_Gate%20m%20a%20b%20x)"></a><font color=Blue><i>-- Make 'T_Gate' an instance of 'Show', to enable transformers to</i></font>
+<a name="line-320"></a><a name="instance%20Show%20(T_Gate%20m%20a%20b%20x)"></a><font color=Blue><i>-- produce better error messages about unimplemented gates etc.</i></font>
+<a name="line-321"></a><a name="instance%20Show%20(T_Gate%20m%20a%20b%20x)"></a><font color=Green><u>instance</u></font> Show <font color=Cyan>(</font>T_Gate m a b x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-322"></a>  show <font color=Cyan>(</font>T_QGate name n m inv ncf f<font color=Cyan>)</font> <font color=Red>=</font> <font color=Magenta>"QGate["</font> <font color=Cyan>++</font> name <font color=Cyan>++</font> <font color=Magenta>","</font> <font color=Cyan>++</font> show n <font color=Cyan>++</font> <font color=Magenta>","</font> <font color=Cyan>++</font> show m <font color=Cyan>++</font> <font color=Magenta>"]"</font> <font color=Cyan>++</font> optional inv <font color=Magenta>"*"</font>
 <a name="line-323"></a>  show <font color=Cyan>(</font>T_QRot name n m inv t ncf f<font color=Cyan>)</font> <font color=Red>=</font> <font color=Magenta>"QRot["</font> <font color=Cyan>++</font> name <font color=Cyan>++</font> <font color=Magenta>","</font> <font color=Cyan>++</font> show t <font color=Cyan>++</font> <font color=Magenta>","</font> <font color=Cyan>++</font> show n <font color=Cyan>++</font> <font color=Magenta>","</font> <font color=Cyan>++</font> show m <font color=Cyan>++</font> <font color=Magenta>"]"</font> <font color=Cyan>++</font> optional inv <font color=Magenta>"*"</font>
 <a name="line-324"></a>  show <font color=Cyan>(</font>T_GPhase t ncf f<font color=Cyan>)</font> <font color=Red>=</font> <font color=Magenta>"GPhase["</font> <font color=Cyan>++</font> show t <font color=Cyan>++</font> <font color=Magenta>"]"</font>
@@ -594,7 +594,7 @@
 <a name="line-587"></a>     transformer <font color=Red>::</font> Transformer m a b<font color=Cyan>,</font>
 <a name="line-588"></a>     define_subroutine <font color=Red>::</font> BoxId <font color=Red>-&gt;</font> TypedSubroutine <font color=Red>-&gt;</font> m ()<font color=Cyan>,</font>     
 <a name="line-589"></a>     lifting_function <font color=Red>::</font> b <font color=Red>-&gt;</font> m Bool
-<a name="line-590"></a>  <font color=Cyan>}</font>	
+<a name="line-590"></a>  <font color=Cyan>}</font>     
 <a name="line-591"></a>
 <a name="line-592"></a><a name="transform_dbcircuit"></a><font color=Blue><i>-- | Like 'transform_bcircuit_rec', but for dynamic-boxed circuits.</i></font>
 <a name="line-593"></a><font color=Blue><i>--</i></font>

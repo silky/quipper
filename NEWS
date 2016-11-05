@@ -1,8 +1,17 @@
-This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 file COPYRIGHT for a list of authors, copyright holders, licensing,
 and other details. All rights reserved.
 
 ======================================================================
+
+July 27, 2016: Release 0.8
+
+ * Portability: compatibility fixes for GHC 8.0. Note: GHC 7.10 is too
+   broken and will not be supported by Quipper.
+
+October 14, 2014: Release 0.7
+
+ * Portability: compatibility fixes for GHC 7.8.
 
 January 16, 2014: Release 0.6
 
@@ -16,7 +25,7 @@ January 16, 2014: Release 0.6
 
 September 2, 2013: Release 0.5
 
- * Portability: fixed GHC 7.6.2 incompatibility bugs.
+ * Portability: compatibility fixes for GHC 7.6.2.
  * Portability: fixed Windows incompatibility bug. Handling of Ctrl-C
    may or may not work on Windows, depending on console.
  * Added quipperi script, analogous to ghci.
@@ -39,4 +48,4 @@ September 2, 2013: Release 0.5
 
 June 19, 2013: Release 0.4
 
- First public release.
+ * First public release.

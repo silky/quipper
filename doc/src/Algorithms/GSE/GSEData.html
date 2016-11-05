@@ -43,7 +43,7 @@
 <a name="line-36"></a>  
 <a name="line-37"></a>  <font color=Cyan>}</font>
 <a name="line-38"></a>
-<a name="line-39"></a><font color=Green><u>instance</u></font> Show <font color=Cyan>(</font>GSEData<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-39"></a><a name="instance%20Show%20(GSEData)"></a><font color=Green><u>instance</u></font> Show <font color=Cyan>(</font>GSEData<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-40"></a>    show a <font color=Red>=</font> <font color=Magenta>"GSEData { size = "</font> <font color=Cyan>++</font> show <font color=Cyan>(</font>gse_data_M a<font color=Cyan>)</font> <font color=Cyan>++</font> <font color=Magenta>" }"</font>
 <a name="line-41"></a>
 <a name="line-42"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
@@ -122,17 +122,17 @@
 <a name="line-115"></a>    <font color=Blue><i>-- The indices are not in correct order on purpose.  We </i></font>
 <a name="line-116"></a>    <font color=Blue><i>-- need to express the fact that h_prsq = h[pq|rs] = h[p,q,r,s] = h[i,j,k,l]</i></font>
 <a name="line-117"></a>    arr <font color=Cyan>!</font> <font color=Cyan>(</font>swap_ijkl <font color=Cyan>$</font> swap_kl <font color=Cyan>$</font> swap_ij <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font><font color=Cyan>)</font>
-<a name="line-118"></a>	
+<a name="line-118"></a>        
 <a name="line-119"></a>    <font color=Blue><i>-- Note that because of symmetries, we have</i></font>
-<a name="line-120"></a>	<font color=Blue><i>--   h2(i,j,k,l) = h2(j,i,k,l)</i></font>
-<a name="line-121"></a>	<font color=Blue><i>--   h2(i,j,k,l) = h2(i,j,l,k)</i></font>
-<a name="line-122"></a>	<font color=Blue><i>--   h2(i,j,k,l) = h2(k,l,i,j)</i></font>
-<a name="line-123"></a>	<font color=Blue><i>-- For this reason, and to save space, the file only contains one </i></font>
-<a name="line-124"></a>	<font color=Blue><i>-- representative of each equivalence class.</i></font>
-<a name="line-125"></a>	<font color=Green><u>where</u></font>
-<a name="line-126"></a>		swap_ij   <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font>i <font color=Cyan>&lt;</font> j<font color=Cyan>)</font>                            <font color=Green><u>then</u></font> <font color=Cyan>(</font>j<font color=Cyan>,</font>i<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Green><u>else</u></font> <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font>
-<a name="line-127"></a>		swap_kl   <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font>k <font color=Cyan>&lt;</font> l<font color=Cyan>)</font>                            <font color=Green><u>then</u></font> <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>l<font color=Cyan>,</font>k<font color=Cyan>)</font> <font color=Green><u>else</u></font> <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font>
-<a name="line-128"></a>		swap_ijkl <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font><font color=Cyan>(</font>i <font color=Cyan>&lt;</font> k<font color=Cyan>)</font> <font color=Cyan>||</font> <font color=Cyan>(</font><font color=Cyan>(</font>i <font color=Cyan>==</font> k<font color=Cyan>)</font> <font color=Cyan>&amp;&amp;</font> <font color=Cyan>(</font>j <font color=Cyan>&lt;</font> l<font color=Cyan>)</font><font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>then</u></font> <font color=Cyan>(</font>k<font color=Cyan>,</font>l<font color=Cyan>,</font>i<font color=Cyan>,</font>j<font color=Cyan>)</font> <font color=Green><u>else</u></font> <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font>
+<a name="line-120"></a>        <font color=Blue><i>--   h2(i,j,k,l) = h2(j,i,k,l)</i></font>
+<a name="line-121"></a>        <font color=Blue><i>--   h2(i,j,k,l) = h2(i,j,l,k)</i></font>
+<a name="line-122"></a>        <font color=Blue><i>--   h2(i,j,k,l) = h2(k,l,i,j)</i></font>
+<a name="line-123"></a>        <font color=Blue><i>-- For this reason, and to save space, the file only contains one </i></font>
+<a name="line-124"></a>        <font color=Blue><i>-- representative of each equivalence class.</i></font>
+<a name="line-125"></a>        <font color=Green><u>where</u></font>
+<a name="line-126"></a>                swap_ij   <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font>i <font color=Cyan>&lt;</font> j<font color=Cyan>)</font>                            <font color=Green><u>then</u></font> <font color=Cyan>(</font>j<font color=Cyan>,</font>i<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Green><u>else</u></font> <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font>
+<a name="line-127"></a>                swap_kl   <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font>k <font color=Cyan>&lt;</font> l<font color=Cyan>)</font>                            <font color=Green><u>then</u></font> <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>l<font color=Cyan>,</font>k<font color=Cyan>)</font> <font color=Green><u>else</u></font> <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font>
+<a name="line-128"></a>                swap_ijkl <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>if</u></font> <font color=Cyan>(</font><font color=Cyan>(</font>i <font color=Cyan>&lt;</font> k<font color=Cyan>)</font> <font color=Cyan>||</font> <font color=Cyan>(</font><font color=Cyan>(</font>i <font color=Cyan>==</font> k<font color=Cyan>)</font> <font color=Cyan>&amp;&amp;</font> <font color=Cyan>(</font>j <font color=Cyan>&lt;</font> l<font color=Cyan>)</font><font color=Cyan>)</font><font color=Cyan>)</font> <font color=Green><u>then</u></font> <font color=Cyan>(</font>k<font color=Cyan>,</font>l<font color=Cyan>,</font>i<font color=Cyan>,</font>j<font color=Cyan>)</font> <font color=Green><u>else</u></font> <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font>
 <a name="line-129"></a>
 <a name="line-130"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
 <a name="line-131"></a><font color=Blue><i>-- * Low-level parsing functions</i></font>
@@ -256,25 +256,25 @@
 <a name="line-249"></a><a name="print_1e"></a><font color=Blue><i>-- | Print the /h/[sub 1] data for 1-electron integrals.</i></font>
 <a name="line-250"></a><font color=Blue>print_1e</font> <font color=Red>::</font> GSEData <font color=Red>-&gt;</font> String
 <a name="line-251"></a><font color=Blue>print_1e</font> gse_data <font color=Red>=</font> unlines <font color=Cyan>$</font> <font color=Red>[</font> inner_print i j <font color=Red>|</font> i <font color=Red>&lt;-</font> list<font color=Cyan>,</font> j <font color=Red>&lt;-</font> list<font color=Red>]</font>
-<a name="line-252"></a>	<font color=Green><u>where</u></font> list <font color=Red>=</font> <font color=Red>[</font><font color=Magenta>0</font><font color=Red>..</font>m<font color=Blue><i>-</i></font><font color=Magenta>1</font><font color=Red>]</font>
-<a name="line-253"></a>	      inner_print i j <font color=Red>=</font> show <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>)</font> <font color=Cyan>++</font> <font color=Magenta>" : "</font> <font color=Cyan>++</font> show <font color=Cyan>(</font>h1 <font color=Cyan>(</font>i<font color=Cyan>,</font> j<font color=Cyan>)</font><font color=Cyan>)</font>
+<a name="line-252"></a>        <font color=Green><u>where</u></font> list <font color=Red>=</font> <font color=Red>[</font><font color=Magenta>0</font><font color=Red>..</font>m<font color=Blue><i>-</i></font><font color=Magenta>1</font><font color=Red>]</font>
+<a name="line-253"></a>              inner_print i j <font color=Red>=</font> show <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>)</font> <font color=Cyan>++</font> <font color=Magenta>" : "</font> <font color=Cyan>++</font> show <font color=Cyan>(</font>h1 <font color=Cyan>(</font>i<font color=Cyan>,</font> j<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-254"></a>              m <font color=Red>=</font> gse_data_M gse_data
 <a name="line-255"></a>              h1 <font color=Red>=</font> gse_data_h1 gse_data
 <a name="line-256"></a>
 <a name="line-257"></a><a name="print_2e"></a><font color=Blue><i>-- | Print the /h/[sub 2] data for 2-electron integrals.</i></font>
 <a name="line-258"></a><font color=Blue>print_2e</font> <font color=Red>::</font> GSEData <font color=Red>-&gt;</font> String
 <a name="line-259"></a><font color=Blue>print_2e</font> gse_data <font color=Red>=</font> unlines <font color=Cyan>$</font> <font color=Red>[</font> inner_print i j k l <font color=Red>|</font> i <font color=Red>&lt;-</font> list<font color=Cyan>,</font> j <font color=Red>&lt;-</font> list<font color=Cyan>,</font> k <font color=Red>&lt;-</font> list<font color=Cyan>,</font> l <font color=Red>&lt;-</font> list<font color=Red>]</font>
-<a name="line-260"></a>	<font color=Green><u>where</u></font> list <font color=Red>=</font> <font color=Red>[</font><font color=Magenta>0</font><font color=Red>..</font>m<font color=Blue><i>-</i></font><font color=Magenta>1</font><font color=Red>]</font>
-<a name="line-261"></a>	      inner_print i j k l <font color=Red>=</font> show <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Cyan>++</font><font color=Magenta>" : "</font> <font color=Cyan>++</font> show <font color=Cyan>(</font>h2 <font color=Cyan>(</font>i<font color=Cyan>,</font> j<font color=Cyan>,</font> k<font color=Cyan>,</font> l<font color=Cyan>)</font><font color=Cyan>)</font>
+<a name="line-260"></a>        <font color=Green><u>where</u></font> list <font color=Red>=</font> <font color=Red>[</font><font color=Magenta>0</font><font color=Red>..</font>m<font color=Blue><i>-</i></font><font color=Magenta>1</font><font color=Red>]</font>
+<a name="line-261"></a>              inner_print i j k l <font color=Red>=</font> show <font color=Cyan>(</font>i<font color=Cyan>,</font>j<font color=Cyan>,</font>k<font color=Cyan>,</font>l<font color=Cyan>)</font> <font color=Cyan>++</font><font color=Magenta>" : "</font> <font color=Cyan>++</font> show <font color=Cyan>(</font>h2 <font color=Cyan>(</font>i<font color=Cyan>,</font> j<font color=Cyan>,</font> k<font color=Cyan>,</font> l<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-262"></a>              m <font color=Red>=</font> gse_data_M gse_data
 <a name="line-263"></a>              h2 <font color=Red>=</font> gse_data_h2 gse_data
 <a name="line-264"></a>
 <a name="line-265"></a><a name="gse_data_test"></a><font color=Blue><i>-- | A main function to test the GSEData module.</i></font>
-<a name="line-266"></a><font color=Blue>gse_data_test</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> IO ()		
+<a name="line-266"></a><font color=Blue>gse_data_test</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> IO ()           
 <a name="line-267"></a><font color=Blue>gse_data_test</font> n <font color=Red>=</font> <font color=Green><u>do</u></font> 
-<a name="line-268"></a>	gse_data <font color=Red>&lt;-</font> load_gse_data n <font color=Magenta>"h_1e_ascii"</font> <font color=Magenta>"h_2e_ascii"</font>
-<a name="line-269"></a>	putStr <font color=Cyan>$</font> print_1e gse_data
-<a name="line-270"></a>	putStr <font color=Cyan>$</font> print_2e gse_data
+<a name="line-268"></a>        gse_data <font color=Red>&lt;-</font> load_gse_data n <font color=Magenta>"h_1e_ascii"</font> <font color=Magenta>"h_2e_ascii"</font>
+<a name="line-269"></a>        putStr <font color=Cyan>$</font> print_1e gse_data
+<a name="line-270"></a>        putStr <font color=Cyan>$</font> print_2e gse_data
 </pre>
 </body>
 </html>

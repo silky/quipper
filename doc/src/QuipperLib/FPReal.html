@@ -10,7 +10,7 @@
 <a name="line-3"></a><font color=Blue><i>{-# LANGUAGE FlexibleContexts #-}</i></font>
 <a name="line-4"></a><font color=Blue><i>{-# LANGUAGE UndecidableInstances #-}</i></font>
 <a name="line-5"></a><font color=Blue><i>{-# LANGUAGE TypeFamilies #-}</i></font>
-<a name="line-6"></a><font color=Blue><i>{-# LANGUAGE OverlappingInstances #-}</i></font>
+<a name="line-6"></a>
 <a name="line-7"></a><font color=Blue><i>{-# LANGUAGE IncoherentInstances #-}</i></font> 
 <a name="line-8"></a><font color=Blue><i>{-# LANGUAGE DeriveDataTypeable  #-}</i></font>
 <a name="line-9"></a>
@@ -66,14 +66,14 @@
 <a name="line-59"></a><a name="FPReal"></a><font color=Blue><i>-- to determinate 'FPReal's when required for interfacing with quantum computation.</i></font>
 <a name="line-60"></a><a name="FPReal"></a><font color=Green><u>type</u></font> FPReal     <font color=Red>=</font> FPRealX Bool
 <a name="line-61"></a>
-<a name="line-62"></a><font color=Green><u>instance</u></font> Show FPReal <font color=Green><u>where</u></font>
+<a name="line-62"></a><a name="instance%20Show%20FPReal"></a><font color=Green><u>instance</u></font> Show FPReal <font color=Green><u>where</u></font>
 <a name="line-63"></a>  show <font color=Cyan>(</font>FPRealX n x<font color=Cyan>)</font> <font color=Red>=</font> <font color=Magenta>"fprealx "</font> <font color=Cyan>++</font> show n <font color=Cyan>++</font> <font color=Magenta>" ("</font> <font color=Cyan>++</font> show x <font color=Cyan>++</font> <font color=Magenta>")"</font>
 <a name="line-64"></a>  show <font color=Cyan>(</font>FPReal_indet r id<font color=Cyan>)</font> <font color=Red>=</font> show r
 <a name="line-65"></a>
 <a name="line-66"></a><a name="FPRealQ"></a><font color=Blue><i>-- | Fixed-precision reals for quantum circuits.</i></font>
 <a name="line-67"></a><a name="FPRealQ"></a><font color=Green><u>type</u></font> FPRealQ    <font color=Red>=</font> FPRealX Qubit
 <a name="line-68"></a>
-<a name="line-69"></a><font color=Green><u>instance</u></font> Show FPRealQ <font color=Green><u>where</u></font>
+<a name="line-69"></a><a name="instance%20Show%20FPRealQ"></a><font color=Green><u>instance</u></font> Show FPRealQ <font color=Green><u>where</u></font>
 <a name="line-70"></a>  show <font color=Cyan>(</font>FPRealX n x<font color=Cyan>)</font> <font color=Red>=</font> <font color=Magenta>"fprealx "</font> <font color=Cyan>++</font> show n <font color=Cyan>++</font> <font color=Magenta>" ("</font> <font color=Cyan>++</font> show x <font color=Cyan>++</font> <font color=Magenta>")"</font>
 <a name="line-71"></a>  show <font color=Cyan>(</font>FPReal_indet <font color=Green><u>_</u></font> <font color=Green><u>_</u></font><font color=Cyan>)</font> <font color=Red>=</font> error <font color=Magenta>"FPRealX: internal error"</font>
 <a name="line-72"></a>
@@ -238,7 +238,7 @@
 <a name="line-231"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y <font color=Cyan>(</font>FPRealX z<font color=Cyan>)</font> <font color=Red>=</font> FPRealX <font color=Cyan>(</font>QCType x y z<font color=Cyan>)</font>
 <a name="line-232"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB FPReal <font color=Red>=</font> FPRealQ
 <a name="line-233"></a>
-<a name="line-234"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>FPRealX x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-234"></a><a name="instance%20QCData%20(FPRealX%20x)"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>FPRealX x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-235"></a>  qcdata_mapM shape f g xr
 <a name="line-236"></a>    <font color=Red>=</font> mmap <font color=Cyan>(</font>fprealx <font color=Cyan>(</font>fprealx_expt xr<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>fprealx_num shape<font color=Cyan>)</font> f g <font color=Cyan>(</font>fprealx_num xr<font color=Cyan>)</font>  
 <a name="line-237"></a>  qcdata_zip shape q c q' c' xr yr e
@@ -249,8 +249,8 @@
 <a name="line-242"></a>      <font color=Red>=</font> error <font color=Cyan>(</font>e <font color=Magenta>"FPRealX: exponent mismatch"</font><font color=Cyan>)</font>
 <a name="line-243"></a>  qcdata_promote <font color=Red>=</font> fpreal_promote
 <a name="line-244"></a>
-<a name="line-245"></a><font color=Blue><i>-- Labeling of FPRealX is s[hi-1], ..., s[lo], where lo is the exponent.</i></font>
-<a name="line-246"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>FPRealX x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
+<a name="line-245"></a><a name="instance%20Labelable%20(FPRealX%20x)%20String"></a><font color=Blue><i>-- Labeling of FPRealX is s[hi-1], ..., s[lo], where lo is the exponent.</i></font>
+<a name="line-246"></a><a name="instance%20Labelable%20(FPRealX%20x)%20String"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>FPRealX x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
 <a name="line-247"></a>  label_rec xr s <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-248"></a>    <font color=Green><u>let</u></font> n <font color=Red>=</font> fprealx_expt xr
 <a name="line-249"></a>        xi <font color=Red>=</font> fprealx_num xr
@@ -301,10 +301,10 @@
 <a name="line-294"></a><font color=Blue><i>-- Classical typeclass instances</i></font>
 <a name="line-295"></a><font color=Blue><i>------</i></font>
 <a name="line-296"></a>
-<a name="line-297"></a><font color=Green><u>instance</u></font> Eq x <font color=Red>=&gt;</font> Eq <font color=Cyan>(</font>FPRealX x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-297"></a><a name="instance%20Eq%20(FPRealX%20x)"></a><font color=Green><u>instance</u></font> Eq x <font color=Red>=&gt;</font> Eq <font color=Cyan>(</font>FPRealX x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-298"></a>  <font color=Cyan>(</font><font color=Cyan>==</font><font color=Cyan>)</font> <font color=Red>=</font> fprealx_equals
 <a name="line-299"></a>
-<a name="line-300"></a><font color=Green><u>instance</u></font> Num FPReal <font color=Green><u>where</u></font>
+<a name="line-300"></a><a name="instance%20Num%20FPReal"></a><font color=Green><u>instance</u></font> Num FPReal <font color=Green><u>where</u></font>
 <a name="line-301"></a>  <font color=Cyan>(</font><font color=Cyan>+</font><font color=Cyan>)</font> <font color=Red>=</font> fpreal_binop <font color=Cyan>(</font><font color=Cyan>+</font><font color=Cyan>)</font> <font color=Magenta>"+"</font>
 <a name="line-302"></a>  <font color=Cyan>(</font><font color=Cyan>*</font><font color=Cyan>)</font> <font color=Red>=</font> fpreal_binop <font color=Cyan>(</font><font color=Cyan>*</font><font color=Cyan>)</font> <font color=Magenta>"*"</font>
 <a name="line-303"></a>  <font color=Cyan>(</font><font color=Blue><i>-</i></font><font color=Cyan>)</font> <font color=Red>=</font> fpreal_binop <font color=Cyan>(</font><font color=Blue><i>-</i></font><font color=Cyan>)</font> <font color=Magenta>"-"</font>
@@ -316,21 +316,21 @@
 <a name="line-309"></a>  <font color=Blue><i>-- output 1.0 or -1.0 is not representable in this fixed-precision format.</i></font>
 <a name="line-310"></a>  fromInteger <font color=Red>=</font> fpreal_of_double <font color=Cyan>.</font> fromInteger
 <a name="line-311"></a>
-<a name="line-312"></a><font color=Green><u>instance</u></font> Ord FPReal <font color=Green><u>where</u></font>
+<a name="line-312"></a><a name="instance%20Ord%20FPReal"></a><font color=Green><u>instance</u></font> Ord FPReal <font color=Green><u>where</u></font>
 <a name="line-313"></a>  compare x y <font color=Red>=</font> compare <font color=Cyan>(</font>double_of_fpreal x<font color=Cyan>)</font> <font color=Cyan>(</font>double_of_fpreal y<font color=Cyan>)</font>
 <a name="line-314"></a><font color=Blue><i>-- TODO: is this the  right thing to do?  Perhaps we should first check they have </i></font>
 <a name="line-315"></a><font color=Blue><i>-- compatible shapes, and throw an error otherwise.</i></font>
 <a name="line-316"></a>
-<a name="line-317"></a><font color=Green><u>instance</u></font> Enum FPReal <font color=Green><u>where</u></font>
+<a name="line-317"></a><a name="instance%20Enum%20FPReal"></a><font color=Green><u>instance</u></font> Enum FPReal <font color=Green><u>where</u></font>
 <a name="line-318"></a>  succ <font color=Red>=</font> fpreal_unop succ
 <a name="line-319"></a>  pred <font color=Red>=</font> fpreal_unop pred
 <a name="line-320"></a>  toEnum <font color=Red>=</font> fromIntegral
 <a name="line-321"></a>  fromEnum <font color=Red>=</font> fromEnum <font color=Cyan>.</font> double_of_fpreal
 <a name="line-322"></a>
-<a name="line-323"></a><font color=Green><u>instance</u></font> Real FPReal <font color=Green><u>where</u></font>
+<a name="line-323"></a><a name="instance%20Real%20FPReal"></a><font color=Green><u>instance</u></font> Real FPReal <font color=Green><u>where</u></font>
 <a name="line-324"></a>  toRational <font color=Red>=</font> toRational <font color=Cyan>.</font> double_of_fpreal
 <a name="line-325"></a>
-<a name="line-326"></a><font color=Green><u>instance</u></font> Fractional FPReal <font color=Green><u>where</u></font>
+<a name="line-326"></a><a name="instance%20Fractional%20FPReal"></a><font color=Green><u>instance</u></font> Fractional FPReal <font color=Green><u>where</u></font>
 <a name="line-327"></a>  fromRational <font color=Red>=</font> fpreal_of_double <font color=Cyan>.</font> fromRational
 <a name="line-328"></a>  recip <font color=Red>=</font> fpreal_unop recip
 <a name="line-329"></a>
@@ -343,7 +343,7 @@
 <a name="line-336"></a>  Nothing -&gt; FPRealX n $ fromIntegral (round $ r * (2^n))
 <a name="line-337"></a>-}</i></font>
 <a name="line-338"></a>
-<a name="line-339"></a><font color=Green><u>instance</u></font> Floating FPReal <font color=Green><u>where</u></font>
+<a name="line-339"></a><a name="instance%20Floating%20FPReal"></a><font color=Green><u>instance</u></font> Floating FPReal <font color=Green><u>where</u></font>
 <a name="line-340"></a>  pi <font color=Red>=</font> fpreal_of_double pi
 <a name="line-341"></a>  log <font color=Red>=</font> fpreal_unop log
 <a name="line-342"></a>  exp <font color=Red>=</font> fpreal_unop exp 
@@ -358,7 +358,7 @@
 <a name="line-351"></a>  acosh <font color=Red>=</font> fpreal_unop acosh 
 <a name="line-352"></a>  atanh <font color=Red>=</font> fpreal_unop atanh 
 <a name="line-353"></a>  
-<a name="line-354"></a><font color=Green><u>instance</u></font> RealFrac FPReal <font color=Green><u>where</u></font>
+<a name="line-354"></a><a name="instance%20RealFrac%20FPReal"></a><font color=Green><u>instance</u></font> RealFrac FPReal <font color=Green><u>where</u></font>
 <a name="line-355"></a>  properFraction x <font color=Red>=</font>
 <a name="line-356"></a>    <font color=Green><u>let</u></font> <font color=Cyan>(</font>x_int<font color=Cyan>,</font> x_frac_double<font color=Cyan>)</font> <font color=Red>=</font> properFraction <font color=Cyan>$</font> double_of_fpreal x <font color=Green><u>in</u></font>
 <a name="line-357"></a>      <font color=Cyan>(</font>x_int<font color=Cyan>,</font> fpreal_promote <font color=Cyan>(</font>fpreal_of_double x_frac_double<font color=Cyan>)</font> x <font color=Cyan>(</font>const <font color=Magenta>"FPReal: internal error (properFraction)"</font><font color=Cyan>)</font><font color=Cyan>)</font> 
@@ -467,7 +467,7 @@
 <a name="line-460"></a><font color=Blue><i>-- Quantum typeclass instances</i></font>
 <a name="line-461"></a><font color=Blue><i>------ </i></font>
 <a name="line-462"></a>
-<a name="line-463"></a><font color=Green><u>instance</u></font> QNum FPRealQ <font color=Green><u>where</u></font>
+<a name="line-463"></a><a name="instance%20QNum%20FPRealQ"></a><font color=Green><u>instance</u></font> QNum FPRealQ <font color=Green><u>where</u></font>
 <a name="line-464"></a>  q_add x y <font color=Red>=</font>
 <a name="line-465"></a>    <font color=Green><u>let</u></font> ex <font color=Red>=</font> fprealx_expt x
 <a name="line-466"></a>        ey <font color=Red>=</font> fprealx_expt y
@@ -513,7 +513,7 @@
 <a name="line-506"></a>    <font color=Cyan>(</font>x<font color=Cyan>,</font>x'<font color=Cyan>)</font> <font color=Red>&lt;-</font> qc_copy_fun x
 <a name="line-507"></a>    return <font color=Cyan>(</font>x<font color=Cyan>,</font><font color=Cyan>(</font>fprealx <font color=Magenta>0</font> x'<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-508"></a>
-<a name="line-509"></a><font color=Green><u>instance</u></font> QOrd FPRealQ <font color=Green><u>where</u></font>
+<a name="line-509"></a><a name="instance%20QOrd%20FPRealQ"></a><font color=Green><u>instance</u></font> QOrd FPRealQ <font color=Green><u>where</u></font>
 <a name="line-510"></a>  q_less x y <font color=Red>=</font> 
 <a name="line-511"></a>    <font color=Green><u>let</u></font> ex <font color=Red>=</font> fprealx_expt x
 <a name="line-512"></a>        ey <font color=Red>=</font> fprealx_expt y

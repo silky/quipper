@@ -81,7 +81,7 @@
 <a name="line-74"></a><font color=Blue>sint_length</font> <font color=Red>::</font> SignedInt x <font color=Red>-&gt;</font> Int
 <a name="line-75"></a><font color=Blue>sint_length</font> <font color=Cyan>(</font>SInt digits sign<font color=Cyan>)</font> <font color=Red>=</font> length digits
 <a name="line-76"></a>
-<a name="line-77"></a><font color=Green><u>instance</u></font> Enum FSignedInt <font color=Green><u>where</u></font>
+<a name="line-77"></a><a name="instance%20Enum%20FSignedInt"></a><font color=Green><u>instance</u></font> Enum FSignedInt <font color=Green><u>where</u></font>
 <a name="line-78"></a>  succ x <font color=Red>=</font> fsint_of_integer m <font color=Cyan>.</font> succ <font color=Cyan>.</font> integer_of_fsint <font color=Cyan>$</font> x
 <a name="line-79"></a>    <font color=Green><u>where</u></font> m <font color=Red>=</font> sint_length x
 <a name="line-80"></a>  pred x <font color=Red>=</font> fsint_of_integer m <font color=Cyan>.</font> pred <font color=Cyan>.</font> integer_of_fsint <font color=Cyan>$</font> x
@@ -95,7 +95,7 @@
 <a name="line-88"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y <font color=Cyan>(</font>SignedInt z<font color=Cyan>)</font> <font color=Red>=</font> SignedInt <font color=Cyan>(</font>QCType x y z<font color=Cyan>)</font>
 <a name="line-89"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB FSignedInt <font color=Red>=</font> QSignedInt
 <a name="line-90"></a>
-<a name="line-91"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>SignedInt x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-91"></a><a name="instance%20QCData%20(SignedInt%20x)"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>SignedInt x<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-92"></a>  qcdata_mapM <font color=Cyan>(</font>shape <font color=Red>::</font> SignedInt x<font color=Cyan>)</font> f g <font color=Cyan>(</font>SInt digits sign<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-93"></a>    digits' <font color=Red>&lt;-</font> qcdata_mapM <font color=Red>[</font>dummy <font color=Red>::</font> x<font color=Red>]</font> f g digits
 <a name="line-94"></a>    sign' <font color=Red>&lt;-</font> qcdata_mapM <font color=Cyan>(</font>dummy <font color=Red>::</font> x<font color=Cyan>)</font> f g sign
@@ -117,8 +117,8 @@
 <a name="line-110"></a>      digits'' <font color=Red>=</font> qcdata_promote digits digits' e
 <a name="line-111"></a>      sign'' <font color=Red>=</font> sign
 <a name="line-112"></a>
-<a name="line-113"></a><font color=Blue><i>-- Labeling of QSignedInt is s.sign, s[m-1], ..., s[0]</i></font>
-<a name="line-114"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>SignedInt x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
+<a name="line-113"></a><a name="instance%20Labelable%20(SignedInt%20x)%20String"></a><font color=Blue><i>-- Labeling of QSignedInt is s.sign, s[m-1], ..., s[0]</i></font>
+<a name="line-114"></a><a name="instance%20Labelable%20(SignedInt%20x)%20String"></a><font color=Green><u>instance</u></font> QCLeaf x <font color=Red>=&gt;</font> Labelable <font color=Cyan>(</font>SignedInt x<font color=Cyan>)</font> String <font color=Green><u>where</u></font>
 <a name="line-115"></a>  label_rec <font color=Cyan>(</font>SInt digits sign<font color=Cyan>)</font> s <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-116"></a>    label_rec <font color=Cyan>(</font>reverse digits<font color=Cyan>)</font> s
 <a name="line-117"></a>    label_rec sign s <font color=Cyan>`dotted_indexed`</font> <font color=Magenta>"sign"</font>
@@ -165,26 +165,26 @@
 <a name="line-158"></a>
 <a name="line-159"></a>
 <a name="line-160"></a>
-<a name="line-161"></a><font color=Blue><i>-- Ordering on QSignedInt. If two operands are to be compared, it is</i></font>
-<a name="line-162"></a><font color=Blue><i>-- not necessarily assumed that they are of the same length, and this</i></font>
-<a name="line-163"></a><font color=Blue><i>-- feature is actually exploited by the QOrd QDouble instance.</i></font>
-<a name="line-164"></a><font color=Blue><i>-- However, note that the default implementations of 'max' and 'min'</i></font>
-<a name="line-165"></a><font color=Blue><i>-- do assume equal length.</i></font>
-<a name="line-166"></a><font color=Green><u>instance</u></font> QOrd QSignedInt <font color=Green><u>where</u></font>
+<a name="line-161"></a><a name="instance%20QOrd%20QSignedInt"></a><font color=Blue><i>-- Ordering on QSignedInt. If two operands are to be compared, it is</i></font>
+<a name="line-162"></a><a name="instance%20QOrd%20QSignedInt"></a><font color=Blue><i>-- not necessarily assumed that they are of the same length, and this</i></font>
+<a name="line-163"></a><a name="instance%20QOrd%20QSignedInt"></a><font color=Blue><i>-- feature is actually exploited by the QOrd QDouble instance.</i></font>
+<a name="line-164"></a><a name="instance%20QOrd%20QSignedInt"></a><font color=Blue><i>-- However, note that the default implementations of 'max' and 'min'</i></font>
+<a name="line-165"></a><a name="instance%20QOrd%20QSignedInt"></a><font color=Blue><i>-- do assume equal length.</i></font>
+<a name="line-166"></a><a name="instance%20QOrd%20QSignedInt"></a><font color=Green><u>instance</u></font> QOrd QSignedInt <font color=Green><u>where</u></font>
 <a name="line-167"></a>    q_less <font color=Cyan>(</font>SInt x' b<font color=Cyan>)</font> <font color=Cyan>(</font>SInt y' c<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font> 
 <a name="line-168"></a>       <font color=Cyan>(</font>x<font color=Cyan>,</font>y<font color=Cyan>)</font> <font color=Red>&lt;-</font> left_pad_qulist x' y'
 <a name="line-169"></a>       unpack template_be_signed_boollist_less <font color=Cyan>(</font>b<font color=Cyan>,</font> x<font color=Cyan>)</font> <font color=Cyan>(</font>c<font color=Cyan>,</font> y<font color=Cyan>)</font>
 <a name="line-170"></a>
 <a name="line-171"></a>
-<a name="line-172"></a><font color=Green><u>instance</u></font> Eq FSignedInt <font color=Green><u>where</u></font>
+<a name="line-172"></a><a name="instance%20Eq%20FSignedInt"></a><font color=Green><u>instance</u></font> Eq FSignedInt <font color=Green><u>where</u></font>
 <a name="line-173"></a>  x <font color=Cyan>==</font> y <font color=Red>=</font> <font color=Cyan>(</font>integer_of_fsint x<font color=Cyan>)</font> <font color=Cyan>==</font> <font color=Cyan>(</font>integer_of_fsint y<font color=Cyan>)</font>
 <a name="line-174"></a>                                          
 <a name="line-175"></a>                                          
-<a name="line-176"></a><font color=Green><u>instance</u></font> Ord FSignedInt <font color=Green><u>where</u></font>
+<a name="line-176"></a><a name="instance%20Ord%20FSignedInt"></a><font color=Green><u>instance</u></font> Ord FSignedInt <font color=Green><u>where</u></font>
 <a name="line-177"></a>  compare x y <font color=Red>=</font> compare <font color=Cyan>(</font>integer_of_fsint x<font color=Cyan>)</font> <font color=Cyan>(</font>integer_of_fsint y<font color=Cyan>)</font>
 <a name="line-178"></a>
 <a name="line-179"></a>
-<a name="line-180"></a><font color=Green><u>instance</u></font> Num FSignedInt <font color=Green><u>where</u></font>
+<a name="line-180"></a><a name="instance%20Num%20FSignedInt"></a><font color=Green><u>instance</u></font> Num FSignedInt <font color=Green><u>where</u></font>
 <a name="line-181"></a>  x <font color=Cyan>+</font> y <font color=Red>=</font> fsint_of_integer m <font color=Cyan>$</font> <font color=Cyan>(</font>integer_of_fsint x<font color=Cyan>)</font> <font color=Cyan>+</font> <font color=Cyan>(</font>integer_of_fsint y<font color=Cyan>)</font>
 <a name="line-182"></a>    <font color=Green><u>where</u></font>
 <a name="line-183"></a>      m <font color=Red>=</font> max <font color=Cyan>(</font>sint_length x<font color=Cyan>)</font> <font color=Cyan>(</font>sint_length y<font color=Cyan>)</font>
@@ -203,17 +203,17 @@
 <a name="line-196"></a>      m <font color=Red>=</font> sint_length x
 <a name="line-197"></a>
 <a name="line-198"></a>
-<a name="line-199"></a><font color=Green><u>instance</u></font> Real FSignedInt <font color=Green><u>where</u></font>
+<a name="line-199"></a><a name="instance%20Real%20FSignedInt"></a><font color=Green><u>instance</u></font> Real FSignedInt <font color=Green><u>where</u></font>
 <a name="line-200"></a>  toRational <font color=Red>=</font> toRational <font color=Cyan>.</font> integer_of_fsint
 <a name="line-201"></a>
-<a name="line-202"></a><font color=Green><u>instance</u></font> Integral FSignedInt <font color=Green><u>where</u></font>
+<a name="line-202"></a><a name="instance%20Integral%20FSignedInt"></a><font color=Green><u>instance</u></font> Integral FSignedInt <font color=Green><u>where</u></font>
 <a name="line-203"></a>  quotRem x y <font color=Red>=</font> <font color=Cyan>(</font>fsint_of_integer m q<font color=Cyan>,</font> fsint_of_integer m r<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-204"></a>    m <font color=Red>=</font> max <font color=Cyan>(</font>sint_length x<font color=Cyan>)</font> <font color=Cyan>(</font>sint_length y<font color=Cyan>)</font>
 <a name="line-205"></a>    <font color=Cyan>(</font>q<font color=Cyan>,</font>r<font color=Cyan>)</font> <font color=Red>=</font> quotRem <font color=Cyan>(</font>integer_of_fsint x<font color=Cyan>)</font> <font color=Cyan>(</font>integer_of_fsint y<font color=Cyan>)</font>
 <a name="line-206"></a>  toInteger <font color=Red>=</font> integer_of_fsint
 <a name="line-207"></a>
 <a name="line-208"></a>
-<a name="line-209"></a><font color=Green><u>instance</u></font> QNum QSignedInt <font color=Green><u>where</u></font>
+<a name="line-209"></a><a name="instance%20QNum%20QSignedInt"></a><font color=Green><u>instance</u></font> QNum QSignedInt <font color=Green><u>where</u></font>
 <a name="line-210"></a>  q_add <font color=Cyan>(</font>SInt x' b<font color=Cyan>)</font> <font color=Cyan>(</font>SInt y' c<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-211"></a>      <font color=Cyan>(</font>x<font color=Cyan>,</font>y<font color=Cyan>)</font> <font color=Red>&lt;-</font> left_pad_qulist x' y'
 <a name="line-212"></a>      <font color=Cyan>(</font>d<font color=Cyan>,</font>z<font color=Cyan>)</font> <font color=Red>&lt;-</font> unpack template_be_signed_boollist_add <font color=Cyan>(</font>b<font color=Cyan>,</font>x<font color=Cyan>)</font> <font color=Cyan>(</font>c<font color=Cyan>,</font>y<font color=Cyan>)</font>

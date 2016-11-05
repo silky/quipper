@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -18,6 +18,9 @@ import qualified Data.IntSet as IS
 import qualified Data.IntMap.Strict as IM {- containers-0.5.2.1 -}
 
 import qualified Control.DeepSeq as Seq
+
+import Control.Applicative (Applicative(..))
+import Control.Monad (liftM, ap)
 
 import qualified Libraries.Auxiliary as Q
 
@@ -306,6 +309,13 @@ instance Monad EvalCirc where
   (>>=) (EvalCirc c) f = EvalCirc (\s -> let (s',x) = c s in
                                  let (EvalCirc c') = f x in
                                  c' s')
+
+instance Applicative EvalCirc where
+  pure = return
+  (<*>) = ap
+
+instance Functor EvalCirc where
+  fmap = liftM
 
 -- ----------------------------------------------------------------------
 -- ** Low-level access functions
@@ -606,11 +616,6 @@ stepEvalCirc = do
               case all_ws_neg of
                 [] -> do
                    
-                   case g of
-                     NoOp -> error "stepEvalCirc cannot deal with NoOp"
-
-                     Init _ _ -> error "this is not supposed to arrive: a cnot became an init" -- setExpMap m_after
-                     Cnot w ctls -> do
                        -- There is no "simple" copy-cat...
                        -- Let's try to find a hidden one.
                        

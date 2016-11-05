@@ -324,7 +324,7 @@
 <a name="line-317"></a>  <font color=Blue><i>-----------------------------------------------------------------</i></font>
 <a name="line-318"></a>  <font color=Blue><i>-- Collapse the space onto one such cube to create a 'TwoPoint'.</i></font>
 <a name="line-319"></a>  <font color=Blue><i>----------------------------------------------------------------- </i></font>
-<a name="line-320"></a>  r_measured <font color=Red>&lt;-</font> measure r 	
+<a name="line-320"></a>  r_measured <font color=Red>&lt;-</font> measure r       
 <a name="line-321"></a>  cdiscard r_measured
 <a name="line-322"></a>
 <a name="line-323"></a>  comment <font color=Magenta>"EXIT: algorithm_R"</font>
@@ -333,7 +333,7 @@
 <a name="line-326"></a>
 <a name="line-327"></a><font color=Blue><i>-- ==============================================================</i></font>
 <a name="line-328"></a><font color=Blue><i>-- * Algorithm 4: \"TPP\"</i></font>
-<a name="line-329"></a>	
+<a name="line-329"></a>        
 <a name="line-330"></a><a name="tPP"></a><font color=Blue><i>-- | Perform Regev's reduction of the /TPP/ to the /DCP/ and then</i></font>
 <a name="line-331"></a><font color=Blue><i>-- call 'dCP'. The arguments are: </i></font>
 <a name="line-332"></a><font color=Blue><i>-- </i></font>
@@ -426,7 +426,7 @@
 <a name="line-419"></a>    combined_states <font color=Red>&lt;-</font> mapM <font color=Cyan>(</font><font color=Red>\</font><font color=Cyan>(</font><font color=Cyan>(</font>q<font color=Cyan>,</font>k<font color=Cyan>)</font><font color=Cyan>,</font><font color=Cyan>(</font>q'<font color=Cyan>,</font>l<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Red>-&gt;</font> <font color=Green><u>do</u></font> 
 <a name="line-420"></a>      comment <font color=Magenta>"ENTER: Combining"</font>
 <a name="line-421"></a>      q <font color=Red>&lt;-</font> qnot q <font color=Cyan>`controlled`</font> q'
-<a name="line-422"></a>      q <font color=Red>&lt;-</font> measure q	
+<a name="line-422"></a>      q <font color=Red>&lt;-</font> measure q    
 <a name="line-423"></a>      sign <font color=Red>&lt;-</font> dynamic_lift q
 <a name="line-424"></a>      comment <font color=Magenta>"EXIT: Combining"</font>
 <a name="line-425"></a>      return <font color=Cyan>(</font>sign<font color=Cyan>,</font> <font color=Cyan>(</font>q'<font color=Cyan>,</font> <font color=Cyan>(</font>k<font color=Blue><i>-</i></font>l<font color=Cyan>)</font><font color=Cyan>)</font><font color=Cyan>)</font><font color=Cyan>)</font> pairs

@@ -1,4 +1,4 @@
-This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 file COPYRIGHT for a list of authors, copyright holders, licensing,
 and other details. All rights reserved.
 
@@ -255,24 +255,6 @@ cabal install newsynth --reinstall
 If you go (with the command cd) to the directory where you unzipped
 Quipper, you can run the command "make" and it should produce an
 executable file in each Algorithm subdirectory.
-
-Special note for GHC 7.4.2:
-===========================
-
-The combination of GHC 7.4.2 and Template Haskell 2.8.0.0 is not
-possible, because it triggers a GHC bug. If you get a compilation
-error of the form: "ghc: panic! (the 'impossible' happened)", follow
-these steps:
-
-# Remove Template Haskell 2.8.0.0:
-
-ghc-pkg unregister --force template-haskell-2.8.0.0
-
-# Reinstall QuickCheck (because of a broken dependency). This will
-# also install template-haskell-2.7.0.0:
-
-cabal install QuickCheck
-
 
 IV. Auxiliary files
     ===============

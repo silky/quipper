@@ -112,103 +112,111 @@
 <a name="line-105"></a><font color=Blue>template_local_pi</font> <font color=Red>::</font> Circ QDouble
 <a name="line-106"></a><font color=Blue>template_local_pi</font> <font color=Red>=</font> qinit <font color=Cyan>(</font>fdouble pi<font color=Cyan>)</font>
 <a name="line-107"></a>
-<a name="line-108"></a>
-<a name="line-109"></a>
-<a name="line-110"></a><font color=Blue><i>-- * Relation between 'QDouble' and 'QSignedInt'.</i></font>
-<a name="line-111"></a>
-<a name="line-112"></a><a name="template_floor"></a><font color=Blue><i>-- | Template version of 'floor'.</i></font>
-<a name="line-113"></a><font color=Blue>template_floor</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>QDouble <font color=Red>-&gt;</font> Circ QSignedInt<font color=Cyan>)</font>
-<a name="line-114"></a><font color=Blue>template_floor</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font><font color=Cyan>(</font>XDouble k <font color=Cyan>(</font>SInt x b<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Red>-&gt;</font> 
-<a name="line-115"></a>      return <font color=Cyan>$</font> SInt <font color=Cyan>(</font>reverse <font color=Cyan>.</font> drop k <font color=Cyan>.</font> reverse <font color=Cyan>$</font> x<font color=Cyan>)</font> b
-<a name="line-116"></a>
-<a name="line-117"></a><a name="template_ceiling"></a><font color=Blue><i>-- | Template version of 'ceil'.</i></font>
-<a name="line-118"></a><font color=Blue>template_ceiling</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>QDouble <font color=Red>-&gt;</font> Circ QSignedInt<font color=Cyan>)</font>
-<a name="line-119"></a><font color=Blue>template_ceiling</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> q_ceiling x
-<a name="line-120"></a>
-<a name="line-121"></a><a name="template_fromIntegral"></a><font color=Blue><i>-- | Template version of 'fromIntegral'.</i></font>
-<a name="line-122"></a><font color=Blue>template_fromIntegral</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>QSignedInt <font color=Red>-&gt;</font> Circ QDouble<font color=Cyan>)</font>
-<a name="line-123"></a><font color=Blue>template_fromIntegral</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> q_fromIntegral x
+<a name="line-108"></a><a name="id_fdouble"></a><font color=Blue><i>-- | The identity function of type 'FDouble'. This is used to help the</i></font>
+<a name="line-109"></a><font color=Blue><i>-- type checker work around a problem in GHC 8.0, where types of</i></font>
+<a name="line-110"></a><font color=Blue><i>-- overloaded operations sometimes require disambiguation.</i></font>
+<a name="line-111"></a><font color=Blue>id_fdouble</font> <font color=Red>::</font> FDouble <font color=Red>-&gt;</font> FDouble
+<a name="line-112"></a><font color=Blue>id_fdouble</font> x <font color=Red>=</font> x
+<a name="line-113"></a>
+<a name="line-114"></a><a name="template_id_fdouble"></a><font color=Blue><i>-- | Template version of 'id_fdouble'.</i></font>
+<a name="line-115"></a><font color=Blue>template_id_fdouble</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>QDouble <font color=Red>-&gt;</font> Circ QDouble<font color=Cyan>)</font>
+<a name="line-116"></a><font color=Blue>template_id_fdouble</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> return x
+<a name="line-117"></a>
+<a name="line-118"></a><font color=Blue><i>-- * Relation between 'QDouble' and 'QSignedInt'.</i></font>
+<a name="line-119"></a>
+<a name="line-120"></a><a name="template_floor"></a><font color=Blue><i>-- | Template version of 'floor'.</i></font>
+<a name="line-121"></a><font color=Blue>template_floor</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>QDouble <font color=Red>-&gt;</font> Circ QSignedInt<font color=Cyan>)</font>
+<a name="line-122"></a><font color=Blue>template_floor</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font><font color=Cyan>(</font>XDouble k <font color=Cyan>(</font>SInt x b<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Red>-&gt;</font> 
+<a name="line-123"></a>      return <font color=Cyan>$</font> SInt <font color=Cyan>(</font>reverse <font color=Cyan>.</font> drop k <font color=Cyan>.</font> reverse <font color=Cyan>$</font> x<font color=Cyan>)</font> b
 <a name="line-124"></a>
-<a name="line-125"></a>
-<a name="line-126"></a>
-<a name="line-127"></a><font color=Blue><i>-- * Dealing with parameters.</i></font>
+<a name="line-125"></a><a name="template_ceiling"></a><font color=Blue><i>-- | Template version of 'ceil'.</i></font>
+<a name="line-126"></a><font color=Blue>template_ceiling</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>QDouble <font color=Red>-&gt;</font> Circ QSignedInt<font color=Cyan>)</font>
+<a name="line-127"></a><font color=Blue>template_ceiling</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> q_ceiling x
 <a name="line-128"></a>
-<a name="line-129"></a>
-<a name="line-130"></a><a name="template_rational"></a><font color=Blue><i>-- | Lift a real number to 'QDouble'.</i></font>
-<a name="line-131"></a><font color=Blue>template_rational</font> <font color=Red>::</font> Double <font color=Red>-&gt;</font> Circ QDouble
-<a name="line-132"></a><font color=Blue>template_rational</font> x <font color=Red>=</font> qinit <font color=Cyan>$</font> fdouble x
+<a name="line-129"></a><a name="template_fromIntegral"></a><font color=Blue><i>-- | Template version of 'fromIntegral'.</i></font>
+<a name="line-130"></a><font color=Blue>template_fromIntegral</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>QSignedInt <font color=Red>-&gt;</font> Circ QDouble<font color=Cyan>)</font>
+<a name="line-131"></a><font color=Blue>template_fromIntegral</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> q_fromIntegral x
+<a name="line-132"></a>
 <a name="line-133"></a>
-<a name="line-134"></a><a name="template_integer"></a><font color=Blue><i>-- | Lift an integer to 'QSignedInt'.</i></font>
-<a name="line-135"></a><font color=Blue>template_integer</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Circ QSignedInt
-<a name="line-136"></a><font color=Blue>template_integer</font> x <font color=Red>=</font> qinit <font color=Cyan>$</font> fromIntegral x
+<a name="line-134"></a>
+<a name="line-135"></a><font color=Blue><i>-- * Dealing with parameters.</i></font>
+<a name="line-136"></a>
 <a name="line-137"></a>
-<a name="line-138"></a>
-<a name="line-139"></a><a name="getIntFromParam"></a><font color=Blue><i>-- | Make a parameter 'Int' as a regular 'Int' that can be lifted.</i></font>
-<a name="line-140"></a><font color=Blue>getIntFromParam</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Int
-<a name="line-141"></a><font color=Blue>getIntFromParam</font> x <font color=Red>=</font> fromIntegral x
-<a name="line-142"></a>
-<a name="line-143"></a><a name="template_getIntFromParam"></a><font color=Blue><i>-- | Template version of 'getIntFromParam'.</i></font>
-<a name="line-144"></a><font color=Blue>template_getIntFromParam</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ QSignedInt<font color=Cyan>)</font>
-<a name="line-145"></a><font color=Blue>template_getIntFromParam</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> qinit <font color=Cyan>$</font> fromIntegral x
+<a name="line-138"></a><a name="template_rational"></a><font color=Blue><i>-- | Lift a real number to 'QDouble'.</i></font>
+<a name="line-139"></a><font color=Blue>template_rational</font> <font color=Red>::</font> Double <font color=Red>-&gt;</font> Circ QDouble
+<a name="line-140"></a><font color=Blue>template_rational</font> x <font color=Red>=</font> qinit <font color=Cyan>$</font> fdouble x
+<a name="line-141"></a>
+<a name="line-142"></a><a name="template_integer"></a><font color=Blue><i>-- | Lift an integer to 'QSignedInt'.</i></font>
+<a name="line-143"></a><font color=Blue>template_integer</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Circ QSignedInt
+<a name="line-144"></a><font color=Blue>template_integer</font> x <font color=Red>=</font> qinit <font color=Cyan>$</font> fromIntegral x
+<a name="line-145"></a>
 <a name="line-146"></a>
-<a name="line-147"></a><a name="paramZero"></a><font color=Blue><i>-- | Parameter integer of value '0'.</i></font>
-<a name="line-148"></a><font color=Blue>paramZero</font> <font color=Red>::</font> Int
-<a name="line-149"></a><font color=Blue>paramZero</font> <font color=Red>=</font> <font color=Magenta>0</font>
+<a name="line-147"></a><a name="getIntFromParam"></a><font color=Blue><i>-- | Make a parameter 'Int' as a regular 'Int' that can be lifted.</i></font>
+<a name="line-148"></a><font color=Blue>getIntFromParam</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Int
+<a name="line-149"></a><font color=Blue>getIntFromParam</font> x <font color=Red>=</font> fromIntegral x
 <a name="line-150"></a>
-<a name="line-151"></a><a name="template_paramZero"></a><font color=Blue><i>-- | Template version of 'paramZero'.</i></font>
-<a name="line-152"></a><font color=Blue>template_paramZero</font> <font color=Red>::</font> Circ Int
-<a name="line-153"></a><font color=Blue>template_paramZero</font> <font color=Red>=</font> return <font color=Magenta>0</font>
+<a name="line-151"></a><a name="template_getIntFromParam"></a><font color=Blue><i>-- | Template version of 'getIntFromParam'.</i></font>
+<a name="line-152"></a><font color=Blue>template_getIntFromParam</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ QSignedInt<font color=Cyan>)</font>
+<a name="line-153"></a><font color=Blue>template_getIntFromParam</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> qinit <font color=Cyan>$</font> fromIntegral x
 <a name="line-154"></a>
-<a name="line-155"></a><a name="paramTen"></a><font color=Blue><i>-- | Parameter integer of value '10'.</i></font>
-<a name="line-156"></a><font color=Blue>paramTen</font> <font color=Red>::</font> Int
-<a name="line-157"></a><font color=Blue>paramTen</font> <font color=Red>=</font> <font color=Magenta>10</font>
+<a name="line-155"></a><a name="paramZero"></a><font color=Blue><i>-- | Parameter integer of value '0'.</i></font>
+<a name="line-156"></a><font color=Blue>paramZero</font> <font color=Red>::</font> Int
+<a name="line-157"></a><font color=Blue>paramZero</font> <font color=Red>=</font> <font color=Magenta>0</font>
 <a name="line-158"></a>
-<a name="line-159"></a><a name="template_paramTen"></a><font color=Blue><i>-- | Template version of 'paramTen'.</i></font>
-<a name="line-160"></a><font color=Blue>template_paramTen</font> <font color=Red>::</font> Circ Int
-<a name="line-161"></a><font color=Blue>template_paramTen</font> <font color=Red>=</font> return paramTen
+<a name="line-159"></a><a name="template_paramZero"></a><font color=Blue><i>-- | Template version of 'paramZero'.</i></font>
+<a name="line-160"></a><font color=Blue>template_paramZero</font> <font color=Red>::</font> Circ Int
+<a name="line-161"></a><font color=Blue>template_paramZero</font> <font color=Red>=</font> return <font color=Magenta>0</font>
 <a name="line-162"></a>
-<a name="line-163"></a><a name="paramSucc"></a><font color=Blue><i>-- | Successor function acting on parameter 'Int'.</i></font>
-<a name="line-164"></a><font color=Blue>paramSucc</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Int
-<a name="line-165"></a><font color=Blue>paramSucc</font> x <font color=Red>=</font> x<font color=Cyan>+</font><font color=Magenta>1</font>
+<a name="line-163"></a><a name="paramTen"></a><font color=Blue><i>-- | Parameter integer of value '10'.</i></font>
+<a name="line-164"></a><font color=Blue>paramTen</font> <font color=Red>::</font> Int
+<a name="line-165"></a><font color=Blue>paramTen</font> <font color=Red>=</font> <font color=Magenta>10</font>
 <a name="line-166"></a>
-<a name="line-167"></a><a name="template_paramSucc"></a><font color=Blue><i>-- | Template version of 'paramSucc'.</i></font>
-<a name="line-168"></a><font color=Blue>template_paramSucc</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ Int<font color=Cyan>)</font>
-<a name="line-169"></a><font color=Blue>template_paramSucc</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> return <font color=Cyan>(</font>x<font color=Cyan>+</font><font color=Magenta>1</font><font color=Cyan>)</font>
+<a name="line-167"></a><a name="template_paramTen"></a><font color=Blue><i>-- | Template version of 'paramTen'.</i></font>
+<a name="line-168"></a><font color=Blue>template_paramTen</font> <font color=Red>::</font> Circ Int
+<a name="line-169"></a><font color=Blue>template_paramTen</font> <font color=Red>=</font> return paramTen
 <a name="line-170"></a>
-<a name="line-171"></a><a name="paramPred"></a><font color=Blue><i>-- | Predecessor function acting on parameter 'Int'.</i></font>
-<a name="line-172"></a><font color=Blue>paramPred</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Int
-<a name="line-173"></a><font color=Blue>paramPred</font> x <font color=Red>=</font> x <font color=Blue><i>-</i></font> <font color=Magenta>1</font>
+<a name="line-171"></a><a name="paramSucc"></a><font color=Blue><i>-- | Successor function acting on parameter 'Int'.</i></font>
+<a name="line-172"></a><font color=Blue>paramSucc</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Int
+<a name="line-173"></a><font color=Blue>paramSucc</font> x <font color=Red>=</font> x<font color=Cyan>+</font><font color=Magenta>1</font>
 <a name="line-174"></a>
-<a name="line-175"></a><a name="template_paramPred"></a><font color=Blue><i>-- | Template version of 'paramPred'.</i></font>
-<a name="line-176"></a><font color=Blue>template_paramPred</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ Int<font color=Cyan>)</font>
-<a name="line-177"></a><font color=Blue>template_paramPred</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> return <font color=Cyan>(</font>x<font color=Blue><i>-</i></font><font color=Magenta>1</font><font color=Cyan>)</font>
+<a name="line-175"></a><a name="template_paramSucc"></a><font color=Blue><i>-- | Template version of 'paramSucc'.</i></font>
+<a name="line-176"></a><font color=Blue>template_paramSucc</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ Int<font color=Cyan>)</font>
+<a name="line-177"></a><font color=Blue>template_paramSucc</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> return <font color=Cyan>(</font>x<font color=Cyan>+</font><font color=Magenta>1</font><font color=Cyan>)</font>
 <a name="line-178"></a>
-<a name="line-179"></a>
-<a name="line-180"></a>
-<a name="line-181"></a><a name="paramMinus"></a><font color=Blue><i>-- | Subtraction of parameter integers.</i></font>
-<a name="line-182"></a><font color=Blue>paramMinus</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Int <font color=Red>-&gt;</font> Int
-<a name="line-183"></a><font color=Blue>paramMinus</font> x y <font color=Red>=</font> x <font color=Blue><i>-</i></font> y
-<a name="line-184"></a>
-<a name="line-185"></a><a name="template_paramMinus"></a><font color=Blue><i>-- | Template version of 'paramMinus'.</i></font>
-<a name="line-186"></a><font color=Blue>template_paramMinus</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ Int<font color=Cyan>)</font><font color=Cyan>)</font>
-<a name="line-187"></a><font color=Blue>template_paramMinus</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> return <font color=Cyan>$</font> <font color=Red>\</font>y <font color=Red>-&gt;</font> return <font color=Cyan>(</font>x<font color=Blue><i>-</i></font>y<font color=Cyan>)</font>
+<a name="line-179"></a><a name="paramPred"></a><font color=Blue><i>-- | Predecessor function acting on parameter 'Int'.</i></font>
+<a name="line-180"></a><font color=Blue>paramPred</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Int
+<a name="line-181"></a><font color=Blue>paramPred</font> x <font color=Red>=</font> x <font color=Blue><i>-</i></font> <font color=Magenta>1</font>
+<a name="line-182"></a>
+<a name="line-183"></a><a name="template_paramPred"></a><font color=Blue><i>-- | Template version of 'paramPred'.</i></font>
+<a name="line-184"></a><font color=Blue>template_paramPred</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ Int<font color=Cyan>)</font>
+<a name="line-185"></a><font color=Blue>template_paramPred</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> return <font color=Cyan>(</font>x<font color=Blue><i>-</i></font><font color=Magenta>1</font><font color=Cyan>)</font>
+<a name="line-186"></a>
+<a name="line-187"></a>
 <a name="line-188"></a>
-<a name="line-189"></a>
-<a name="line-190"></a>
-<a name="line-191"></a><font color=Blue><i>-- * Miscellaneous operations.</i></font>
+<a name="line-189"></a><a name="paramMinus"></a><font color=Blue><i>-- | Subtraction of parameter integers.</i></font>
+<a name="line-190"></a><font color=Blue>paramMinus</font> <font color=Red>::</font> Int <font color=Red>-&gt;</font> Int <font color=Red>-&gt;</font> Int
+<a name="line-191"></a><font color=Blue>paramMinus</font> x y <font color=Red>=</font> x <font color=Blue><i>-</i></font> y
 <a name="line-192"></a>
-<a name="line-193"></a><a name="template_length"></a><font color=Blue><i>-- | Lifted version of @'length'@.</i></font>
-<a name="line-194"></a><font color=Blue>template_length</font> <font color=Red>::</font> Circ <font color=Cyan>(</font><font color=Red>[</font>a<font color=Red>]</font> <font color=Red>-&gt;</font> Circ QSignedInt<font color=Cyan>)</font>
-<a name="line-195"></a><font color=Blue>template_length</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>l <font color=Red>-&gt;</font> qinit <font color=Cyan>$</font> fromIntegral <font color=Cyan>$</font> length l
+<a name="line-193"></a><a name="template_paramMinus"></a><font color=Blue><i>-- | Template version of 'paramMinus'.</i></font>
+<a name="line-194"></a><font color=Blue>template_paramMinus</font> <font color=Red>::</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ <font color=Cyan>(</font>Int <font color=Red>-&gt;</font> Circ Int<font color=Cyan>)</font><font color=Cyan>)</font>
+<a name="line-195"></a><font color=Blue>template_paramMinus</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>x <font color=Red>-&gt;</font> return <font color=Cyan>$</font> <font color=Red>\</font>y <font color=Red>-&gt;</font> return <font color=Cyan>(</font>x<font color=Blue><i>-</i></font>y<font color=Cyan>)</font>
 <a name="line-196"></a>
-<a name="line-197"></a><a name="take_half"></a><font color=Blue><i>-- | Return the first half of the input list.</i></font>
-<a name="line-198"></a><font color=Blue>take_half</font> <font color=Red>::</font> <font color=Red>[</font>a<font color=Red>]</font> <font color=Red>-&gt;</font> <font color=Red>[</font>a<font color=Red>]</font>
-<a name="line-199"></a><font color=Blue>take_half</font> l <font color=Red>=</font> take <font color=Cyan>(</font><font color=Magenta>1</font> <font color=Cyan>+</font> <font color=Cyan>(</font>length l<font color=Cyan>)</font> <font color=Cyan>`div`</font> <font color=Magenta>2</font><font color=Cyan>)</font> l
+<a name="line-197"></a>
+<a name="line-198"></a>
+<a name="line-199"></a><font color=Blue><i>-- * Miscellaneous operations.</i></font>
 <a name="line-200"></a>
-<a name="line-201"></a><a name="template_take_half"></a><font color=Blue><i>-- | Lifted version of @'take_half'@.</i></font>
-<a name="line-202"></a><font color=Blue>template_take_half</font> <font color=Red>::</font> Circ <font color=Cyan>(</font><font color=Red>[</font>a<font color=Red>]</font> <font color=Red>-&gt;</font> Circ <font color=Red>[</font>a<font color=Red>]</font><font color=Cyan>)</font>
-<a name="line-203"></a><font color=Blue>template_take_half</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>l <font color=Red>-&gt;</font> return <font color=Cyan>$</font> take_half l
+<a name="line-201"></a><a name="template_length"></a><font color=Blue><i>-- | Lifted version of @'length'@.</i></font>
+<a name="line-202"></a><font color=Blue>template_length</font> <font color=Red>::</font> Circ <font color=Cyan>(</font><font color=Red>[</font>a<font color=Red>]</font> <font color=Red>-&gt;</font> Circ QSignedInt<font color=Cyan>)</font>
+<a name="line-203"></a><font color=Blue>template_length</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>l <font color=Red>-&gt;</font> qinit <font color=Cyan>$</font> fromIntegral <font color=Cyan>$</font> length l
 <a name="line-204"></a>
+<a name="line-205"></a><a name="take_half"></a><font color=Blue><i>-- | Return the first half of the input list.</i></font>
+<a name="line-206"></a><font color=Blue>take_half</font> <font color=Red>::</font> <font color=Red>[</font>a<font color=Red>]</font> <font color=Red>-&gt;</font> <font color=Red>[</font>a<font color=Red>]</font>
+<a name="line-207"></a><font color=Blue>take_half</font> l <font color=Red>=</font> take <font color=Cyan>(</font><font color=Magenta>1</font> <font color=Cyan>+</font> <font color=Cyan>(</font>length l<font color=Cyan>)</font> <font color=Cyan>`div`</font> <font color=Magenta>2</font><font color=Cyan>)</font> l
+<a name="line-208"></a>
+<a name="line-209"></a><a name="template_take_half"></a><font color=Blue><i>-- | Lifted version of @'take_half'@.</i></font>
+<a name="line-210"></a><font color=Blue>template_take_half</font> <font color=Red>::</font> Circ <font color=Cyan>(</font><font color=Red>[</font>a<font color=Red>]</font> <font color=Red>-&gt;</font> Circ <font color=Red>[</font>a<font color=Red>]</font><font color=Cyan>)</font>
+<a name="line-211"></a><font color=Blue>template_take_half</font> <font color=Red>=</font> return <font color=Cyan>$</font> <font color=Red>\</font>l <font color=Red>-&gt;</font> return <font color=Cyan>$</font> take_half l
+<a name="line-212"></a>
 </pre>
 </body>
 </html>

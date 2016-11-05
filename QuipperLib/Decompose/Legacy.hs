@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -211,7 +211,7 @@ decompose_subroutine gb boxid sub@(TypedSubroutine ocirc is os ctl) = do
   let OCircuit (win, (arity,_,_,_), _) = ocirc
   let ein = endpoints_of_wires_in_arity arity win
   provide_subroutine_generic (\x -> "decompose_subroutine: " ++ x) boxid False circ' ein
-		              
+                              
 -- | A dynamic transformer variant of the decompose transformer
 decompose_dynamic_transformer :: LegacyGateBase -> DynamicTransformer Circ Qubit Bit
 decompose_dynamic_transformer gb = identity_dynamic_transformer {

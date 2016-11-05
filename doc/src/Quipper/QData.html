@@ -132,14 +132,14 @@
 <a name="line-125"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
 <a name="line-126"></a><font color=Blue><i>-- ** The QCType operation</i></font>
 <a name="line-127"></a>
-<a name="line-128"></a><font color=Blue><i>-- | The type 'QCType' /x/ /y/ /a/ represents the substitution</i></font>
-<a name="line-129"></a><font color=Blue><i>-- [nobr /a/ [/x/ \/ 'Qubit', /y/ \/ 'Bit']]. For example:</i></font>
-<a name="line-130"></a><font color=Blue><i>-- </i></font>
-<a name="line-131"></a><font color=Blue><i>-- &gt; QCType x y (Qubit, Bit, [Qubit]) = (x, y, [x]).</i></font>
-<a name="line-132"></a><font color=Blue><i>-- </i></font>
-<a name="line-133"></a><font color=Blue><i>-- An instance of this must be defined for each new kind of quantum</i></font>
-<a name="line-134"></a><font color=Blue><i>-- data.</i></font>
-<a name="line-135"></a><font color=Green><u>type</u></font> family QCType x y a
+<a name="line-128"></a><a name="QCType"></a><font color=Blue><i>-- | The type 'QCType' /x/ /y/ /a/ represents the substitution</i></font>
+<a name="line-129"></a><a name="QCType"></a><font color=Blue><i>-- [nobr /a/ [/x/ \/ 'Qubit', /y/ \/ 'Bit']]. For example:</i></font>
+<a name="line-130"></a><a name="QCType"></a><font color=Blue><i>-- </i></font>
+<a name="line-131"></a><a name="QCType"></a><font color=Blue><i>-- &gt; QCType x y (Qubit, Bit, [Qubit]) = (x, y, [x]).</i></font>
+<a name="line-132"></a><a name="QCType"></a><font color=Blue><i>-- </i></font>
+<a name="line-133"></a><a name="QCType"></a><font color=Blue><i>-- An instance of this must be defined for each new kind of quantum</i></font>
+<a name="line-134"></a><a name="QCType"></a><font color=Blue><i>-- data.</i></font>
+<a name="line-135"></a><a name="QCType"></a><font color=Green><u>type</u></font> <font color=Green><u>family</u></font> QCType x y a
 <a name="line-136"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y Qubit <font color=Red>=</font> x
 <a name="line-137"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QCType x y Bit <font color=Red>=</font> y
 <a name="line-138"></a>
@@ -160,13 +160,13 @@
 <a name="line-153"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
 <a name="line-154"></a><font color=Blue><i>-- ** The QTypeB operation</i></font>
 <a name="line-155"></a>
-<a name="line-156"></a><font color=Blue><i>-- | The type 'QTypeB' /ba/ represents the substitution</i></font>
-<a name="line-157"></a><font color=Blue><i>-- [nobr /ba/ ['Qubit' \/ 'Bool']]. For example: </i></font>
-<a name="line-158"></a><font color=Blue><i>-- </i></font>
-<a name="line-159"></a><font color=Blue><i>-- &gt; QTypeB (Bool, Bool, [Bool]) = (Qubit, Qubit, [Qubit]).</i></font>
-<a name="line-160"></a><font color=Blue><i>-- </i></font>
-<a name="line-161"></a><font color=Blue><i>-- An instance of this must be defined for each new kind of quantum data.</i></font>
-<a name="line-162"></a><font color=Green><u>type</u></font> family QTypeB a
+<a name="line-156"></a><a name="QTypeB"></a><font color=Blue><i>-- | The type 'QTypeB' /ba/ represents the substitution</i></font>
+<a name="line-157"></a><a name="QTypeB"></a><font color=Blue><i>-- [nobr /ba/ ['Qubit' \/ 'Bool']]. For example: </i></font>
+<a name="line-158"></a><a name="QTypeB"></a><font color=Blue><i>-- </i></font>
+<a name="line-159"></a><a name="QTypeB"></a><font color=Blue><i>-- &gt; QTypeB (Bool, Bool, [Bool]) = (Qubit, Qubit, [Qubit]).</i></font>
+<a name="line-160"></a><a name="QTypeB"></a><font color=Blue><i>-- </i></font>
+<a name="line-161"></a><a name="QTypeB"></a><font color=Blue><i>-- An instance of this must be defined for each new kind of quantum data.</i></font>
+<a name="line-162"></a><a name="QTypeB"></a><font color=Green><u>type</u></font> <font color=Green><u>family</u></font> QTypeB a
 <a name="line-163"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB Bool <font color=Red>=</font> Qubit
 <a name="line-164"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB () <font color=Red>=</font> ()
 <a name="line-165"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Red>=</font> <font color=Cyan>(</font>QTypeB a<font color=Cyan>,</font> QTypeB b<font color=Cyan>)</font>
@@ -294,22 +294,22 @@
 <a name="line-287"></a>  <font color=Blue><i>-- case of failure.</i></font>
 <a name="line-288"></a>  qcdata_promote <font color=Red>::</font> BType qc <font color=Red>-&gt;</font> qc <font color=Red>-&gt;</font> ErrMsg <font color=Red>-&gt;</font> BType qc
 <a name="line-289"></a>
-<a name="line-290"></a><font color=Green><u>instance</u></font> QCData Qubit <font color=Green><u>where</u></font>
+<a name="line-290"></a><a name="instance%20QCData%20Qubit"></a><font color=Green><u>instance</u></font> QCData Qubit <font color=Green><u>where</u></font>
 <a name="line-291"></a>  qcdata_mapM shape f g <font color=Red>=</font> f
 <a name="line-292"></a>  qcdata_zip shape q c q' c' x y e <font color=Red>=</font> <font color=Cyan>(</font>x<font color=Cyan>,</font> y<font color=Cyan>)</font>
 <a name="line-293"></a>  qcdata_promote a x e <font color=Red>=</font> a
 <a name="line-294"></a>
-<a name="line-295"></a><font color=Green><u>instance</u></font> QCData Bit <font color=Green><u>where</u></font>
+<a name="line-295"></a><a name="instance%20QCData%20Bit"></a><font color=Green><u>instance</u></font> QCData Bit <font color=Green><u>where</u></font>
 <a name="line-296"></a>  qcdata_mapM shape f g <font color=Red>=</font> g
 <a name="line-297"></a>  qcdata_zip shape q c q' c' x y e <font color=Red>=</font> <font color=Cyan>(</font>x<font color=Cyan>,</font> y<font color=Cyan>)</font>
 <a name="line-298"></a>  qcdata_promote a x e <font color=Red>=</font> a
 <a name="line-299"></a>
-<a name="line-300"></a><font color=Green><u>instance</u></font> QCData () <font color=Green><u>where</u></font>
+<a name="line-300"></a><a name="instance%20QCData%20()"></a><font color=Green><u>instance</u></font> QCData () <font color=Green><u>where</u></font>
 <a name="line-301"></a>  qcdata_mapM shape f g x <font color=Red>=</font> return ()
 <a name="line-302"></a>  qcdata_zip shape q c q' c' x y e <font color=Red>=</font> ()
 <a name="line-303"></a>  qcdata_promote a x e <font color=Red>=</font> a
 <a name="line-304"></a>  
-<a name="line-305"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-305"></a><a name="instance%20QCData%20(a,b)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-306"></a>  qcdata_mapM <font color=Red>~</font><font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> f g <font color=Cyan>(</font>x<font color=Cyan>,</font>y<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-307"></a>    x' <font color=Red>&lt;-</font> qcdata_mapM a f g x
 <a name="line-308"></a>    y' <font color=Red>&lt;-</font> qcdata_mapM b f g y
@@ -319,47 +319,47 @@
 <a name="line-312"></a>    z2 <font color=Red>=</font> qcdata_zip b q c q' c' x2 y2 e
 <a name="line-313"></a>  qcdata_promote <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Cyan>(</font>x<font color=Cyan>,</font>y<font color=Cyan>)</font> e <font color=Red>=</font> <font color=Cyan>(</font>qcdata_promote a x e<font color=Cyan>,</font> qcdata_promote b y e<font color=Cyan>)</font>
 <a name="line-314"></a>
-<a name="line-315"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-315"></a><a name="instance%20QCData%20(a,b,c)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-316"></a>  qcdata_mapM s f g xs <font color=Red>=</font> mmap tuple <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> f g <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font>
 <a name="line-317"></a>  qcdata_zip s q c q' c' xs ys e <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font> <font color=Cyan>(</font>untuple ys<font color=Cyan>)</font> e
 <a name="line-318"></a>  qcdata_promote a x s <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_promote <font color=Cyan>(</font>untuple a<font color=Cyan>)</font> <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> s
 <a name="line-319"></a>  
-<a name="line-320"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-320"></a><a name="instance%20QCData%20(a,b,c,d)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-321"></a>  qcdata_mapM s f g xs <font color=Red>=</font> mmap tuple <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> f g <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font>
 <a name="line-322"></a>  qcdata_zip s q c q' c' xs ys e <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font> <font color=Cyan>(</font>untuple ys<font color=Cyan>)</font> e
 <a name="line-323"></a>  qcdata_promote a x s <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_promote <font color=Cyan>(</font>untuple a<font color=Cyan>)</font> <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> s
 <a name="line-324"></a>  
-<a name="line-325"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-325"></a><a name="instance%20QCData%20(a,b,c,d,e)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-326"></a>  qcdata_mapM s f g xs <font color=Red>=</font> mmap tuple <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> f g <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font>
 <a name="line-327"></a>  qcdata_zip s q c q' c' xs ys e <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font> <font color=Cyan>(</font>untuple ys<font color=Cyan>)</font> e
 <a name="line-328"></a>  qcdata_promote a x s <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_promote <font color=Cyan>(</font>untuple a<font color=Cyan>)</font> <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> s
 <a name="line-329"></a>  
-<a name="line-330"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-330"></a><a name="instance%20QCData%20(a,b,c,d,e,f)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-331"></a>  qcdata_mapM s f g xs <font color=Red>=</font> mmap tuple <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> f g <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font>
 <a name="line-332"></a>  qcdata_zip s q c q' c' xs ys e <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font> <font color=Cyan>(</font>untuple ys<font color=Cyan>)</font> e
 <a name="line-333"></a>  qcdata_promote a x s <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_promote <font color=Cyan>(</font>untuple a<font color=Cyan>)</font> <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> s
 <a name="line-334"></a>  
-<a name="line-335"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>,</font> QCData g<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-335"></a><a name="instance%20QCData%20(a,b,c,d,e,f,g)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>,</font> QCData g<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-336"></a>  qcdata_mapM s f g xs <font color=Red>=</font> mmap tuple <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> f g <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font>
 <a name="line-337"></a>  qcdata_zip s q c q' c' xs ys e <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font> <font color=Cyan>(</font>untuple ys<font color=Cyan>)</font> e
 <a name="line-338"></a>  qcdata_promote a x s <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_promote <font color=Cyan>(</font>untuple a<font color=Cyan>)</font> <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> s
 <a name="line-339"></a>  
-<a name="line-340"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>,</font> QCData g<font color=Cyan>,</font> QCData h<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-340"></a><a name="instance%20QCData%20(a,b,c,d,e,f,g,h)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>,</font> QCData g<font color=Cyan>,</font> QCData h<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-341"></a>  qcdata_mapM s f g xs <font color=Red>=</font> mmap tuple <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> f g <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font>
 <a name="line-342"></a>  qcdata_zip s q c q' c' xs ys e <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font> <font color=Cyan>(</font>untuple ys<font color=Cyan>)</font> e
 <a name="line-343"></a>  qcdata_promote a x s <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_promote <font color=Cyan>(</font>untuple a<font color=Cyan>)</font> <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> s
 <a name="line-344"></a>  
-<a name="line-345"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>,</font> QCData g<font color=Cyan>,</font> QCData h<font color=Cyan>,</font> QCData i<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>,</font>i<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-345"></a><a name="instance%20QCData%20(a,b,c,d,e,f,g,h,i)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>,</font> QCData g<font color=Cyan>,</font> QCData h<font color=Cyan>,</font> QCData i<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>,</font>i<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-346"></a>  qcdata_mapM s f g xs <font color=Red>=</font> mmap tuple <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> f g <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font>
 <a name="line-347"></a>  qcdata_zip s q c q' c' xs ys e <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font> <font color=Cyan>(</font>untuple ys<font color=Cyan>)</font> e
 <a name="line-348"></a>  qcdata_promote a x s <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_promote <font color=Cyan>(</font>untuple a<font color=Cyan>)</font> <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> s
 <a name="line-349"></a>
-<a name="line-350"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>,</font> QCData g<font color=Cyan>,</font> QCData h<font color=Cyan>,</font> QCData i<font color=Cyan>,</font> QCData j<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>,</font>i<font color=Cyan>,</font>j<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-350"></a><a name="instance%20QCData%20(a,b,c,d,e,f,g,h,i,j)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>,</font> QCData c<font color=Cyan>,</font> QCData d<font color=Cyan>,</font> QCData e<font color=Cyan>,</font> QCData f<font color=Cyan>,</font> QCData g<font color=Cyan>,</font> QCData h<font color=Cyan>,</font> QCData i<font color=Cyan>,</font> QCData j<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>,</font>i<font color=Cyan>,</font>j<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-351"></a>  qcdata_mapM s f g xs <font color=Red>=</font> mmap tuple <font color=Cyan>$</font> qcdata_mapM <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> f g <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font>
 <a name="line-352"></a>  qcdata_zip s q c q' c' xs ys e <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_zip <font color=Cyan>(</font>untuple s<font color=Cyan>)</font> q c q' c' <font color=Cyan>(</font>untuple xs<font color=Cyan>)</font> <font color=Cyan>(</font>untuple ys<font color=Cyan>)</font> e
 <a name="line-353"></a>  qcdata_promote a x s <font color=Red>=</font> tuple <font color=Cyan>$</font> qcdata_promote <font color=Cyan>(</font>untuple a<font color=Cyan>)</font> <font color=Cyan>(</font>untuple x<font color=Cyan>)</font> s
 <a name="line-354"></a>
-<a name="line-355"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Red>[</font>a<font color=Red>]</font> <font color=Green><u>where</u></font>
+<a name="line-355"></a><a name="instance%20QCData%20%5ba%5d"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Red>[</font>a<font color=Red>]</font> <font color=Green><u>where</u></font>
 <a name="line-356"></a>  qcdata_mapM <font color=Red>~</font><font color=Red>[</font>a<font color=Red>]</font> f g xs <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-357"></a>    sequence <font color=Red>[</font> qcdata_mapM a f g x <font color=Red>|</font> x <font color=Red>&lt;-</font> xs<font color=Red>]</font>
 <a name="line-358"></a>  qcdata_zip <font color=Red>~</font><font color=Red>[</font>a<font color=Red>]</font> q c q' c' xs ys e <font color=Red>=</font> zs <font color=Green><u>where</u></font>
@@ -370,7 +370,7 @@
 <a name="line-363"></a>    <font color=Green><u>where</u></font>
 <a name="line-364"></a>      errmsg <font color=Red>=</font> e <font color=Magenta>"list too short"</font>
 <a name="line-365"></a>
-<a name="line-366"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>B_Endpoint a b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-366"></a><a name="instance%20QCData%20(B_Endpoint%20a%20b)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>,</font> QCData b<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>B_Endpoint a b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-367"></a>  qcdata_mapM <font color=Red>~</font><font color=Cyan>(</font>Endpoint_Qubit a<font color=Cyan>)</font> f g <font color=Cyan>(</font>Endpoint_Qubit x<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-368"></a>    x' <font color=Red>&lt;-</font> qcdata_mapM a f g x
 <a name="line-369"></a>    return <font color=Cyan>(</font>Endpoint_Qubit x'<font color=Cyan>)</font>
@@ -388,7 +388,7 @@
 <a name="line-381"></a>  qcdata_promote <font color=Red>~</font><font color=Cyan>(</font>Endpoint_Bit b<font color=Cyan>)</font> <font color=Cyan>(</font>Endpoint_Bit y<font color=Cyan>)</font> e <font color=Red>=</font> Endpoint_Bit z <font color=Green><u>where</u></font>
 <a name="line-382"></a>    z <font color=Red>=</font> qcdata_promote b y e
 <a name="line-383"></a>
-<a name="line-384"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>Signed a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-384"></a><a name="instance%20QCData%20(Signed%20a)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData a<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData <font color=Cyan>(</font>Signed a<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-385"></a>  qcdata_mapM <font color=Red>~</font><font color=Cyan>(</font>Signed a <font color=Green><u>_</u></font><font color=Cyan>)</font> f g <font color=Red>~</font><font color=Cyan>(</font>Signed x b<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-386"></a>    x' <font color=Red>&lt;-</font> qcdata_mapM a f g x
 <a name="line-387"></a>    return <font color=Cyan>(</font>Signed x' b<font color=Cyan>)</font>
@@ -411,7 +411,7 @@
 <a name="line-404"></a>
 <a name="line-405"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB Integer <font color=Red>=</font> Integer
 <a name="line-406"></a>
-<a name="line-407"></a><font color=Green><u>instance</u></font> QCData Integer <font color=Green><u>where</u></font>
+<a name="line-407"></a><a name="instance%20QCData%20Integer"></a><font color=Green><u>instance</u></font> QCData Integer <font color=Green><u>where</u></font>
 <a name="line-408"></a>  qcdata_mapM shape f g n <font color=Red>=</font> return n
 <a name="line-409"></a>  qcdata_zip shape q c a' c' n m e 
 <a name="line-410"></a>    <font color=Red>|</font> n <font color=Cyan>==</font> m <font color=Red>=</font> n 
@@ -430,7 +430,7 @@
 <a name="line-423"></a>
 <a name="line-424"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB Int <font color=Red>=</font> Int
 <a name="line-425"></a>
-<a name="line-426"></a><font color=Green><u>instance</u></font> QCData Int <font color=Green><u>where</u></font>
+<a name="line-426"></a><a name="instance%20QCData%20Int"></a><font color=Green><u>instance</u></font> QCData Int <font color=Green><u>where</u></font>
 <a name="line-427"></a>  qcdata_mapM shape f g n <font color=Red>=</font> return n
 <a name="line-428"></a>  qcdata_zip shape q c a' c' n m e 
 <a name="line-429"></a>    <font color=Red>|</font> n <font color=Cyan>==</font> m <font color=Red>=</font> n 
@@ -449,7 +449,7 @@
 <a name="line-442"></a>
 <a name="line-443"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB Double <font color=Red>=</font> Double
 <a name="line-444"></a>
-<a name="line-445"></a><font color=Green><u>instance</u></font> QCData Double <font color=Green><u>where</u></font>
+<a name="line-445"></a><a name="instance%20QCData%20Double"></a><font color=Green><u>instance</u></font> QCData Double <font color=Green><u>where</u></font>
 <a name="line-446"></a>  qcdata_mapM shape f g n <font color=Red>=</font> return n
 <a name="line-447"></a>  qcdata_zip shape q c a' c' n m e 
 <a name="line-448"></a>    <font color=Red>|</font> n <font color=Cyan>==</font> m <font color=Red>=</font> n 
@@ -468,7 +468,7 @@
 <a name="line-461"></a>
 <a name="line-462"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB Float <font color=Red>=</font> Float
 <a name="line-463"></a>
-<a name="line-464"></a><font color=Green><u>instance</u></font> QCData Float <font color=Green><u>where</u></font>
+<a name="line-464"></a><a name="instance%20QCData%20Float"></a><font color=Green><u>instance</u></font> QCData Float <font color=Green><u>where</u></font>
 <a name="line-465"></a>  qcdata_mapM shape f g n <font color=Red>=</font> return n
 <a name="line-466"></a>  qcdata_zip shape q c a' c' n m e 
 <a name="line-467"></a>    <font color=Red>|</font> n <font color=Cyan>==</font> m <font color=Red>=</font> n 
@@ -487,7 +487,7 @@
 <a name="line-480"></a>
 <a name="line-481"></a><font color=Green><u>type</u></font> <font color=Green><u>instance</u></font> QTypeB Char <font color=Red>=</font> Char
 <a name="line-482"></a>
-<a name="line-483"></a><font color=Green><u>instance</u></font> QCData Char <font color=Green><u>where</u></font>
+<a name="line-483"></a><a name="instance%20QCData%20Char"></a><font color=Green><u>instance</u></font> QCData Char <font color=Green><u>where</u></font>
 <a name="line-484"></a>  qcdata_mapM shape f g n <font color=Red>=</font> return n
 <a name="line-485"></a>  qcdata_zip shape q c a' c' n m e 
 <a name="line-486"></a>    <font color=Red>|</font> n <font color=Cyan>==</font> m <font color=Red>=</font> n 
@@ -515,40 +515,40 @@
 <a name="line-508"></a>  <font color=Blue><i>-- leaves.</i></font>
 <a name="line-509"></a>  fs_shape <font color=Red>::</font> qc
 <a name="line-510"></a>  
-<a name="line-511"></a><font color=Green><u>instance</u></font> SimpleType Qubit <font color=Green><u>where</u></font>
+<a name="line-511"></a><a name="instance%20SimpleType%20Qubit"></a><font color=Green><u>instance</u></font> SimpleType Qubit <font color=Green><u>where</u></font>
 <a name="line-512"></a>  fs_shape <font color=Red>=</font> qubit
 <a name="line-513"></a>  
-<a name="line-514"></a><font color=Green><u>instance</u></font> SimpleType Bit <font color=Green><u>where</u></font>
+<a name="line-514"></a><a name="instance%20SimpleType%20Bit"></a><font color=Green><u>instance</u></font> SimpleType Bit <font color=Green><u>where</u></font>
 <a name="line-515"></a>  fs_shape <font color=Red>=</font> bit
 <a name="line-516"></a>
-<a name="line-517"></a><font color=Green><u>instance</u></font> SimpleType () <font color=Green><u>where</u></font>
+<a name="line-517"></a><a name="instance%20SimpleType%20()"></a><font color=Green><u>instance</u></font> SimpleType () <font color=Green><u>where</u></font>
 <a name="line-518"></a>  fs_shape <font color=Red>=</font> ()
 <a name="line-519"></a>  
-<a name="line-520"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-520"></a><a name="instance%20SimpleType%20(a,b)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-521"></a>  fs_shape <font color=Red>=</font> <font color=Cyan>(</font>fs_shape<font color=Cyan>,</font> fs_shape<font color=Cyan>)</font>
 <a name="line-522"></a>
-<a name="line-523"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-523"></a><a name="instance%20SimpleType%20(a,b,c)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-524"></a>  fs_shape <font color=Red>=</font> tuple fs_shape
 <a name="line-525"></a>
-<a name="line-526"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-526"></a><a name="instance%20SimpleType%20(a,b,c,d)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-527"></a>  fs_shape <font color=Red>=</font> tuple fs_shape
 <a name="line-528"></a>
-<a name="line-529"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-529"></a><a name="instance%20SimpleType%20(a,b,c,d,e)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-530"></a>  fs_shape <font color=Red>=</font> tuple fs_shape
 <a name="line-531"></a>
-<a name="line-532"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-532"></a><a name="instance%20SimpleType%20(a,b,c,d,e,f)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-533"></a>  fs_shape <font color=Red>=</font> tuple fs_shape
 <a name="line-534"></a>
-<a name="line-535"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>,</font> SimpleType g<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-535"></a><a name="instance%20SimpleType%20(a,b,c,d,e,f,g)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>,</font> SimpleType g<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-536"></a>  fs_shape <font color=Red>=</font> tuple fs_shape
 <a name="line-537"></a>
-<a name="line-538"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>,</font> SimpleType g<font color=Cyan>,</font> SimpleType h<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-538"></a><a name="instance%20SimpleType%20(a,b,c,d,e,f,g,h)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>,</font> SimpleType g<font color=Cyan>,</font> SimpleType h<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-539"></a>  fs_shape <font color=Red>=</font> tuple fs_shape
 <a name="line-540"></a>
-<a name="line-541"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>,</font> SimpleType g<font color=Cyan>,</font> SimpleType h<font color=Cyan>,</font> SimpleType i<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>,</font>i<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-541"></a><a name="instance%20SimpleType%20(a,b,c,d,e,f,g,h,i)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>,</font> SimpleType g<font color=Cyan>,</font> SimpleType h<font color=Cyan>,</font> SimpleType i<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>,</font>i<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-542"></a>  fs_shape <font color=Red>=</font> tuple fs_shape
 <a name="line-543"></a>
-<a name="line-544"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>,</font> SimpleType g<font color=Cyan>,</font> SimpleType h<font color=Cyan>,</font> SimpleType i<font color=Cyan>,</font> SimpleType j<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>,</font>i<font color=Cyan>,</font>j<font color=Cyan>)</font> <font color=Green><u>where</u></font>
+<a name="line-544"></a><a name="instance%20SimpleType%20(a,b,c,d,e,f,g,h,i,j)"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>SimpleType a<font color=Cyan>,</font> SimpleType b<font color=Cyan>,</font> SimpleType c<font color=Cyan>,</font> SimpleType d<font color=Cyan>,</font> SimpleType e<font color=Cyan>,</font> SimpleType f<font color=Cyan>,</font> SimpleType g<font color=Cyan>,</font> SimpleType h<font color=Cyan>,</font> SimpleType i<font color=Cyan>,</font> SimpleType j<font color=Cyan>)</font> <font color=Red>=&gt;</font> SimpleType <font color=Cyan>(</font>a<font color=Cyan>,</font>b<font color=Cyan>,</font>c<font color=Cyan>,</font>d<font color=Cyan>,</font>e<font color=Cyan>,</font>f<font color=Cyan>,</font>g<font color=Cyan>,</font>h<font color=Cyan>,</font>i<font color=Cyan>,</font>j<font color=Cyan>)</font> <font color=Green><u>where</u></font>
 <a name="line-545"></a>  fs_shape <font color=Red>=</font> tuple fs_shape
 <a name="line-546"></a>
 <a name="line-547"></a><font color=Blue><i>-- ======================================================================</i></font>
@@ -755,7 +755,7 @@
 <a name="line-748"></a>       QCData <font color=Cyan>(</font>CType qa<font color=Cyan>)</font>
 <a name="line-749"></a>      <font color=Cyan>)</font> <font color=Red>=&gt;</font> QData qa
 <a name="line-750"></a>  
-<a name="line-751"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>qa <font color=Red>~</font> QType <font color=Cyan>(</font>CType qa<font color=Cyan>)</font><font color=Cyan>,</font>
+<a name="line-751"></a><a name="instance%20QData%20qa"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>qa <font color=Red>~</font> QType <font color=Cyan>(</font>CType qa<font color=Cyan>)</font><font color=Cyan>,</font>
 <a name="line-752"></a>       qa <font color=Red>~</font> QTypeB <font color=Cyan>(</font>BType qa<font color=Cyan>)</font><font color=Cyan>,</font> 
 <a name="line-753"></a>       qa <font color=Red>~</font> QCType Qubit Bool qa<font color=Cyan>,</font>
 <a name="line-754"></a>       qa <font color=Red>~</font> QType qa<font color=Cyan>,</font>       
@@ -976,12 +976,12 @@
 <a name="line-969"></a><a name="CData"></a><font color=Blue><i>-- | The 'CData' type class contains homogeneous data types built up</i></font>
 <a name="line-970"></a><a name="CData"></a><font color=Blue><i>-- from leaves of type 'Bit'.</i></font>
 <a name="line-971"></a><a name="CData"></a><font color=Green><u>class</u></font> <font color=Cyan>(</font>QData <font color=Cyan>(</font>QType ca<font color=Cyan>)</font><font color=Cyan>,</font> CType <font color=Cyan>(</font>QType ca<font color=Cyan>)</font> <font color=Red>~</font> ca<font color=Cyan>)</font> <font color=Red>=&gt;</font> CData ca
-<a name="line-972"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QData <font color=Cyan>(</font>QType ca<font color=Cyan>)</font><font color=Cyan>,</font> CType <font color=Cyan>(</font>QType ca<font color=Cyan>)</font> <font color=Red>~</font> ca<font color=Cyan>)</font> <font color=Red>=&gt;</font> CData ca
+<a name="line-972"></a><a name="instance%20CData%20ca"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QData <font color=Cyan>(</font>QType ca<font color=Cyan>)</font><font color=Cyan>,</font> CType <font color=Cyan>(</font>QType ca<font color=Cyan>)</font> <font color=Red>~</font> ca<font color=Cyan>)</font> <font color=Red>=&gt;</font> CData ca
 <a name="line-973"></a>
 <a name="line-974"></a><a name="BData"></a><font color=Blue><i>-- | The 'BData' type class contains homogeneous data types built up</i></font>
 <a name="line-975"></a><a name="BData"></a><font color=Blue><i>-- from leaves of type 'Bool'.</i></font>
 <a name="line-976"></a><a name="BData"></a><font color=Green><u>class</u></font> <font color=Cyan>(</font>QData <font color=Cyan>(</font>QTypeB ba<font color=Cyan>)</font><font color=Cyan>,</font> BType <font color=Cyan>(</font>QTypeB ba<font color=Cyan>)</font> <font color=Red>~</font> ba<font color=Cyan>)</font> <font color=Red>=&gt;</font> BData ba
-<a name="line-977"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QData <font color=Cyan>(</font>QTypeB ba<font color=Cyan>)</font><font color=Cyan>,</font> BType <font color=Cyan>(</font>QTypeB ba<font color=Cyan>)</font> <font color=Red>~</font> ba<font color=Cyan>)</font> <font color=Red>=&gt;</font> BData ba
+<a name="line-977"></a><a name="instance%20BData%20ba"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QData <font color=Cyan>(</font>QTypeB ba<font color=Cyan>)</font><font color=Cyan>,</font> BType <font color=Cyan>(</font>QTypeB ba<font color=Cyan>)</font> <font color=Red>~</font> ba<font color=Cyan>)</font> <font color=Red>=&gt;</font> BData ba
 <a name="line-978"></a>
 <a name="line-979"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
 <a name="line-980"></a><font color=Blue><i>-- ** The QShape class</i></font>
@@ -1013,7 +1013,7 @@
 <a name="line-1006"></a><font color=Blue><i>-- initialized from a 'Bool'; a 'Qubit' can be measured, resulting in</i></font>
 <a name="line-1007"></a><font color=Blue><i>-- a 'Bit', etc. For this reason, the type class 'QShape' establishes a</i></font>
 <a name="line-1008"></a><font color=Blue><i>-- relation between three types:</i></font>
-<a name="line-1009"></a><font color=Blue><i>-- 	</i></font>
+<a name="line-1009"></a><font color=Blue><i>--      </i></font>
 <a name="line-1010"></a><font color=Blue><i>-- [@qa@] A data structure having 'Qubit' at the leaves.</i></font>
 <a name="line-1011"></a><font color=Blue><i>-- </i></font>
 <a name="line-1012"></a><font color=Blue><i>-- [@ca@] A data structure of the same shape as @qa@, having 'Bit' at</i></font>
@@ -1039,7 +1039,7 @@
 <a name="line-1032"></a>       BType qa <font color=Red>~</font> ba
 <a name="line-1033"></a>      <font color=Cyan>)</font> <font color=Red>=&gt;</font> QShape ba qa ca <font color=Red>|</font> ba <font color=Red>-&gt;</font> qa<font color=Cyan>,</font> qa <font color=Red>-&gt;</font> ca<font color=Cyan>,</font> ca <font color=Red>-&gt;</font> ba
 <a name="line-1034"></a>
-<a name="line-1035"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QData qa<font color=Cyan>,</font> BType qa <font color=Red>~</font> ba<font color=Cyan>,</font> CType qa <font color=Red>~</font> ca<font color=Cyan>)</font> <font color=Red>=&gt;</font> QShape ba qa ca
+<a name="line-1035"></a><a name="instance%20QShape%20ba%20qa%20ca"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QData qa<font color=Cyan>,</font> BType qa <font color=Red>~</font> ba<font color=Cyan>,</font> CType qa <font color=Red>~</font> ca<font color=Cyan>)</font> <font color=Red>=&gt;</font> QShape ba qa ca
 <a name="line-1036"></a>
 <a name="line-1037"></a><font color=Blue><i>-- ======================================================================</i></font>
 <a name="line-1038"></a><font color=Blue><i>-- * Heterogeneous types</i></font>
@@ -1254,7 +1254,7 @@
 <a name="line-1247"></a><font color=Blue><i>-- insufficient.</i></font>
 <a name="line-1248"></a>
 <a name="line-1249"></a><a name="QCDataPlus"></a><font color=Green><u>class</u></font> <font color=Cyan>(</font>QCData qc<font color=Cyan>,</font> QData <font color=Cyan>(</font>QType qc<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Red>=&gt;</font> QCDataPlus qc
-<a name="line-1250"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData qc<font color=Cyan>,</font> QData <font color=Cyan>(</font>QType qc<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Red>=&gt;</font> QCDataPlus qc
+<a name="line-1250"></a><a name="instance%20QCDataPlus%20qc"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData qc<font color=Cyan>,</font> QData <font color=Cyan>(</font>QType qc<font color=Cyan>)</font><font color=Cyan>)</font> <font color=Red>=&gt;</font> QCDataPlus qc
 <a name="line-1251"></a>
 <a name="line-1252"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
 <a name="line-1253"></a><font color=Blue><i>-- ** Fixed size QCDataPlus</i></font>
@@ -1262,12 +1262,12 @@
 <a name="line-1255"></a><a name="QCData_Simple"></a><font color=Blue><i>-- | 'QCDataPlus_Simple' is a convenience type class that combines</i></font>
 <a name="line-1256"></a><a name="QCData_Simple"></a><font color=Blue><i>-- 'QCDataPlus' and 'SimpleType'.</i></font>
 <a name="line-1257"></a><a name="QCData_Simple"></a><font color=Green><u>class</u></font> <font color=Cyan>(</font>QCData qc<font color=Cyan>,</font> SimpleType qc<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData_Simple qc
-<a name="line-1258"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData qc<font color=Cyan>,</font> SimpleType qc<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData_Simple qc
+<a name="line-1258"></a><a name="instance%20QCData_Simple%20qc"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCData qc<font color=Cyan>,</font> SimpleType qc<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCData_Simple qc
 <a name="line-1259"></a>
 <a name="line-1260"></a><a name="QCDataPlus_Simple"></a><font color=Blue><i>-- | 'QCDataPlus_Simple' is a convenience type class that combines</i></font>
 <a name="line-1261"></a><a name="QCDataPlus_Simple"></a><font color=Blue><i>-- 'QCDataPlus' and 'SimpleType'.</i></font>
 <a name="line-1262"></a><a name="QCDataPlus_Simple"></a><font color=Green><u>class</u></font> <font color=Cyan>(</font>QCDataPlus qc<font color=Cyan>,</font> SimpleType qc<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCDataPlus_Simple qc
-<a name="line-1263"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCDataPlus qc<font color=Cyan>,</font> SimpleType qc<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCDataPlus_Simple qc
+<a name="line-1263"></a><a name="instance%20QCDataPlus_Simple%20qc"></a><font color=Green><u>instance</u></font> <font color=Cyan>(</font>QCDataPlus qc<font color=Cyan>,</font> SimpleType qc<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCDataPlus_Simple qc
 <a name="line-1264"></a>
 <a name="line-1265"></a><font color=Blue><i>-- Implementation note: We could just have made 'SimpleType' a</i></font>
 <a name="line-1266"></a><font color=Blue><i>-- subclass of 'QCData' directly, but this would require the</i></font>
@@ -1291,8 +1291,8 @@
 <a name="line-1284"></a>       QCType Qubit Bit q <font color=Red>~</font> q<font color=Cyan>,</font>
 <a name="line-1285"></a>       QCType Bool Bool q <font color=Red>~</font> Bool<font color=Cyan>)</font> <font color=Red>=&gt;</font> QCLeaf q
 <a name="line-1286"></a>
-<a name="line-1287"></a><font color=Green><u>instance</u></font> QCLeaf Qubit
-<a name="line-1288"></a><font color=Green><u>instance</u></font> QCLeaf Bit
+<a name="line-1287"></a><a name="instance%20QCLeaf%20Qubit"></a><font color=Green><u>instance</u></font> QCLeaf Qubit
+<a name="line-1288"></a><a name="instance%20QCLeaf%20Bit"></a><font color=Green><u>instance</u></font> QCLeaf Bit
 <a name="line-1289"></a>
 <a name="line-1290"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
 <a name="line-1291"></a><font color=Blue><i>-- ** Canonical string representation</i></font>
@@ -1307,13 +1307,13 @@
 <a name="line-1300"></a><a name="Qubit_Leaf"></a><font color=Blue><i>-- | A type to represent a 'Qubit' leaf, for the sole purpose that</i></font>
 <a name="line-1301"></a><a name="Qubit_Leaf"></a><font color=Blue><i>-- 'show' will show it as \"Q\".</i></font>
 <a name="line-1302"></a><a name="Qubit_Leaf"></a><font color=Green><u>data</u></font> Qubit_Leaf <font color=Red>=</font> Qubit_Leaf
-<a name="line-1303"></a><font color=Green><u>instance</u></font> Show Qubit_Leaf <font color=Green><u>where</u></font>
+<a name="line-1303"></a><a name="instance%20Show%20Qubit_Leaf"></a><font color=Green><u>instance</u></font> Show Qubit_Leaf <font color=Green><u>where</u></font>
 <a name="line-1304"></a>  show <font color=Green><u>_</u></font> <font color=Red>=</font> <font color=Magenta>"Q"</font>
 <a name="line-1305"></a>
 <a name="line-1306"></a><a name="Bit_Leaf"></a><font color=Blue><i>-- | A type to represent a 'Bit' leaf, for the sole purpose that</i></font>
 <a name="line-1307"></a><a name="Bit_Leaf"></a><font color=Blue><i>-- 'show' will show it as \"C\".</i></font>
 <a name="line-1308"></a><a name="Bit_Leaf"></a><font color=Green><u>data</u></font> Bit_Leaf <font color=Red>=</font> Bit_Leaf
-<a name="line-1309"></a><font color=Green><u>instance</u></font> Show Bit_Leaf <font color=Green><u>where</u></font>
+<a name="line-1309"></a><a name="instance%20Show%20Bit_Leaf"></a><font color=Green><u>instance</u></font> Show Bit_Leaf <font color=Green><u>where</u></font>
 <a name="line-1310"></a>  show <font color=Green><u>_</u></font> <font color=Red>=</font> <font color=Magenta>"C"</font>
 <a name="line-1311"></a>
 <a name="line-1312"></a><a name="canonical_shape"></a><font color=Blue><i>-- | Turn any 'QCData' into a string uniquely identifying its type and</i></font>

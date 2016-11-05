@@ -146,7 +146,7 @@
 <a name="line-139"></a><font color=Blue>litTHtoExpAST</font> <font color=Red>::</font> TH<font color=Cyan>.</font>Lit <font color=Red>-&gt;</font> LiftQ Exp
 <a name="line-140"></a><font color=Blue>litTHtoExpAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>CharL c<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> LitE <font color=Cyan>$</font> CharL c
 <a name="line-141"></a><font color=Blue>litTHtoExpAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>StringL s<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> ListE <font color=Cyan>$</font> map <font color=Cyan>(</font>LitE <font color=Cyan>.</font> CharL<font color=Cyan>)</font> s
-<a name="line-142"></a><font color=Blue>litTHtoExpAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>IntegerL i<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> LitE <font color=Cyan>$</font> IntegerL i	
+<a name="line-142"></a><font color=Blue>litTHtoExpAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>IntegerL i<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> LitE <font color=Cyan>$</font> IntegerL i      
 <a name="line-143"></a><font color=Blue>litTHtoExpAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>RationalL r<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> LitE <font color=Cyan>$</font> RationalL r
 <a name="line-144"></a><font color=Blue>litTHtoExpAST</font> x <font color=Red>=</font> errorMsg <font color=Cyan>(</font><font color=Magenta>"lifting not handled for "</font> <font color=Cyan>++</font> <font color=Cyan>(</font>show x<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-145"></a>
@@ -154,7 +154,7 @@
 <a name="line-147"></a><font color=Blue>litTHtoPatAST</font> <font color=Red>::</font> TH<font color=Cyan>.</font>Lit <font color=Red>-&gt;</font> LiftQ Pat
 <a name="line-148"></a><font color=Blue>litTHtoPatAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>CharL c<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> LitP <font color=Cyan>$</font> CharL c
 <a name="line-149"></a><font color=Blue>litTHtoPatAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>StringL s<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> ListP <font color=Cyan>$</font> map <font color=Cyan>(</font>LitP <font color=Cyan>.</font> CharL<font color=Cyan>)</font> s
-<a name="line-150"></a><font color=Blue>litTHtoPatAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>IntegerL i<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> LitP <font color=Cyan>$</font> IntegerL i	
+<a name="line-150"></a><font color=Blue>litTHtoPatAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>IntegerL i<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> LitP <font color=Cyan>$</font> IntegerL i      
 <a name="line-151"></a><font color=Blue>litTHtoPatAST</font> <font color=Cyan>(</font>TH<font color=Cyan>.</font>RationalL r<font color=Cyan>)</font> <font color=Red>=</font> return <font color=Cyan>$</font> LitP <font color=Cyan>$</font> RationalL r
 <a name="line-152"></a><font color=Blue>litTHtoPatAST</font> x <font color=Red>=</font> errorMsg <font color=Cyan>(</font><font color=Magenta>"lifting not handled for "</font> <font color=Cyan>++</font> <font color=Cyan>(</font>show x<font color=Cyan>)</font><font color=Cyan>)</font>
 <a name="line-153"></a>
@@ -559,13 +559,13 @@
 <a name="line-552"></a><font color=Blue>liftExpAST</font> <font color=Cyan>(</font>CaseE exp matches<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-553"></a>  exp' <font color=Red>&lt;-</font> liftExpAST exp
 <a name="line-554"></a>  matches' <font color=Red>&lt;-</font> mapM liftMatchAST matches
-<a name="line-555"></a>  fresh_name <font color=Red>&lt;-</font> newName <font color=Magenta>"case"</font>
+<a name="line-555"></a>  fresh_name <font color=Red>&lt;-</font> newName <font color=Magenta>"varfromcase"</font>
 <a name="line-556"></a>  return <font color=Cyan>$</font> doE <font color=Red>[</font>BindS fresh_name exp'<font color=Red>]</font>
 <a name="line-557"></a>               <font color=Cyan>$</font> CaseE <font color=Cyan>(</font>VarE fresh_name<font color=Cyan>)</font> matches'
 <a name="line-558"></a>  
 <a name="line-559"></a><font color=Blue>liftExpAST</font> <font color=Cyan>(</font>ListE exps<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>do</u></font>
 <a name="line-560"></a>  exps' <font color=Red>&lt;-</font> mapM liftExpAST exps
-<a name="line-561"></a>  fresh_names <font color=Red>&lt;-</font> mapM newName <font color=Cyan>$</font> replicate <font color=Cyan>(</font>length exps<font color=Cyan>)</font> <font color=Magenta>"liste"</font>
+<a name="line-561"></a>  fresh_names <font color=Red>&lt;-</font> mapM newName <font color=Cyan>$</font> replicate <font color=Cyan>(</font>length exps<font color=Cyan>)</font> <font color=Magenta>"varfromlist"</font>
 <a name="line-562"></a>  return <font color=Cyan>$</font> 
 <a name="line-563"></a>    doE <font color=Cyan>(</font>map <font color=Cyan>(</font>uncurry BindS<font color=Cyan>)</font> <font color=Cyan>$</font> zip fresh_names exps'<font color=Cyan>)</font>
 <a name="line-564"></a>       <font color=Cyan>$</font> AppE ReturnE <font color=Cyan>$</font> ListE <font color=Cyan>$</font> map VarE fresh_names

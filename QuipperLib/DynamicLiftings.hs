@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -557,11 +557,11 @@ simulated_lift_transformer (T_QTerm b ncf f) = f $
   let (p,ampst,ampsf) = split amps q
   case (b,p) of
     (True,1.0) -> do
-	let ampst' = apply (vector (Map.delete q)) ampst
+        let ampst' = apply (vector (Map.delete q)) ampst
         putQS ampst'
         return ()
     (False,0.0) -> do
-	let ampsf' = apply (vector (Map.delete q)) ampsf
+        let ampsf' = apply (vector (Map.delete q)) ampsf
         putQS ampsf'
         return ()
     (True,pt) -> error ("QTerm: Assertion Incorrect (True only has probability " ++ show pt ++ ")")

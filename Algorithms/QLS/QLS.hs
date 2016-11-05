@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -575,7 +575,7 @@ qlsa_Solve_xr :: RunTimeParam ->([Qubit],[Qubit],Qubit,Qubit,Qubit,Qubit) -> Ora
 qlsa_Solve_xr param (x,y,b,s,r,c) oracle = do
   _ <- (flip $ box "qlsa_Solve_xr") (x,y,b,s,r,c) $ \(x,y,b,s,r,c) -> do
     qlsa_StatePrep param (x,b) (oracle_b oracle param) (1.0/(b_max param)) 
-    qlsa_Solve_x param (x,s) oracle	
+    qlsa_Solve_x param (x,s) oracle     
     qlsa_StatePrep param (y,r) (oracle_r oracle param) (1.0/(r_max param)) 
     hadamard_at c
     swap_at y x  `controlled` c

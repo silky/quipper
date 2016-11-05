@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -17,7 +17,7 @@ module Algorithms.BF.Hex where
 import Quipper
 import Quipper.CircLifting
 import QuipperLib.Qram
-import QuipperLib.Arith
+import QuipperLib.Arith hiding (template_symb_plus_)
 
 import Prelude hiding (lookup)
 
@@ -232,8 +232,8 @@ build_circuit
 testpos :: Int -> [Bool] -> [Bool] -> [Bool] -> Int -> [Bool]
 testpos pos maskmap bitmap newmap xy_max = case (0 <= pos) `cand` (pos < xy_max) of
  True -> if not (maskmap !! pos) && not (bitmap !! pos) && not (newmap !! pos)
-	 then update_pos pos newmap True
-	 else newmap
+         then update_pos pos newmap True
+         else newmap
  False -> newmap
 
 -- | Given a board position, this function will call 
@@ -245,20 +245,20 @@ test_positions ii x_max xy_max bitmap newmap maskmap =
  let newmap' = testpos (ii + x_max) maskmap bitmap' newmap xy_max in
  let newmap'' = testpos (ii - x_max) maskmap bitmap' newmap' xy_max in
  let newmap''' = case (ii `mod` x_max > 0) of
-		  True -> testpos (ii - 1) maskmap bitmap' newmap'' xy_max
-		  False -> newmap''
+                  True -> testpos (ii - 1) maskmap bitmap' newmap'' xy_max
+                  False -> newmap''
                  in
  let newmap'''' = case (ii `mod` x_max > 0) of
-		   True -> testpos (ii + x_max - 1) maskmap bitmap' newmap''' xy_max
-		   False -> newmap'''
+                   True -> testpos (ii + x_max - 1) maskmap bitmap' newmap''' xy_max
+                   False -> newmap'''
                   in
  let newmap''''' = case (ii `mod` x_max < x_max - 1) of
-		    True -> testpos (ii + 1) maskmap bitmap' newmap'''' xy_max
-		    False -> newmap''''
+                    True -> testpos (ii + 1) maskmap bitmap' newmap'''' xy_max
+                    False -> newmap''''
                    in
  let newmap'''''' = case (ii `mod` x_max < x_max - 1) of
-		     True -> testpos (ii - x_max + 1) maskmap bitmap' newmap''''' xy_max
-		     False -> newmap'''''
+                     True -> testpos (ii - x_max + 1) maskmap bitmap' newmap''''' xy_max
+                     False -> newmap'''''
                     in
  let newmap''''''' = update_pos ii newmap'''''' False in
  (newmap''''''',bitmap')

@@ -1,4 +1,4 @@
--- This file is part of Quipper. Copyright (C) 2011-2014. Please see the
+-- This file is part of Quipper. Copyright (C) 2011-2016. Please see the
 -- file COPYRIGHT for a list of authors, copyright holders, licensing,
 -- and other details. All rights reserved.
 -- 
@@ -145,7 +145,7 @@ mapSubstExp map exp = List.foldl (\exp (x,y) -> substExp x y exp) exp $ Map.toLi
 litTHtoExpAST :: TH.Lit -> LiftQ Exp
 litTHtoExpAST (TH.CharL c) = return $ LitE $ CharL c
 litTHtoExpAST (TH.StringL s) = return $ ListE $ map (LitE . CharL) s
-litTHtoExpAST (TH.IntegerL i) = return $ LitE $ IntegerL i	
+litTHtoExpAST (TH.IntegerL i) = return $ LitE $ IntegerL i      
 litTHtoExpAST (TH.RationalL r) = return $ LitE $ RationalL r
 litTHtoExpAST x = errorMsg ("lifting not handled for " ++ (show x))
 
@@ -153,7 +153,7 @@ litTHtoExpAST x = errorMsg ("lifting not handled for " ++ (show x))
 litTHtoPatAST :: TH.Lit -> LiftQ Pat
 litTHtoPatAST (TH.CharL c) = return $ LitP $ CharL c
 litTHtoPatAST (TH.StringL s) = return $ ListP $ map (LitP . CharL) s
-litTHtoPatAST (TH.IntegerL i) = return $ LitP $ IntegerL i	
+litTHtoPatAST (TH.IntegerL i) = return $ LitP $ IntegerL i      
 litTHtoPatAST (TH.RationalL r) = return $ LitP $ RationalL r
 litTHtoPatAST x = errorMsg ("lifting not handled for " ++ (show x))
 
@@ -558,13 +558,13 @@ liftExpAST (LetE decs exp) =
 liftExpAST (CaseE exp matches) = do
   exp' <- liftExpAST exp
   matches' <- mapM liftMatchAST matches
-  fresh_name <- newName "case"
+  fresh_name <- newName "varfromcase"
   return $ doE [BindS fresh_name exp']
                $ CaseE (VarE fresh_name) matches'
   
 liftExpAST (ListE exps) = do
   exps' <- mapM liftExpAST exps
-  fresh_names <- mapM newName $ replicate (length exps) "liste"
+  fresh_names <- mapM newName $ replicate (length exps) "varfromlist"
   return $ 
     doE (map (uncurry BindS) $ zip fresh_names exps')
        $ AppE ReturnE $ ListE $ map VarE fresh_names

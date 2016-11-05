@@ -16,9 +16,9 @@
 <a name="line-9"></a><font color=Green><u>import</u></font> Quipper
 <a name="line-10"></a>
 <a name="line-11"></a><font color=Green><u>import</u></font> Control<font color=Cyan>.</font>Monad <font color=Cyan>(</font>sequence<font color=Cyan>)</font>
-<a name="line-12"></a><font color=Green><u>import</u></font> Algorithms<font color=Cyan>.</font>BWT<font color=Cyan>.</font>Alternative
+<a name="line-12"></a><font color=Green><u>import</u></font> Algorithms<font color=Cyan>.</font>BWT<font color=Cyan>.</font>Alternative <font color=Cyan>(</font>Oracle<font color=Cyan>(</font><font color=Red>..</font><font color=Cyan>)</font><font color=Cyan>,</font> Node<font color=Cyan>,</font> QNode<font color=Cyan>)</font>
 <a name="line-13"></a>
-<a name="line-14"></a><font color=Green><u>import</u></font> Libraries<font color=Cyan>.</font>Auxiliary
+<a name="line-14"></a><font color=Green><u>import</u></font> Libraries<font color=Cyan>.</font>Auxiliary hiding <font color=Cyan>(</font>boollist_xor<font color=Cyan>)</font>
 <a name="line-15"></a><font color=Green><u>import</u></font> QuipperLib<font color=Cyan>.</font>ClassicalOptim
 <a name="line-16"></a>
 <a name="line-17"></a><font color=Blue><i>-- ----------------------------------------------------------------------</i></font>
@@ -245,14 +245,14 @@
 <a name="line-238"></a>    entrance <font color=Red>=</font> boollist_of_int_bh m <font color=Magenta>1</font><font color=Cyan>,</font>
 <a name="line-239"></a>    oraclefun <font color=Red>=</font> <font color=Red>\</font>c <font color=Cyan>(</font><font color=Green><u>as</u></font><font color=Cyan>,</font>bs<font color=Cyan>,</font>r<font color=Cyan>)</font> <font color=Red>-&gt;</font> <font color=Green><u>do</u></font> qf <font color=Red>&lt;-</font> qinit f
 <a name="line-240"></a>                                   qg <font color=Red>&lt;-</font> qinit g
-<a name="line-241"></a>				   <font color=Green><u>let</u></font> <font color=Cyan>(</font>a<font color=Red><b>:</b></font>aa<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>as</u></font>
-<a name="line-242"></a>				   <font color=Green><u>let</u></font> <font color=Cyan>(</font>b<font color=Red><b>:</b></font>bb<font color=Cyan>)</font> <font color=Red>=</font> bs
+<a name="line-241"></a>                                   <font color=Green><u>let</u></font> <font color=Cyan>(</font>a<font color=Red><b>:</b></font>aa<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>as</u></font>
+<a name="line-242"></a>                                   <font color=Green><u>let</u></font> <font color=Cyan>(</font>b<font color=Red><b>:</b></font>bb<font color=Cyan>)</font> <font color=Red>=</font> bs
 <a name="line-243"></a>                                   reversible_BWT_oracle c <font color=Cyan>(</font><font color=Cyan>(</font>qf<font color=Cyan>,</font> qg<font color=Cyan>,</font> <font color=Cyan>(</font>a<font color=Cyan>,</font>aa<font color=Cyan>)</font><font color=Cyan>)</font><font color=Cyan>,</font> <font color=Cyan>(</font>r<font color=Cyan>,</font> <font color=Cyan>(</font>b<font color=Cyan>,</font>bb<font color=Cyan>)</font><font color=Cyan>)</font><font color=Cyan>)</font>
-<a name="line-244"></a>				   qterm g qg
-<a name="line-245"></a>				   qterm f qf
+<a name="line-244"></a>                                   qterm g qg
+<a name="line-245"></a>                                   qterm f qf
 <a name="line-246"></a>  <font color=Cyan>}</font>
 <a name="line-247"></a>  <font color=Green><u>where</u></font> n <font color=Red>=</font> length f
-<a name="line-248"></a>	m <font color=Red>=</font> n<font color=Cyan>+</font><font color=Magenta>2</font>
+<a name="line-248"></a>        m <font color=Red>=</font> n<font color=Cyan>+</font><font color=Magenta>2</font>
 <a name="line-249"></a>
 <a name="line-250"></a>
 <a name="line-251"></a><a name="oracle_template_optim"></a><font color=Blue><i>-- | The template oracle, optimized.</i></font>
@@ -265,14 +265,14 @@
 <a name="line-258"></a>    entrance <font color=Red>=</font> boollist_of_int_bh m <font color=Magenta>1</font><font color=Cyan>,</font>
 <a name="line-259"></a>    oraclefun <font color=Red>=</font> <font color=Red>\</font>c <font color=Cyan>(</font><font color=Green><u>as</u></font><font color=Cyan>,</font>bs<font color=Cyan>,</font>r<font color=Cyan>)</font> <font color=Red>-&gt;</font> <font color=Green><u>do</u></font> qf <font color=Red>&lt;-</font> qinit f
 <a name="line-260"></a>                                   qg <font color=Red>&lt;-</font> qinit g
-<a name="line-261"></a>				   <font color=Green><u>let</u></font> <font color=Cyan>(</font>a<font color=Red><b>:</b></font>aa<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>as</u></font>
-<a name="line-262"></a>				   <font color=Green><u>let</u></font> <font color=Cyan>(</font>b<font color=Red><b>:</b></font>bb<font color=Cyan>)</font> <font color=Red>=</font> bs
+<a name="line-261"></a>                                   <font color=Green><u>let</u></font> <font color=Cyan>(</font>a<font color=Red><b>:</b></font>aa<font color=Cyan>)</font> <font color=Red>=</font> <font color=Green><u>as</u></font>
+<a name="line-262"></a>                                   <font color=Green><u>let</u></font> <font color=Cyan>(</font>b<font color=Red><b>:</b></font>bb<font color=Cyan>)</font> <font color=Red>=</font> bs
 <a name="line-263"></a>                                   reversible_BWT_oracle_optim c <font color=Cyan>(</font><font color=Cyan>(</font>qf<font color=Cyan>,</font> qg<font color=Cyan>,</font> <font color=Cyan>(</font>a<font color=Cyan>,</font>aa<font color=Cyan>)</font><font color=Cyan>)</font><font color=Cyan>,</font> <font color=Cyan>(</font>r<font color=Cyan>,</font> <font color=Cyan>(</font>b<font color=Cyan>,</font>bb<font color=Cyan>)</font><font color=Cyan>)</font><font color=Cyan>)</font>
-<a name="line-264"></a>				   qterm g qg
-<a name="line-265"></a>				   qterm f qf
+<a name="line-264"></a>                                   qterm g qg
+<a name="line-265"></a>                                   qterm f qf
 <a name="line-266"></a>  <font color=Cyan>}</font>
 <a name="line-267"></a>  <font color=Green><u>where</u></font> n <font color=Red>=</font> length f
-<a name="line-268"></a>	m <font color=Red>=</font> n<font color=Cyan>+</font><font color=Magenta>2</font>
+<a name="line-268"></a>        m <font color=Red>=</font> n<font color=Cyan>+</font><font color=Magenta>2</font>
 <a name="line-269"></a>
 </pre>
 </body>

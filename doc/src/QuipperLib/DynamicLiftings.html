@@ -558,11 +558,11 @@
 <a name="line-551"></a>  <font color=Green><u>let</u></font> <font color=Cyan>(</font>p<font color=Cyan>,</font>ampst<font color=Cyan>,</font>ampsf<font color=Cyan>)</font> <font color=Red>=</font> split amps q
 <a name="line-552"></a>  <font color=Green><u>case</u></font> <font color=Cyan>(</font>b<font color=Cyan>,</font>p<font color=Cyan>)</font> <font color=Green><u>of</u></font>
 <a name="line-553"></a>    <font color=Cyan>(</font>True<font color=Cyan>,</font><font color=Magenta>1.0</font><font color=Cyan>)</font> <font color=Red>-&gt;</font> <font color=Green><u>do</u></font>
-<a name="line-554"></a>	<font color=Green><u>let</u></font> ampst' <font color=Red>=</font> apply <font color=Cyan>(</font>vector <font color=Cyan>(</font>Map<font color=Cyan>.</font>delete q<font color=Cyan>)</font><font color=Cyan>)</font> ampst
+<a name="line-554"></a>        <font color=Green><u>let</u></font> ampst' <font color=Red>=</font> apply <font color=Cyan>(</font>vector <font color=Cyan>(</font>Map<font color=Cyan>.</font>delete q<font color=Cyan>)</font><font color=Cyan>)</font> ampst
 <a name="line-555"></a>        putQS ampst'
 <a name="line-556"></a>        return ()
 <a name="line-557"></a>    <font color=Cyan>(</font>False<font color=Cyan>,</font><font color=Magenta>0.0</font><font color=Cyan>)</font> <font color=Red>-&gt;</font> <font color=Green><u>do</u></font>
-<a name="line-558"></a>	<font color=Green><u>let</u></font> ampsf' <font color=Red>=</font> apply <font color=Cyan>(</font>vector <font color=Cyan>(</font>Map<font color=Cyan>.</font>delete q<font color=Cyan>)</font><font color=Cyan>)</font> ampsf
+<a name="line-558"></a>        <font color=Green><u>let</u></font> ampsf' <font color=Red>=</font> apply <font color=Cyan>(</font>vector <font color=Cyan>(</font>Map<font color=Cyan>.</font>delete q<font color=Cyan>)</font><font color=Cyan>)</font> ampsf
 <a name="line-559"></a>        putQS ampsf'
 <a name="line-560"></a>        return ()
 <a name="line-561"></a>    <font color=Cyan>(</font>True<font color=Cyan>,</font>pt<font color=Cyan>)</font> <font color=Red>-&gt;</font> error <font color=Cyan>(</font><font color=Magenta>"QTerm: Assertion Incorrect (True only has probability "</font> <font color=Cyan>++</font> show pt <font color=Cyan>++</font> <font color=Magenta>")"</font><font color=Cyan>)</font>
